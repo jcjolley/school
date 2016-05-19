@@ -1,0 +1,35 @@
+What is the CPU type and model?
+    Intel(R) Core(TM) i5-2400 CPU @ 3.10GHz
+
+How many processors on this system?
+    1 processor with 4 cores each (not hyperthreaded)
+
+What version of the Linux kernel is being used?
+    Linux version 2.6.32-573.22.1.el6.x86_64 #1 SMP Thu Mar 17 03:23:39 EDT
+
+How long has it been since the system was last booted?
+    up 2 days,  12:01
+
+How much CPU execution time has been spent in user, system and idle modes?
+    USER: 295.69 seconds
+    SYSTEM: 250.45 seconds
+    IDLE: 863523.94 seconds
+
+How much memory is on the machine?
+    MemTotal:        3942852 kB
+
+How much memory is currently available?
+    MemFree:         2938144 kB
+
+How many kBytes have been read and written to the disk since the last reboot?
+    Read: 521140 kB
+    Written: 585005 kB
+
+How many processes have been created since the last reboot?
+    Processes created: 35594
+
+How many context switches have been performed since the last reboot?
+    Context switches: 30951579
+
+What is the current load average for the last 1, 5 and 15 minutes?
+    Load average: 0.00, 0.08, 0.08

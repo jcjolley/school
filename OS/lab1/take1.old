@@ -1,0 +1,188 @@
+#!/bin/bash
+
+# Lab LinuxInfo
+# Brother Jones, CS 345, Operating Systems
+# Joshua Jolley
+
+############################################################################
+# Summary:
+#    Displays various bits of system info using shell commands.
+############################################################################
+
+
+#***********************************************************************
+# FUNCTION: getCpuInfo()
+# gets the CPUInfo and prints it to the screen
+#***********************************************************************
+getCpuInfo()
+{
+   #gather CPU type and model information from /proc/cpuinfo
+	local CPUINFO=$(grep 'model\ name' /proc/cpuinfo | uniq | cut -c 14-)
+ 
+	#print out the CPU info we gathered
+	printf "What is the CPU type and model?\n"
+   printf "\t%s\n\n" "$CPUINFO"	
+}
+
+
+#***********************************************************************
+# FUNCTION: getProcessorInfo()
+# Displays information about the number of processors, cores, and ht
+#***********************************************************************
+getProcessorInfo()
+{
+   #Store processor info from lscpu in variables   
+   local PROCESSORS=$(lscpu | grep Socket | cut -c 24-)
+   local CORES=$(lscpu | grep Core | cut -c 24-)
+   local THREADS=$(lscpu | grep Thread | cut -c 24-)
+
+	#It's hyperthreaded if there is more than one thread per core
+	if [ $THREADS -le 1 ]
+	   then
+			local HT="not hyperthreaded"
+      else
+		   local HT="hyperthreaded"
+   fi
+
+	#print out the info we gathered
+	printf "%s\n" "How many processors on this system?"
+	printf "\t%d processor with %d cores each (%s)\n\n" $PROCESSORS $CORES "$HT"
+}
+
+
+#***********************************************************************
+# FUNCTION: getKernelInfo
+# Displays information about the kernel
+#***********************************************************************
+getKernelInfo()
+{
+   local KVERSION=$(uname -r)
+	local KDATE=$(rev /proc/sys/kernel/version | cut -c 5- | rev)
+
+	printf "What version of the Linux kernel is being used?\n"
+	printf "\tLinux version %s %s\n\n" "$KVERSION" "$KDATE"
+}
+
+
+#***********************************************************************
+# FUNCTION: getUptime
+# Displays the uptime
+#***********************************************************************
+getUptime()
+{
+   local UPTIME=$(uptime | cut -c 11- | awk -F ',' '{print $1 "," $2 }')
+	printf "How long has it been since the system was last booted?\n"
+	printf "\t%s\n\n" "$UPTIME"
+}
+
+#***********************************************************************
+# FUNCTION: getExecutionTime
+# Displays the system, user, and idle time
+#***********************************************************************
+getExecutionTime()
+{
+   local USER_HUNDREDTHS=$(grep 'cpu\ ' /proc/stat | awk '{print $2}')
+	local NICE_HUNDREDTHS=$(grep 'cpu\ ' /proc/stat | awk '{print $3}')
+	#I'm not sure why, but this is always off by +-30 seconds.
+	local TUSER=$(echo "scale=2; ($USER_HUNDREDTHS + $NICE_HUNDREDTHS) / 100.0" | bc)
+   
+
+   local HUNDREDTHS=$(grep 'cpu\ ' /proc/stat | awk '{print $4}')
+	local TSYS=$(echo "scale=2; $HUNDREDTHS / 100.0" | bc)
+	
+   local HUNDREDTHS=$(grep 'cpu\ ' /proc/stat | awk '{print $5}')
+	local TIDLE=$(echo "scale=2; $HUNDREDTHS / 100.0" | bc)
+
+	printf "How much CPU execution time has been spent in user, system and idle modes?\n"
+	printf "\tUSER: %.2f seconds\n" $TUSER
+	printf "\tSYSTEM: %.2f seconds\n" $TSYS
+	printf "\tIDLE: %.2f seconds\n\n" $TIDLE
+}
+
+
+#***********************************************************************
+# FUNCTION: getMemoryInfo
+# Displays total and currently available memory on the machine
+#***********************************************************************
+getMemoryInfo()
+{
+   local MEMTOTAL=$(grep MemTotal /proc/meminfo)
+	local MEMFREE=$(grep MemFree /proc/meminfo)
+
+	printf "How much memory is on the machine?\n"
+	printf "\t%s\n\n" "$MEMTOTAL"
+	
+	printf "How much memory is currently available?\n"
+	printf "\t%s\n\n" "$MEMFREE"
+}
+
+#***********************************************************************
+# FUNCTION: getDiscInfo
+# Displays how many kB have been written and read since the last reboot 
+#***********************************************************************
+getDiskInfo()
+{
+   local IOREAD=$(iostat -k | grep sda | awk '{print $5}')
+	local IOWRITTEN=$(iostat -k | grep sda | awk '{print $6}')
+
+	printf "How many kBytes have been read and written to the disk since the last reboot?\n"
+	printf "\tRead: %d kB\n" $IOREAD
+	printf "\tWritten: %d kB\n\n" $IOWRITTEN
+}
+
+#***********************************************************************
+# FUNCTION: getProcessesCreated
+# Displays the number of processes created since the last reboot
+#***********************************************************************
+getProcessesCreated()
+{
+   local NUM_PROCESSES=$(grep processes /proc/stat | cut -c 10-)
+
+	printf "How many processes have been created since the last reboot?\n"
+	printf "\tProcesses created: %d\n\n" $NUM_PROCESSES
+}
+
+#***********************************************************************
+# FUNCTION: getContextSwitches
+# Displays the number of context switches since the last reboot
+#***********************************************************************
+getContextSwitches()
+{
+   local NUM_SWITCHES=$(grep ctxt /proc/stat | cut -c 6-)
+
+	printf "How many context switches have been performed since the last reboot?\n"
+	printf "\tContext switches: %d\n\n" $NUM_SWITCHES
+}
+
+#***********************************************************************
+# FUNCTION: getContextSwitches
+# Displays the number of context switches since the last reboot
+#***********************************************************************
+getLoadAverages()
+{
+   local LOAD_AVERAGES=$(uptime | awk '{print $10 " " $11 " " $12}')
+
+   printf "What is the current load average for the last 1, 5 and 15 minutes?\n"
+	printf "\tLoad average: %s\n" "$LOAD_AVERAGES"
+}
+
+#***********************************************************************
+# FUNCTION: Main
+# Our driver 
+#***********************************************************************
+main()
+{
+   getCpuInfo
+	getProcessorInfo
+	getKernelInfo
+	getUptime
+	getExecutionTime
+	getMemoryInfo
+	getDiskInfo
+	getProcessesCreated
+	getContextSwitches
+	getLoadAverages
+}
+
+#call main
+main

@@ -1,0 +1,136 @@
+#+OPTIONS: TeX:t LaTeX:t
+#+TITLE: Chapter 1 Exercises
+#+AUTHOR: Joshua Jolley
+#+LANGUAGE: en
+#+STARTUP: showeverything
+
+* Exercise 4
+** Answer
+I decided to use this exercise as an opportunity to explore the differences between clojure and elisp
+Functional programming is still so new to me... My imperative ways keep getting in the way.  I'll figure this out eventually though.
+** Clojure
+Follow [[[[http://orgmode.org/worg/org-contrib/babel/languages/ob-doc-clojure.html]]][these] instructions to use babel with clojure.
+#+BEGIN_SRC clojure
+(defn floor_root [n]     ;;declare a new function, floor_root
+   (loop [m 1]           ;;set m to 1, and begin looping
+      (if (> (* m m ) n) ;;if m^2 is greater than m, stop looping and return m - 1
+         (dec m)
+      (recur (inc m))))) ;;otherwise, increment m and loop again.
+
+(floor_root 27) ;;returns 5
+#+END_SRC
+** Elisp
+#+BEGIN_SRC emacs-lisp
+(defun flroot (n)
+  (setq m 1)
+  (while (< (* m m) n)   ;;the core of this and the clojure solution are the same
+    (setq m (+ m 1)))    ;;overwriting m in this way lets me use side-effects to end the while loop
+  (print m))
+
+(flroot 35)
+#+END_SRC
+
+#+RESULTS:
+: 6
+
+* Exercise 8
+** Elisp
+#+BEGIN_SRC emacs-lisp
+(print (gcd 4 8))
+(print (gcd 8 4))
+#+END_SRC
+** Answer
+It returns the correct value.
+It can only happen once, as the values of m and n are swapped if m > n
+
+
+* Exercise 12
+** Clojure
+#+BEGIN_SRC clojure
+(defn fliplockers [lockers i]
+  (map-indexed #(if (= (mod (inc %1) i) 0) ;;For each item, if index mod i is 0, flip it.
+                  (not %2)
+                  %2) lockers))
+
+(defn lockerProblem [n]
+  (let [lockers (vec (replicate n false))] ;;create an array of n false items
+     (loop [templocks lockers i 1]         ;;iterate through the array
+        (if (> i n)                        ;;base case  
+           templocks                       ;;the final version of the array after all flips have occured
+        (recur (fliplockers templocks i) (inc i)))))) ;;call fliplockers
+
+(lockerProblem 10)
+#+END_SRC
+** Answers
+The number of open doors is the floor of the square root n.  
+The perfect squares up to n are open.  All others are closed.
+
+
+* Exercise 5
+/English/
+For any positive integer n
+Step 1: If n is 0, return rep, otherwise, continue to step 2:
+Step 2: Mod n by 2, and prepend the result into rep.
+Step 3: Divide n by 2, and proceed to step 1.
+
+/Pseudocode/
+bitArray <- []
+while n > 0
+   r <- n % 2
+   bitArray.push_front(r);
+   n /= 2 //integer division
+
+* Exercise 10
+/George Polya's Plan/
+1. Understand the problem (SEE)
+2. Devise a plan          (PLAN)
+3. Carry out the plan     (DO)
+4. Looking Back           (CHECK)
+
+
+/The Book's Plan/
+1. Understand the problem
+2. Decide on:
+   a. computational means
+   b. exact vs approxmiate solving
+   c. algorithm design technique
+3. Design an algorithm
+4. Prove correctness     (returning to step 2 if necessary)
+5. Analyze the algorithm (returning to step 2 if necessary)
+6. Code the algorithm
+
+These two plans share a lot.  Both plans have you first understand the problem which 
+seems to be an extremely important step in algorithm deisgn.  How would you design an
+algorithm to solve a problem if you don't first understand the problem? (The answer is 'poorly')
+
+One major difference is the proving and analyzation steps in the books plan.  I'm assuming that "Looking back"
+involves verifying the correctness of the algorithm, but it doesn't necessarily imply the
+the analysis of the algorithm.
+
+* Exercise 8 
+
+Any map of this nature can be colored with only four colors.  Creating an exact algorithm for this requires 1,476 special cases[1]
+so I'm not going to specify an exact algorithm.  This particular example requires 4 colors.
+According to wikipedia, determining whether a particular map requires only 3 colors is an NP-Complete problem.
+
+An algorithm specific to this example is:
+ 1. Find the region sharing an edge with the most other regions (c)
+ 2. Color it green.
+ 3. Starting at A, visit each region traveling clockwise and alternately color them red and blue.
+ 4. When you reach E, color it orange.
+
+* Exercise 9
+
+If n < 3, Simply draw a circle with the point(s) on the circumference.  This is always possible.
+If n >= 3, you need to find a single point that is equidistant to all other n points.  If such a point 
+exists, then the n points are all on the circumference of the circle centered on the aforementioned point.
+
+Understanding the problem, and being able to devise an algorithm for it, are unfortunately different things.
+I don't know how I would go about creating an algorithm for this.
+
+
+
+
+[1] Stephens R. "Colorful Algorithms: Solving Map-coloring and Related Problems http://www.devx.com/dotnet/Article/32927 
+
+

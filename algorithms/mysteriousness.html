@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-04-26 Tue 23:34 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. Introduction</a></li>
+<li><a href="#orgheadline12">2. Part 1: Breaking Up Is Hard To Do</a>
+<ul>
+<li><a href="#orgheadline3">2.1. My first attempt</a>
+<ul>
+<li><a href="#orgheadline2">2.1.1. Clojure</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline5">2.2. My second attempt</a>
+<ul>
+<li><a href="#orgheadline4">2.2.1. Clojure</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline7">2.3. My Third attempt</a>
+<ul>
+<li><a href="#orgheadline6">2.3.1. Clojure</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline9">2.4. For Fun</a>
+<ul>
+<li><a href="#orgheadline8">2.4.1. Clojure</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline11">2.5. For Fun Part 2</a>
+<ul>
+<li><a href="#orgheadline10">2.5.1. Clojure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline13">3. Conclusion</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Designing algorithms is more difficult than I ever expected it to be, and let me assure you
+that I came into this class expecting a heaping amount of difficulty.  My struggle is getting out
+of the 'code and fix' methodology.  Creating and executing a plan, rather than iteratively working
+with the feedback of code, doesn't come naturally to me.  
+</p>
+
+<p>
+With these difficulties in mind, I tackled the task of creating algorithms to solve part one of this
+mysterious exploration.  What task, you ask?  The task of breaking a positive integer 
+into n unequal positive integers. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12"><span class="section-number-2">2</span> Part 1: Breaking Up Is Hard To Do</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">2.1</span> My first attempt</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Please excuse my ugly lisp, this is my first real foray into the land of functional programming,
+and my second attempt at picking up a lisp language.  Back in the days of CS237 I first tried to learn elisp,
+but I didn't give it enough time, and wasn't sufficiently motivated to make the adjustment to the new
+paradigm.  
+</p>
+
+<p>
+This first attempt works by subtracting b from a, until b becomes one. At this point, we throw whats left of
+A into the vector, which guarantees that the vector still adds up to A (at least in theory)
+This implementation suffers from many problems.  The first of which is that it needlessly limits its domain
+by subtracting b, with b starting at B, rather than starting b at 1, and working our way up as high as we need to go.
+</p>
+
+<p>
+Secondly, this implmentation doesn't restrict bad output.  You can get vectors that have duplicate items,
+violating the premise of the algorithm.  Clearly, we needed to go somewhere from here.
+</p>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2"><span class="section-number-4">2.1.1</span> Clojure</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #AE81FF;">(</span>defn simple_breakup <span style="color: #66D9EF;">[</span>A B<span style="color: #66D9EF;">]</span>
+  <span style="color: #66D9EF;">(</span>loop <span style="color: #A6E22E;">[</span>myvec <span style="color: #E6DB74;">[]</span> a A b B<span style="color: #A6E22E;">]</span>
+    <span style="color: #A6E22E;">(</span><span style="color: #F92672;">if</span> <span style="color: #E6DB74;">(</span>&lt;= b <span style="color: #AE81FF;">1</span><span style="color: #E6DB74;">)</span>
+      <span style="color: #E6DB74;">(</span>conj myvec a<span style="color: #E6DB74;">)</span>
+      <span style="color: #E6DB74;">(</span>recur <span style="color: #FD971F;">(</span>conj myvec b<span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>- a b<span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>dec b<span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
+    <span style="color: #A6E22E;">)</span>
+  <span style="color: #66D9EF;">)</span>
+<span style="color: #AE81FF;">)</span>
+
+<span style="color: #AE81FF;">(</span>simple_breakup <span style="color: #AE81FF;">25</span> <span style="color: #AE81FF;">3</span><span style="color: #AE81FF;">)</span> <span style="color: #75715E;">;; </span><span style="color: #75715E;">[3, 2, 20]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">2.2</span> My second attempt</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+This algorithm was a step in right direction, though it didn't quite arrive.
+By switching my container to a set, I removed the possibility of duplicate items.  I also switched
+the value of b around so that it starts a 1 and works its way up.  This ever so slightly stretches the 
+domain of this function.  It can still provide bad output though, as we can get a collection returned
+that does not divide A into B pieces, but rather B - 1 or worse.
+</p>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">2.2.1</span> Clojure</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #AE81FF;">(</span>defn simple_breakup <span style="color: #66D9EF;">[</span>A B<span style="color: #66D9EF;">]</span>
+   <span style="color: #66D9EF;">(</span>loop <span style="color: #A6E22E;">[</span>myset #{} a A b <span style="color: #AE81FF;">1</span><span style="color: #A6E22E;">]</span>
+      <span style="color: #A6E22E;">(</span><span style="color: #F92672;">if</span> <span style="color: #E6DB74;">(</span>&gt;= b B<span style="color: #E6DB74;">)</span>
+         <span style="color: #E6DB74;">(</span>conj myset a<span style="color: #E6DB74;">)</span>
+         <span style="color: #E6DB74;">(</span>recur <span style="color: #FD971F;">(</span>conj myset b<span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>- a b<span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>inc b<span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
+      <span style="color: #A6E22E;">)</span>
+   <span style="color: #66D9EF;">)</span>
+<span style="color: #AE81FF;">)</span>
+
+<span style="color: #AE81FF;">(</span>simple_breakup <span style="color: #AE81FF;">6</span> <span style="color: #AE81FF;">3</span><span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">2.3</span> My Third attempt</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+My third attempt is another step in the right direction.  The error handling in this algorithm
+prevents negative numbers from fouling up the results, and also ensures that we are indeed getting
+B unequal pieces out of the algorithm. 
+</p>
+
+<p>
+This algorithm's lowest Big O value is O(n).  B determines the number of times the loop recurs, and every
+operation in the loop occurs in constant time 0(1)
+</p>
+</div>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">2.3.1</span> Clojure</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+#+BEGIN<sub>SRC</sub> emacs-lisp
+(defn simple<sub>breakup</sub> [A B]
+   (let [results 
+      (loop [myset #{} a A b 1]
+         (if (&gt;= b B)
+            (conj myset a)
+            (recur (conj myset b) (- a b) (inc b))
+         )
+      )]
+      (cond
+         (not (= (count results) B)) "Invalid Input"                     ;;incorrect number of outputs
+         (not (= 0 (count (filter #(&lt;= %1 0) results)))) "Invalid Input" ;;no negatives
+         :else results
+      )
+   )
+)
+</p>
+
+<p>
+(simple<sub>breakup</sub> 3 2)
+#+END<sub>SRC</sub>)
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">2.4</span> For Fun</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+I tried two other approaches to this problem,  this one is just a variation on the first approach,
+but it doubles B each time.
+</p>
+</div>
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">2.4.1</span> Clojure</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #AE81FF;">(</span>defn another_breakup <span style="color: #66D9EF;">[</span>A B<span style="color: #66D9EF;">]</span>
+  <span style="color: #66D9EF;">(</span>loop <span style="color: #A6E22E;">[</span>myvec <span style="color: #E6DB74;">[]</span> a A b B<span style="color: #A6E22E;">]</span>
+    <span style="color: #A6E22E;">(</span><span style="color: #F92672;">if</span> <span style="color: #E6DB74;">(</span>&lt;= b <span style="color: #AE81FF;">1</span><span style="color: #E6DB74;">)</span>
+      <span style="color: #E6DB74;">(</span>conj myvec a<span style="color: #E6DB74;">)</span>
+      <span style="color: #E6DB74;">(</span>recur <span style="color: #FD971F;">(</span>conj myvec <span style="color: #F92672;">(</span>* b <span style="color: #AE81FF;">2</span><span style="color: #F92672;">)</span><span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>- a <span style="color: #F92672;">(</span>* b <span style="color: #AE81FF;">2</span><span style="color: #F92672;">)</span><span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>dec b<span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
+    <span style="color: #A6E22E;">)</span>
+  <span style="color: #66D9EF;">)</span>
+<span style="color: #AE81FF;">)</span>
+
+<span style="color: #AE81FF;">(</span>another_breakup <span style="color: #AE81FF;">25</span> <span style="color: #AE81FF;">3</span><span style="color: #AE81FF;">)</span> <span style="color: #75715E;">;;</span><span style="color: #75715E;">[6, 4, 15]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">2.5</span> For Fun Part 2</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+This attempt uses consecutive division.  It can handle a lot fewer B values than the first algorithm can,
+as the division eats up slices of the unequal pie pretty quickly.
+</p>
+</div>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">2.5.1</span> Clojure</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #AE81FF;">(</span>defn half <span style="color: #66D9EF;">[</span>n<span style="color: #66D9EF;">]</span>
+  <span style="color: #66D9EF;">(</span>Math/round <span style="color: #A6E22E;">(</span>double <span style="color: #E6DB74;">(</span>/ n <span style="color: #AE81FF;">2</span><span style="color: #E6DB74;">)</span><span style="color: #A6E22E;">)</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+
+<span style="color: #AE81FF;">(</span>defn div_breakup <span style="color: #66D9EF;">[</span>A B<span style="color: #66D9EF;">]</span>
+  <span style="color: #66D9EF;">(</span>loop <span style="color: #A6E22E;">[</span>myvec <span style="color: #E6DB74;">[]</span> a A b B mysum <span style="color: #AE81FF;">1</span> originalA A<span style="color: #A6E22E;">]</span>
+    <span style="color: #A6E22E;">(</span><span style="color: #F92672;">if</span> <span style="color: #E6DB74;">(</span>&lt;= b <span style="color: #AE81FF;">1</span><span style="color: #E6DB74;">)</span>
+      <span style="color: #E6DB74;">(</span>conj myvec <span style="color: #FD971F;">(</span>+ <span style="color: #AE81FF;">1</span> <span style="color: #F92672;">(</span>- originalA mysum<span style="color: #F92672;">)</span><span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
+      <span style="color: #E6DB74;">(</span>recur <span style="color: #FD971F;">(</span>conj myvec <span style="color: #F92672;">(</span>half a<span style="color: #F92672;">)</span><span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>half a<span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>dec b<span style="color: #FD971F;">)</span> <span style="color: #FD971F;">(</span>+ mysum <span style="color: #F92672;">(</span>half a<span style="color: #F92672;">)</span><span style="color: #FD971F;">)</span> originalA<span style="color: #E6DB74;">)</span>
+      <span style="color: #A6E22E;">)</span>
+    <span style="color: #66D9EF;">)</span>
+  <span style="color: #AE81FF;">)</span>
+
+<span style="color: #AE81FF;">(</span>div_breakup <span style="color: #AE81FF;">23</span> <span style="color: #AE81FF;">3</span><span style="color: #AE81FF;">)</span> <span style="color: #75715E;">;; </span><span style="color: #75715E;">[12, 6, 5]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13"><span class="section-number-2">3</span> Conclusion</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This part of the exploration was pretty enjoyable, despite its high difficulty.  I enjoyed getting to
+to learn Clojure a bit better, and, while frequently frustrating, it was enjoyable to play around with
+math and see my algorithm take shape.  I'm sure this isn't the most efficient, or most general version
+by leagues, but it's what I have, and I'm relatively proud of it. 
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2016-04-26 Tue 23:34</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

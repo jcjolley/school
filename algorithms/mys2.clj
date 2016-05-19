@@ -27,19 +27,9 @@
       (and (swap! letterScores assoc-in [(getFirstVowel k)] 1)
            (swap! vowelsLeft disj (getFirstVowel k))))))
 
-(defn differByOneLetter [word1 word2]
-   (loop [w1 word1 w2 word2]
-      (if (= 0 (count w1))
-         (w2)
-         (recur (subs w1 1) w2))
-      )
-)
-
-(defn getSimilarWords [words]
+(defn differByOneLetter [words]
   (for [w1 (keys words) w2 (keys words)]
-    (if (differByOneLetter w1 w2)
-       [w1 w2]))
-  )
+  ))
 
 (defn getNextVowel [words])
 
@@ -49,7 +39,3 @@
 (prn letterScores)
 (prn vowelsLeft)
 
-
-(differByOneLetter "viper" "paper")
-
-(getSimilarWords wordScores)

@@ -2,19 +2,19 @@
 #include <cstdlib>
 #include <time.h>
 
-#define RUNS 1000
 using namespace std;
 int main(int argc, char** argv)
 {
-   if (argc != 2)
+   if (argc != 3)
    {
-      cout << "USAGE: bubble [n]" << endl;
+      cout << "USAGE: bubble [n] [numRuns]" << endl;
       exit(1);
    }
 
    srand(time(NULL));
    long long count = 0;
    int n = atoi(argv[1]);
+	const int RUNS = atoi(argv[2]);
    int ** arr = new int*[RUNS];
 
    //create 100 random arrays of length n

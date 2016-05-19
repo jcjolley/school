@@ -1,0 +1,41 @@
+
+#
+#   things done using awk
+#
+# sum fields 1, 2, 3 and 4 for each row in file 'filea' printing the total
+awk '{ 
+      total=$1+$2+$3+$4
+      printf "%s\n", total
+     }' filea
+
+#
+# sum the fields in each row of file 'zfile' and print the answer
+#
+awk '{ 
+      total=0
+      for (i=1;i<=NF;i++) {total+=$i}
+      printf "%s\n", total
+     }' zfile
+
+#
+# use awk to average a column of a file
+#
+
+FILE=$1
+FIELD=$2
+if [ $# -ne 2 ]
+then
+  echo 'usage of '$0' is:'
+  echo '        '$0' file_name field_number\n'
+  exit 1
+fi
+
+awk "{
+      sum += \$$FIELD
+     }
+     END  {
+           mean = sum / NR
+	   print \"mean = \",mean
+     }" $FILE
+
+

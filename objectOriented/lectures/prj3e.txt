@@ -1,0 +1,7 @@
+b2b4 b7b5
+e2e3 b8a6
+f1b5 h7h6
+b5a6 h6h5
+b4b5 h5h4
+b5b6 h4h3
+b6b7 h3g2p

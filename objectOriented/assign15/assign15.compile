@@ -1,0 +1,67 @@
+
+# mkdir assign15.tar.dir 2>> assign15.compile 
+
+# cp assign15.tar assign15.tar.dir/tar.tar 2>> assign15.compile 
+
+# tar -xf  assign15.tar.dir/tar.tar -C assign15.tar.dir 2>> assign15.compile >> assign15.compile 
+
+# make a.out -C assign15.tar.dir 2>> assign15.compile >> assign15.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/assign15/assign15.tar.dir'
+make: *** No rule to make target `a.out'.  Stop.
+make: Leaving directory `/home/jol10005/workfromhome/CS165/assign15/assign15.tar.dir'
+
+# mv assign15.tar.dir/a.out /tmp/testbed/compileDird6b6ab07-119c-496c-aedd-a38ac4ed6075/assign15 2>> assign15.compile >> assign15.compile 
+mv: cannot stat `assign15.tar.dir/a.out': No such file or directory
+
+# rm -rf assign15.tar.dir 2>> assign15.compile 
+
+# mkdir assign15.tar.dir 2>> assign15.compile 
+
+# cp assign15.tar assign15.tar.dir/tar.tar 2>> assign15.compile 
+
+# tar -xf  assign15.tar.dir/tar.tar -C assign15.tar.dir 2>> assign15.compile >> assign15.compile 
+
+# make a.out -C assign15.tar.dir 2>> assign15.compile >> assign15.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/assign15/assign15.tar.dir'
+g++ complexTest.cpp -c
+g++ complex.cpp -c
+g++ -o a.out complexTest.o complex.o
+make: Leaving directory `/home/jol10005/workfromhome/CS165/assign15/assign15.tar.dir'
+
+# mv assign15.tar.dir/a.out /tmp/testbed/compileDirb9d4c8a7-01eb-4ff8-9b96-f0c2ebe185c1/assign15 2>> assign15.compile >> assign15.compile 
+
+# rm -rf assign15.tar.dir 2>> assign15.compile 
+
+# mkdir assign15.tar.dir 2>> assign15.compile 
+
+# cp assign15.tar assign15.tar.dir/tar.tar 2>> assign15.compile 
+
+# tar -xf  assign15.tar.dir/tar.tar -C assign15.tar.dir 2>> assign15.compile >> assign15.compile 
+
+# make a.out -C assign15.tar.dir 2>> assign15.compile >> assign15.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/assign15/assign15.tar.dir'
+g++ complexTest.cpp -c
+g++ complex.cpp -c
+g++ -o a.out complexTest.o complex.o
+make: Leaving directory `/home/jol10005/workfromhome/CS165/assign15/assign15.tar.dir'
+
+# mv assign15.tar.dir/a.out /tmp/testbed/compileDir04cc3e18-0fa2-4e1a-8d18-7ea7b8174049/assign15 2>> assign15.compile >> assign15.compile 
+
+# rm -rf assign15.tar.dir 2>> assign15.compile 
+
+# mkdir assign15.tar.dir 2>> assign15.compile 
+
+# cp assign15.tar assign15.tar.dir/tar.tar 2>> assign15.compile 
+
+# tar -xf  assign15.tar.dir/tar.tar -C assign15.tar.dir 2>> assign15.compile >> assign15.compile 
+
+# make a.out -C assign15.tar.dir 2>> assign15.compile >> assign15.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/assign15/assign15.tar.dir'
+g++ complexTest.cpp -c
+g++ complex.cpp -c
+g++ -o a.out complexTest.o complex.o
+make: Leaving directory `/home/jol10005/workfromhome/CS165/assign15/assign15.tar.dir'
+
+# mv assign15.tar.dir/a.out /tmp/testbed/compileDirda29a059-28ea-40a1-9456-f4342dcbe9e9/assign15 2>> assign15.compile >> assign15.compile 
+
+# rm -rf assign15.tar.dir 2>> assign15.compile 

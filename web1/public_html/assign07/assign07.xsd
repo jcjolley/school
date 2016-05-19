@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<xs:schema 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   targetNamespace="http://joshuacjolley.com/bsa"
+   xmlns="http://joshuacjolley.com/bsa"
+   elementFormDefault="qualified">
+
+<xs:element name="fname"         type="xs:string"/>
+<xs:element name="lname"         type="xs:string"/>
+<xs:element name="street"        type="xs:string"/>
+<xs:element name="city"          type="xs:string"/>
+<xs:element name="state"         type="xs:string"/>
+<xs:element name="phone"         type="xs:string"/>
+<xs:attribute name="name"        type="xs:string"/>
+<xs:attribute name="number"      type="xs:integer"/>
+<xs:attribute name="unit"        type="xs:string"/>
+<xs:attribute name="date-earned" type="xs:string"/>
+
+<xs:element name="address">
+   <xs:complexType> 
+      <xs:sequence>
+         <xs:element ref="street"/>
+         <xs:element ref="city"/>
+         <xs:element ref="state"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:element>
+
+<xs:element name="rank">
+   <xs:complexType>
+      <xs:attribute ref="date-earned" use="required"/>
+   </xs:complexType>
+</xs:element>
+
+<xs:element name="meritbadge">
+   <xs:complexType>
+      <xs:attribute ref="date-earned" use="required"/>
+   </xs:complexType>
+</xs:element>
+
+<xs:element name="scout">
+   <xs:complexType>
+      <xs:sequence>
+         <xs:element ref="fname"/>
+         <xs:element ref="lname"/>
+         <xs:element ref="phone"/>
+         <xs:element ref="address"/>
+         <xs:element ref="rank" minOccurs="0" maxOccurs="6"/>
+         <xs:element ref="meritbadge" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:element>
+
+<xs:element name="troop">
+   <xs:complexType>
+      <xs:sequence>
+         <xs:element ref="scout" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="number" use="required"/>
+      <xs:attribute ref="unit" use="required"/>
+   </xs:complexType>
+</xs:element>
+
+<xs:element name="council">
+   <xs:complexType>
+      <xs:sequence>
+         <xs:element ref="troop" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="name" use="required"/>
+   </xs:complexType>
+</xs:element>
+
+</xs:schema>

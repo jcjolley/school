@@ -1,0 +1,97 @@
+body{
+   padding:0px;
+   margin:0px;
+   background-color: #F6F4F0;
+   font-family:Open Sans;
+}
+
+h1, h2{
+   font-family:"Ubuntu";
+}
+
+#master{
+   position: relative;
+   top: -50px;
+   padding:0px;
+   margin:0px;
+   width:800px;
+   height:685px;
+   color:white;
+   margin-left:auto;
+   margin-right:auto;
+   background:black;
+}
+
+#header{
+  padding:0px;
+  margin:0px;
+  height:150px;
+  width:800px;
+  color:blue;
+  background:white;
+}
+
+#header img{
+  position: absolute;
+  height:100px;
+}
+
+#header h1{
+  position: relative;
+  font-size:430%;
+  left: 120px;
+}
+
+#nav{
+  height:0px;
+  padding:0px;
+  margin:0px;
+}
+
+#content{
+   position: relative;
+   top:-40px;
+   padding-left:30px;
+   padding-top:5px;
+   margin: 0px;
+   font-size:150%;
+   height:450px;
+   background: url("images/travel.jpg");
+   background-repeat:none;
+   background-size:cover;
+   text-shadow: 3px 2px 1px black;
+}
+
+label{
+    float:left; 
+    width:200px;
+}
+
+input{
+    float:left;
+    height:20px;
+    margin-top:8px;
+    width:150px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+           border-radius: 4px 4px 4px 4px;
+    border:none;
+}
+
+#display{
+    position:absolute;
+    right:20px;
+    width:300px;
+    top:450px;
+    margin-left:auto;
+    margin-right:auto;
+    font-weight:bold;
+    border:5px solid black;
+}
+
+input[type="button"]{
+    margin:20px;
+    padding-bottom:25px;
+    font-size:80%;
+    box-shadow:1px 1px 1px 1px   
+}
+

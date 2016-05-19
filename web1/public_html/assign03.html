@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+  <head>
+    <title>Joshua Jolley's Home Page</title>
+      <link rel="stylesheet" type="text/css" href="mystyle.css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+  </head> 
+  <body>
+    <div id="masterContainer">
+    <header>
+      <div id="header">
+        <h1>Jolley's Nook</h1>
+        <div id="nav">
+          <br/><br/><br/><br/><br/>
+          <ul>
+            <li>
+              <a href="index.html">Home</a></li>
+            <li>
+              <a href="assign02.html">CS 213 Assignments</a></li>
+            <li>
+              <a href="aboutme.html">About Me</a></li>
+            <li style="border-bottom-right-radius: 80px 50px;">
+              <a style="border-bottom-right-radius: 80px 50px;
+                        padding-right:20px;"
+               href="pprojects.html">Personal Projects</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div id="main">
+      <p class="main">
+        <span id="hi">Hi</span>
+        <span id="hi2">!</span>
+        &nbsp;&nbsp;Welcome to my alcove in the web.  If you came 
+        here searching for a Web Engineer with an eye for design 
+        coupled with programming best practices, look no further; 
+        <span class="oblique">you've found what you're looking for.</span><br/>
+        I am Joshua Jolley, a student of computer science at Brigham
+        Young University - Idaho, a lover of fantasy fiction novels, 
+        and a happily married mormon man.  Feel free to take a look 
+        around the place. All of these pages have hand coded and 
+        stylized to help you see what I'm capable of.
+      </p> 
+      <hr/>
+      <h2>My Schedule</h2><br/>
+      <div class="schedule" id="scheduleTable">
+        <table>
+          <tr>
+            <th>Course #</th>
+            <th>Description</th>
+            <th>Section</th>
+            <th>Time</th>
+            <th>Location</th>
+          </tr>
+          <tr>
+            <td>CS 213</td>
+            <td>Web Engineering I</td>
+            <td>01</td>
+            <td>TR 9:45 - 11:15 AM</td>
+            <td>Austin 208</td>
+          </tr>
+          <tr >
+            <td class="alt">CS 235</td>
+            <td class="alt">Data Structures</td>
+            <td class="alt">01</td>
+            <td class="alt">MWF 9:00 - 10:00 AM</td>
+            <td class="alt">Austin 208</td>
+          </tr>
+          <tr>
+            <td>FDREL 301</td>
+            <td>Old Testament</td>
+            <td>04</td>
+            <td>MW 10:15 - 11:15 AM</td>
+            <td>Taylor 278</td>
+          </tr>
+          <tr>
+            <td class="alt">FDSCI 299</td>
+            <td class="alt">Robotics</td>
+            <td class="alt">04</td>
+            <td class="alt">R 11:30 AM - 1:45 PM</td>
+            <td class="alt">Romney 126</td>
+          </tr>
+          <tr>
+            <td>MATH 341</td>
+            <td>Linear Algebra</td>
+            <td>01</td>
+            <td>MWF 11:30 AM - 12:30 PM</td>
+            <td>Ricks 180</td>
+          </tr>
+        </table>
+      </div>
+    <hr/>
+      <div class="form" id="form">
+        <p>
+          As I mentioned earlier, I'm a huge fan of fantasy novels.  
+          I often find that the best novels I read come from recommendations.  
+          Take a minute and tell me about a book I should read!</p>
+     <hr/>
+          <h2>Book Suggestions</h2>
+        
+        <form id="bookform">
+          <fieldset>
+            <label form="bookform">Title:</label>
+            <input type="text" name="title" maxlength="20"/><br/>
+            <label form="bookform">Author's Name:</label>
+            <input type="text" name="author" maxlength="20"/><br/>
+            <label form="bookform">Description:</label>
+            <textarea name="description" form="bookform" rows="5" cols="40" maxlength="500" placeholder="Please enter a brief description of the book here.  NO SPOILERS!"></textarea><br/>
+            <label form="bookform">Sub Genre(s):</label><br/>
+            <input type="checkbox" name="subgenre" value="magic"/>Magic
+            <input type="checkbox" name="subgenre" value="epic"/>Epic Fantasy
+            <input type="checkbox" name="subgenre" value="romance"/>Romance<br/>
+            <input type="checkbox" name="subgenre" value="ya"/>Young Adult
+            <input type="checkbox" name="subgenre" value="politics"/>Politics              
+            <input type="checkbox" name="subgenre" value="religion"/>Religion<br/>
+            <input type="checkbox" name="subgenre" value="history"/>History
+            <input type="checkbox" name="subgenre" value="mystery"/>Mystery
+            <input type="checkbox" name="subgenre" value="modern"/>Modern
+            <label form="bookform">Quality:</label><br/><br/>
+            <input type="range" name="quality" min="1" max="10" value="1"/><br/>
+            <label form="bookform">Length:</label><br/>
+             <input type="radio" name="length" value="short"/>Short
+             <input type="radio" name="length" value="medium"/>Medium
+             <input type="radio" name="length" value="long"/>Long
+            <br/><br/><label form="bookform">Got Hooked In:</label>
+              <select name="hooktime">
+                <option value="1stMin">One minute</option>
+                <option value="20mins">Twenty minutes</option>
+                <option value="1stHour">An hour</option>
+                <option value="half">A few hours</option>
+                <option value="never">I never got hooked</option>
+              </select><br/>
+            <input type="reset" value="Reset"/>&nbsp;&nbsp;&nbsp;
+            <input type="submit" value="Submit"/><br/><br/>
+          </fieldset>
+        </form>
+      </div>
+    <div id="picQuote">
+       <!-- can be #AABB11 or #a3a349 -->
+       <a href="hidden.html">
+        <img id="road" alt="Picture of a path through the forest" src="images/roadgoeson.jpg"/></a>
+        <div id="quote">
+          <blockquote>
+          <p>
+            The Road goes ever on and on<br/>
+            Down from the door where it began.<br/>
+            Now far ahead the Road has gone,<br/>
+            And I must follow, if I can,<br/>
+            Pursuing it with eager feet,<br/>
+            Until it joins some larger way,<br/>
+            Where many paths and errands meet.<br/>
+          </p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <footer>
+        <div id="bottom">
+            <a class="links" href="#header">Top</a>
+            <a class="links" href="#form">Book Suggestions</a><br/>
+          <div id="authorInfo">
+            Author: Joshua Jolley | Major: Computer Science | Hometown: Olympia, WA  
+          </div>
+        </div>
+      </footer>
+  </div>
+  </body>
+</html>

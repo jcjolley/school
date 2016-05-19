@@ -1,0 +1,576 @@
+/***********************************************************************
+* Program:
+*    DATE.CPP, Date Class
+*    Brother Helfrich, CS165
+* Author:
+*    Joshua Jolley
+* Summary:
+*    A robust implementation of a Date class (You'll get the girls
+*    after you take this class!)
+*    Estimated:  4.0 hrs
+*    Actual:     4.0 hrs
+*    Learning class syntax, especially overloading operators
+**********************************************************************/
+
+
+
+#include <iostream>
+#include <cassert>
+#include <cstdlib>
+#include "date.h"
+using namespace std;
+
+// three fields in the date array
+/**********************************************************************
+ *Allocate
+ *Allocates the data for date.
+ **********************************************************************/
+void Date::allocate()
+{
+   try
+   {
+      this->data = new int[3];
+      assert(this->data != NULL); // exception handling should catch this
+   }
+   catch (bad_alloc)
+   {
+      cerr << "ERROR: Unable to allocate only 12 bytes of data!\n";
+      exit(1);
+   }
+   return;
+}
+
+/***************************************************
+ * ADJUST DAY.  Adjust the current date by a given number of days
+ *  INPUT  date        date we are adjusting
+ *         adjustment  how many days we will adjust
+ *  OUTPUT date
+ ***************************************************/
+void Date::adjustDay(int adjustment)
+{
+   //assertDate(date);
+   int days = daysMonth(data[MONTH], data[YEAR]);
+
+   // adjust down if negative
+   while (adjustment < 0)
+   {
+      data[DAY]--;
+      if (data[DAY] == 0)
+      {
+         data[DAY] = 28; // to keep it valid at all points in time
+         adjustMonth(-1 /*adjustment*/);
+         days = daysMonth(data[MONTH], data[YEAR]);
+         data[DAY] = days; // last day of the new month
+      }
+      adjustment++;
+   }
+
+   // adjust up if positive
+   while (adjustment > 0)
+   {
+      data[DAY]++;
+      if (data[DAY] > days)
+      {
+         data[DAY] = 1; // first day of the new month
+         adjustMonth(1 /*adjustment*/);
+         days = daysMonth(data[MONTH], data[YEAR]);
+      }
+      adjustment--;
+   }
+
+   //assertDate(date);
+}
+
+/*********************************************************
+ * ADJUST MONTH.  Adjust the current date by a given number of months
+ *  INPUT  date       date we are adjusting
+ *         adjustment how many months we will adjust
+ *  OUTPUT date
+ *********************************************************/
+void Date::adjustMonth(int adjustment)
+{
+   //assertDate(date);
+
+   // adjust down if negative
+   while (adjustment < 0)
+   {
+      data[MONTH]--;
+      if (data[MONTH] == 0)
+      {
+         data[MONTH] = 12;  // last month of the new year
+         adjustYear(-1 /*adjustment*/);
+      }
+      adjustment++;
+   }
+
+   // adjust up if positive
+   while (adjustment > 0)
+   {
+      data[MONTH]++;
+      if (data[MONTH] > 12)
+      {
+         data[MONTH] = 1; // first month of the new year
+         adjustYear(1 /*adjustment*/);
+      }
+      adjustment--;
+   }
+
+   //assertDate(date);
+}
+
+/****************************************************
+ * ADJUST YEAR.  Adjust the year bug a given number of years
+ *  INPUT  date       date we are adjusting
+ *         adjustment how many years we will adjust
+ *  OUTPUT date
+ *********************************************************/
+void Date::adjustYear(int adjustment)
+{
+   //assertDate(date);
+   data[YEAR] += adjustment;
+   //assertDate(date);
+}
+
+
+/**********************************************************************
+ * DATE CONSTRUCTOR:
+ * Initialize the year to 1/1/2000
+ * OUTPUT: date:  the adjusted date
+ ***********************************************************************/
+Date::Date(int year, int month , int day)
+{
+   allocate();
+   this->data[YEAR] = year;
+   this->data[MONTH] = month;
+   this->data[DAY] = day;
+}
+
+/**********************************************************************
+ * DATE CONSTRUCTOR: (copy)
+ * copies the paramter date into the new date
+ **********************************************************************/
+Date::Date(Date & temp)
+{
+   allocate();   
+   data[YEAR] = temp.getYear();
+   data[MONTH] = temp.getMonth();
+   data[DAY] = temp.getDay();
+}
+
+Date::Date(const Date & temp)
+{
+   allocate();   
+   data[YEAR] = temp.getYear();
+   data[MONTH] = temp.getMonth();
+   data[DAY] = temp.getDay();
+}
+
+/**********************************************************************
+ * DATE CONSTRUCTOR: default
+ **********************************************************************/
+Date::Date()
+{
+   allocate();
+   this->data[YEAR] = 2000;
+   this->data[MONTH] = 1;
+   this->data[DAY] = 1;
+}
+
+/**********************************************************************
+ * SET YEAR.  Set the year to a given value.  Validate it
+ *  INPUT: date:   the current this->  Will only use month and day
+ *         year:   the new year
+ *  OUTPUT: date:  the adjusted date
+ *          return whether we succeeded
+ ***********************************************************************/
+bool Date::setYear(int year)
+{
+   //assertDate(date);
+
+   if (year < 1753 || year > 2500)
+      return false;
+
+   this->data[YEAR] = year;
+   //assertDate(date);
+   return true;
+}
+
+Date::~Date()
+{
+   delete [] this->data;
+   this->data = NULL;
+};
+
+/**********************************************************************
+ * SET Month.  Set the month to a given value.  Validate it
+ *  INPUT: date:   the current this->  Will only use month and day
+ *         month:   the new month
+ *  OUTPUT: date:  the adjusted date
+ *          return whether we succeeded
+ ***********************************************************************/
+bool Date::setMonth(int month)
+{
+   //assertDate(this);
+
+   if (month < 1 || month > 12)
+      return false;
+
+   this->data[MONTH] = month;
+   //assertDate(this);
+   return true;
+}
+
+/**********************************************************************
+ * SET DAY.  Set the day to a given value.  Validate it
+ *  INPUT: date:   the current this->  Will only use month and day
+ *         day:   the new day
+ *  OUTPUT: date:  the adjusted date
+ *          return whether we succeeded
+ ***********************************************************************/
+bool Date::setDay(int day)
+{
+   //assertDate(this);
+
+   if (day < 1 || day > daysMonth(this->data[MONTH], this->data[YEAR]))
+      return false;
+
+   this->data[DAY] = day;
+   //assertDate(this);
+   return true;
+}
+
+/**********************************************************************
+ * setDate
+ * sets the date in one swift move
+ **********************************************************************/
+bool Date::setDate(int year, int month, int day)
+{
+   setDay(day);
+   setMonth(month);
+   setYear(year);
+   return true;
+}
+     
+/*****************************************************
+ * DAYS MONTH.  How many days are there in the current month?
+ *   INPUT  month    the month we are inquiring about
+ *          year     we only care about this when month == 2
+ *   OUTPUT return   return the number
+ *****************************************************/
+int Date::daysMonth(int month, int year)
+{
+   if (month > 12 || month < 1)
+   {
+      assert(false);
+      return 0;
+   }
+   
+   const int DAYS[13] =
+       /* JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC */
+      { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+   // special case the one leap month
+   if (month == 2 && isLeapYear(year))
+      return 29;
+
+   assert(month > 0 && month < 13);
+   return DAYS[month];
+}
+
+/***********************************************
+ * IS LEAP YEAR.  Is the passed year a leap year?
+ *   INPUT   year    The current year
+ *   OUTPUT  return  True if we are in a leap year
+ **********************************************/
+bool Date::isLeapYear(int year)
+{
+   // no leap years before 1753
+   assert(year >= 1753);
+
+   // what, are you Buck Rogers?
+   assert(year < 2500);
+
+   // Not a leap year if not evenly divisible by 4
+   // This will eliminate 75% of all years
+   if (year % 4 != 0)
+      return false; // 2001, 2002, 2003, 2005, etc.
+   assert(year % 4 == 0);
+
+   // Is a leap year if not divisible by 100
+   // This will eliminate 96% of the rest
+   if (year % 100 != 0)
+      return true; // 1996, 2004, 2008, 2012, etc.
+   // We better be 1800, 1900, 2000, 2100 at this point
+   assert(year % 100 == 0);
+
+   // Is a leap year if on the quad century
+   if (year % 400 == 0)
+      return true; // 1600, 2000, 2400, etc.
+   // It better be something like 1800, 1900, 2100, etc.
+   assert(year % 400 != 0);
+
+   // the balance better be 1900, 1800, etc.
+   assert(year == 1800 || year == 1900 || year == 2100 || year == 2200);
+   return false;
+}
+
+/**********************************************
+ * DISPLAY LONG.  Display the current date: 1st of October, 2009
+ *  INPUT date   the current date
+ *********************************************/
+void Date::displayLong()
+{
+   //assertDate(date);
+
+   // day
+    cout << this->data[DAY];
+   switch (this->data[DAY])
+   {
+      case 1:
+      case 21:
+      case 31:
+         cout << "st";
+         break;
+      case 2:
+      case 22:
+         cout << "nd";
+         break;
+      case 3:
+      case 23:
+         cout << "rd";
+         break;
+      default:
+         cout << "th";
+   }
+   
+   // month
+   const char MONTHS[12][10] =
+      { "January", "February", "March",     "April",   "May",      "June",
+        "July",    "August",   "September", "October", "November", "December"};
+
+   cout << " of " << MONTHS[this->data[MONTH] - 1] << ", ";
+
+   // year
+   cout << this->data[YEAR];
+}
+
+
+/**********************************************************************
+* This function doesn't do anything
+**********************************************************************/
+void Date::assertDate()
+{
+   return;
+}
+
+/**********************************************************************
+* += Operator
+* This function overloads the += operator for use with Date
+**********************************************************************/
+Date & Date::operator += (const int adjustment)
+{
+   adjustDay(adjustment);
+   return *this;
+}
+
+/**********************************************************************
+* -= Operator
+* This function overloads the -= operator for use with Date
+**********************************************************************/
+Date & Date::operator -= (const int adjustment)
+{
+   int temp = -adjustment;
+   adjustDay(temp);
+   return *this;
+}
+
+/**********************************************************************
+* == Operator
+* This function overloads the == operator for use with Date
+**********************************************************************/
+bool operator == (const Date &lhs, const Date &rhs)
+{
+   if (lhs.data[DAY]   == rhs.data[DAY] &&
+       lhs.data[MONTH] == rhs.data[MONTH] &&
+       lhs.data[YEAR]  == rhs.data[YEAR])
+      return true;
+   return false;
+}
+
+/**********************************************************************
+* != Operator
+* This function overloads the != operator for use with Date
+**********************************************************************/
+bool operator != (const Date &lhs, const Date &rhs)
+{
+   if (!(lhs == rhs))
+      return true;
+   return false;
+}
+
+/**********************************************************************
+* ++ Operator: Postfix
+* This function overloads the ++ operator for use with Date
+**********************************************************************/
+Date Date::operator ++ (int postfix)
+{
+   Date temp(*this);
+   *this += 1;
+   return temp;
+}
+
+/**********************************************************************
+* -- Operator: Postfix
+* This function overloads the -- operator for use with the Date class
+**********************************************************************/
+Date Date::operator -- (int postfix)
+{
+   Date temp(*this);
+   *this -= 1;
+   return temp;
+}
+
+/**********************************************************************
+* + Operator
+* This function overloads the + operator for use with the Date class
+**********************************************************************/
+Date Date::operator + (const int adjustment) const
+{
+   
+   Date temp(*this);
+   temp.adjustDay(adjustment);
+   return temp;
+}
+
+/**********************************************************************
+* - Operator
+* This function overloads the - operator for use with Date
+**********************************************************************/
+Date Date::operator - (const int adjustment) const
+{
+   int tempA = -adjustment;
+   Date temp(*this);
+   temp.adjustDay(tempA);
+   return temp;
+}
+
+/**********************************************************************
+* + Operator
+* This function overlaods the + operator for use with Date, used for
+* when the left hand side is an int
+**********************************************************************/
+Date operator + (int lhs, const Date & rhs)
+{
+   Date temp(rhs);
+   temp.adjustDay(lhs);
+   return temp;
+}
+
+/**********************************************************************
+* >= Operator
+* This function overloads the >= operator for use with Date
+**********************************************************************/
+bool operator >= (const Date &lhs, const Date &rhs)
+{
+   if (lhs.data[YEAR] > rhs.data[YEAR])
+      return true;
+   else if (lhs.data[YEAR] < rhs.data[YEAR])
+      return false;
+   //the years will be equal after this point
+   if (lhs.data[MONTH] > rhs.data[MONTH])
+      return true;
+   else if (lhs.data[MONTH] < rhs.data[YEAR])
+      return false;
+   //year and month will be equal after this point
+   if (lhs.data[DAY] > rhs.data[DAY])
+      return true;
+   else if (lhs.data[DAY] < rhs.data[DAY])
+      return false;
+
+   assert(lhs == rhs);
+   return true;
+}
+
+/**********************************************************************
+* > Operator
+* This function overloads the < operator for use with Date
+**********************************************************************/
+bool operator > (const Date &lhs, const Date &rhs)
+{
+   if (lhs >= rhs && lhs != rhs)
+      return true;
+   return false;
+}
+
+/**********************************************************************
+* < Operator
+* This function overloads the < operator for use with Date
+**********************************************************************/
+bool operator < (const Date &lhs, const Date & rhs)
+{
+   if ( !(lhs >= rhs) )
+      return true;
+   return false;
+}
+
+/**********************************************************************
+* <= Operator
+* This function overloads the <= for use with Date
+**********************************************************************/
+bool operator <= (const Date &lhs, const Date & rhs)
+{
+   if ( lhs < rhs && lhs != rhs)
+      return true;
+   return false;
+}
+
+/**********************************************************************
+ * << Operator
+ * This function overloads the << operator for Date
+**********************************************************************/
+ostream & operator << (ostream & out, const Date & date)
+{
+ out << date.data[DAY];
+   switch (date.data[DAY])
+   {
+      case 1:
+      case 21:
+      case 31:
+         out << "st";
+         break;
+      case 2:
+      case 22:
+         out << "nd";
+         break;
+      case 3:
+      case 23:
+         out << "rd";
+         break;
+      default:
+         out << "th";
+   }
+   
+   // month
+   const char MONTHS[12][10] =
+      { "January", "February", "March",     "April",   "May",      "June",
+        "July",    "August",   "September", "October", "November", "December"};
+
+   cout << " of " << MONTHS[date.data[MONTH] - 1] << ", ";
+
+   // year
+   cout << date.data[YEAR];
+}
+
+/**********************************************************************
+ * >> Overload
+ * This function overloads the >> operator for Date 
+**********************************************************************/
+istream & operator >> (std::istream & in, Date & date)
+{
+   int input = 0;
+   in >> input;
+
+   date.adjustDay(input);
+   
+}
+      

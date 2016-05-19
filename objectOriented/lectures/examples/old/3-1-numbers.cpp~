@@ -1,0 +1,135 @@
+/***********************************************************************
+ * This demo program is designed to:
+ *      Demonstrate home-grown polymorphism with function pointers
+ ************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+// forward declaration so we can define both Nunber and VTableNumber
+struct Number;
+
+/**********************************
+ * The three methods in our Number class
+ *********************************/
+struct VTableNumber
+{
+   void (*add)(     Number &, const Number &);
+   void (*subtract)(Number &, const Number &);
+   void (*display)(const Number &);
+};
+
+/**********************************
+ * NUMBER
+ * Our number class with a single value
+ **********************************/
+struct Number
+{
+   double value;
+   const VTableNumber *pVTable;
+};
+
+void numberAdd     (Number & lhs, const Number & rhs);
+void numberSubtract(Number & lhs, const Number & rhs);
+void numberDisplayDefault( const Number & num);
+void numberDisplayCurrency(const Number & num);
+
+// First VTable. This one for normal numbers containing numberDisplayDefault()
+const VTableNumber V_TABLE_NUMBER =
+{
+   &numberAdd,
+   &numberSubtract,
+   &numberDisplayDefault
+};
+
+// Second VTable for currency.  Note numberDisplayCurrency()
+const VTableNumber V_TABLE_NUMBER_CURRENCY =
+{
+   &numberAdd,
+   &numberSubtract,
+   &numberDisplayCurrency
+};
+
+
+/**********************************************************************
+ * Driver program
+ ***********************************************************************/
+int main()
+{
+   // Observe how both are the same data type: Number
+   Number num1;
+   Number num2;
+
+   // We need to attach the VTables.  This is done for us by
+   // the compiler when we use classes
+   num1.pVTable = &V_TABLE_NUMBER;               // default member functions
+   num2.pVTable = &V_TABLE_NUMBER_CURRENCY;      // currency member functions
+
+   // initialize them with some values.
+   cout << "What is the value? ";
+   double value;
+   cin  >> value;
+   num1.value = num2.value = value;
+
+   // display them.  Note how the display code is identical:
+   cout << "Number 1: ";
+   num1.pVTable->display(num1);
+   cout << endl;
+   
+   cout << "Number 2: ";
+   num2.pVTable->display(num2);
+   cout << endl;
+
+   return 0;
+}
+
+
+/****************************************
+ * DISPLAY DEFAULT
+ * Default display to 1 decimal of accuracy
+ ***************************************/
+void numberDisplayDefault( const Number & num)
+{
+   _Ios_Fmtflags saveF = cout.setf(ios::fixed);
+   int saveP = cout.precision(0);
+
+   cout << num.value;
+
+   cout.setf(saveF);
+   cout.precision(saveP);
+}
+
+/****************************************
+ * DISPLAY CURRENCY
+ * Default display to 2 decimals of accuracy with $
+ ***************************************/
+void numberDisplayCurrency( const Number & num)
+{
+   _Ios_Fmtflags saveF = cout.setf(ios::fixed | ios::showpoint);
+   int saveP = cout.precision(2);
+
+   cout << "$" << num.value;
+
+   cout.setf(saveF);
+   cout.precision(saveP);
+}
+
+
+/**************************************
+ * ADD
+ * Add two numbers
+ **************************************/
+void numberAdd(Number & lhs, const Number & rhs)
+{
+   lhs.value += rhs.value;
+}
+
+/**************************************
+ * SUBTRACT
+ *************************************/
+void numberSubtract(Number & lhs, const Number & rhs)
+{
+   lhs.value -= rhs.value;
+}
+
+

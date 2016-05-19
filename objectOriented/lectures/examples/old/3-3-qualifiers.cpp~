@@ -1,0 +1,191 @@
+/***********************************************************************
+ * This demo program is designed to:
+ *      Demonstrate all versions if inheritance
+ ************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+/****************************
+ * BASE CLASS
+ ***************************/
+class Base
+{
+public:
+   // Have access to all members of Base
+   void pub()  {}
+protected:
+   // Also have access to all members of Base
+   void prot() {}
+private:
+   // Also have access to all members of Base
+   void priv() {}
+};
+
+/**************************
+ * Derived class taking the Base as a Public
+ **************************/
+class DerivedPub : public Base
+{
+public:
+   void derivedPublic()
+   {
+      // Was public in the Base, now public from DerivedPub
+      pub();
+
+      // Was protected in Base, not still protected so no change.
+      prot();
+
+      // 3-3-qualifers.cpp: In member function
+      //"void DerivedPub::derivedPublic()":
+      // 3-3-qualifers.cpp:22: error: "void Base::priv()" is private
+      // 3-3-qualifers.cpp:42: error: within this context
+      // priv(); 
+   }
+   
+protected:
+   // Same rules apply here as for derivedPublic() with regards to access
+   // to Base.  Of couse, we have access to all members of DerivedPub
+   void derivedProtected() {}
+private:
+   // Same rules apply here as for derivedProtected() and derivedPublic()
+   void derivedPrivate()   {}
+};
+
+/*******************************
+ * Derived class taking the Base as a Protected
+ *******************************/
+class DerivedPro : protected Base
+{
+public:
+   void derivedPublic()
+   {
+      // Was public, not protected.  The client can no longer access this.
+      pub();
+
+      // Was protected, now protected.  No change
+      prot();
+
+      // 3-3-qualifers.cpp: In member function
+      //"void DerivedPro::derivedPublic()":
+      // 3-3-qualifers.cpp:22: error: "void Base::priv()" is private
+      // 3-3-qualifers.cpp:71: error: within this context
+      // priv();
+   }
+protected:
+   // Same rules apply here as for derivedPublic() with regards to access
+   // to Base.  Of couse, we have access to all members of DerivedPub
+   void derivedProtected() {}
+private:
+   // Same rules apply here as for derivedPublic() with regards to access
+   // to Base.  Of couse, we have access to all members of DerivedPub
+   void derivedPrivate()   {}
+};
+
+/***************************
+ * Derived class taking the Base as Private
+ ***************************/
+class DerivedPriv : private Base
+{
+public:
+   void derivedPublic()
+   {
+      // Was public, not private so we can still access it
+      pub();
+
+      // Was protected, now it is private so we can still access it
+      prot();
+
+     // 3-3-qualifers.cpp: In member function
+     //"void DerivedPriv::derivedPublic()":
+     // 3-3-qualifers.cpp:22: error: "void Base::priv()" is private
+     // 3-3-qualifers.cpp:100: error: within this context
+     //  priv();
+   }
+protected:
+   // Same rules apply here as for derivedPublic() with regards to access
+   // to Base.  Of couse, we have access to all members of DerivedPub
+   void derivedProtected() {}
+private:
+   // Same rules apply here as for derivedPublic() with regards to access
+   // to Base.  Of couse, we have access to all members of DerivedPub
+   void derivedPrivate()   {}
+};
+
+
+/**********************************************************************
+ * main()...
+ ***********************************************************************/
+int main()
+{
+   Base base;
+   DerivedPub  derivedPub;
+   DerivedPro  derivedPro;
+   DerivedPriv derivedPriv;
+
+   base.pub();
+
+   // 3-3-qualifers.cpp:19: error: "void Base::prot()" is protected
+   // base.prot();
+
+   // 3-3-qualifers.cpp:22: error: "void Base::priv()" is private
+   // base.priv();
+
+   derivedPub.pub();
+
+   // 3-3-qualifers.cpp:19: error: "void Base::prot()" is protected
+   //derivedPub.prot();
+
+   // 3-3-qualifers.cpp:22: error: "void Base::priv()" is private
+   //derivedPub.priv();
+
+   derivedPub.derivedPublic();
+
+   // 3-3-qualifers.cpp:48: error:
+   //"void DerivedPub::derivedProtec()" is protected
+   // derivedPub.derivedProtected();
+
+   // 3-3-qualifers.cpp:51: error:
+   //"void DerivedPub::derivedPrivate()" is private
+   // derivedPub.derivedPrivate();
+
+   // 3-3-qualifers.cpp:16: error: "void Base::pub()" is inaccessible
+   // derivedPro.pub();
+
+   // 3-3-qualifers.cpp:19: error: "void Base::prot()" is protected
+   // derivedPro.prot();
+
+   // 3-3-qualifers.cpp:22: error: "void Base::priv()" is private
+   // derivedPro.priv();
+
+   derivedPro.derivedPublic();
+   // 3-3-qualifers.cpp:76: error:
+   //"void DerivedPro::derivedProtec()" is protected
+   // derivedPro.derivedProtected();
+
+   // 3-3-qualifers.cpp:80: error:
+   //"void DerivedPro::derivedPrivate()" is private
+   // derivedPro.derivedPrivate();
+
+   // 3-3-qualifers.cpp:16: error: "void Base::pub()" is inaccessible
+   // derivedPriv.pub();
+
+   // 3-3-qualifers.cpp:19: error:
+   //"void Base::prot()" is protected
+   // derivedPriv.prot();
+
+   // 3-3-qualifers.cpp:22: error: "void Base::priv()" is private
+   // derivedPriv.priv();
+
+   derivedPriv.derivedPublic();
+
+   // 3-3-qualifers.cpp:105: error:
+   //"void DerivedPriv::derivedProt()" is protected
+   // derivedPriv.derivedProtected();
+
+   // 3-3-qualifers.cpp:109: error:
+   //"void DerivedPriv::derivedPrivat()" is private
+   // derivedPriv.derivedPrivate();
+   
+   return 0;
+}

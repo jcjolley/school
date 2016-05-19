@@ -1,0 +1,1 @@
+Idea for my next assignment: Ask the students to memorize the first 10,000 digits of PI and to recite them, forwards and backwards, in less than 60 seconds.

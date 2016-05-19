@@ -1,0 +1,505 @@
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+In file included from chess.cpp:17:
+interact.h:19:7: warning: extra tokens at end of #endif directive
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+display.cpp: In function ‘void displayBoard(const char (*)[8][8])’:
+display.cpp:39: error: ‘system’ was not declared in this scope
+make: *** [display.o] Error 1
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirebab8fe9-82ba-4405-9797-2484c367ded8/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+mv: cannot stat `prj1chess.tar.dir/a.out': No such file or directory
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+In file included from chess.cpp:17:
+interact.h:19:7: warning: extra tokens at end of #endif directive
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+display.cpp: In function ‘void displayBoard(const char (*)[8][8])’:
+display.cpp:39: error: ‘system’ was not declared in this scope
+make: *** [display.o] Error 1
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir9813192e-1b34-41f2-9dbd-7bfc0863d0ef/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+mv: cannot stat `prj1chess.tar.dir/a.out': No such file or directory
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+g++: interact.o: No such file or directory
+g++: movePiece.o: No such file or directory
+make: *** [a.out] Error 1
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir906ac703-b0a3-4a54-91f3-d84906f4b657/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+mv: cannot stat `prj1chess.tar.dir/a.out': No such file or directory
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirdd24aa08-a752-4a75-bef0-230142b2f505/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirb87fe40b-f4f3-49b8-b110-3a531edfc5ef/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirb78245de-1880-4841-b653-244310571b0a/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDire3388664-1664-41cd-9bf8-57c52f031193/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDireaf46462-60aa-4618-9a9e-71411923970d/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir91f51273-c1d1-4da4-94d3-766a2588a18f/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirf6569a8a-7395-42af-9182-26254117a641/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDira8d5b1c8-039d-4f33-a8d1-f85ca27afe1e/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir997ee781-bc6c-4701-bd7c-38016a3908b2/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir329f1a64-c698-4d66-ba17-dbe5d1221ce1/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir3285da50-da6c-4d43-b005-4b6de1f869db/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir4e8f05c5-0055-48a1-a668-e1453aedce64/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir9541a172-bf2c-4fdd-b02d-323fd0e4276a/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir404fc585-8363-4d17-8ba3-1ef9d7d6a1bf/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirb4e231d2-a165-4b63-a0c6-661a8d7fbc99/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirc3779b9a-ffb1-4c7b-9604-a31db2279f7f/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirf95d7dde-b6db-43ae-8c85-7aa31124b788/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDir51de1114-4186-40a9-bf42-a5b5f710a8ef/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 
+
+# mkdir prj1chess.tar.dir 2>> prj1chess.compile 
+
+# cp prj1chess.tar prj1chess.tar.dir/tar.tar 2>> prj1chess.compile 
+
+# tar -xf  prj1chess.tar.dir/tar.tar -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+
+# make a.out -C prj1chess.tar.dir 2>> prj1chess.compile >> prj1chess.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+g++ chess.cpp -c
+g++ saveGame.cpp -c
+g++ loadGame.cpp -c
+g++ display.cpp -c
+g++ interact.cpp -c
+g++ movePiece.cpp -c
+g++ -o a.out chess.o saveGame.o loadGame.o display.o interact.o movePiece.o
+tar -cf prj1chess.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/prj1dir/prj1chess.tar.dir'
+
+# mv prj1chess.tar.dir/a.out /tmp/testbed/compileDirb89a0064-b5a5-4b09-861e-23559e32816e/prj1chess 2>> prj1chess.compile >> prj1chess.compile 
+
+# rm -rf prj1chess.tar.dir 2>> prj1chess.compile 

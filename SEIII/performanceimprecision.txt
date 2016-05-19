@@ -1,0 +1,3 @@
+I think that even with performance measurements there is still a fair level of
+imprecision.  The level of detail you would need to elicit from a performance
+requirement to prevent imprecision makes for more ambiguos performance

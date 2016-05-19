@@ -1,0 +1,2 @@
+g++ card.cpp cardTestLow.cpp
+g++ card.cpp cardTestHigh.cpp

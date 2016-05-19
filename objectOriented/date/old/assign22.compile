@@ -1,0 +1,44 @@
+
+# mkdir assign22.tar.dir 2>> assign22.compile 
+
+# cp assign22.tar assign22.tar.dir/tar.tar 2>> assign22.compile 
+
+# tar -xf  assign22.tar.dir/tar.tar -C assign22.tar.dir 2>> assign22.compile >> assign22.compile 
+
+# make a.out -C assign22.tar.dir 2>> assign22.compile >> assign22.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/assign22.tar.dir'
+g++ -c date.cpp
+g++ -c assign22.cpp
+g++ -o a.out assign22.o date.o
+tar -cf assign22.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/assign22.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/assign22.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/assign22.tar.dir'
+
+# mv assign22.tar.dir/a.out /tmp/testbed/compileDir32fb79e8-ca3e-49d9-8dc8-573439c07edb/assign22 2>> assign22.compile >> assign22.compile 
+
+# rm -rf assign22.tar.dir 2>> assign22.compile 
+
+# mkdir assign22.tar.dir 2>> assign22.compile 
+
+# cp assign22.tar assign22.tar.dir/tar.tar 2>> assign22.compile 
+
+# tar -xf  assign22.tar.dir/tar.tar -C assign22.tar.dir 2>> assign22.compile >> assign22.compile 
+
+# make a.out -C assign22.tar.dir 2>> assign22.compile >> assign22.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/assign22.tar.dir'
+g++ -c date.cpp
+g++ -c assign22.cpp
+g++ -o a.out assign22.o date.o
+tar -cf assign22.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/assign22.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/assign22.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/assign22.tar.dir'
+
+# mv assign22.tar.dir/a.out /tmp/testbed/compileDirad8cb70c-f63c-4aa9-841a-05e76ab89501/assign22 2>> assign22.compile >> assign22.compile 
+
+# rm -rf assign22.tar.dir 2>> assign22.compile 

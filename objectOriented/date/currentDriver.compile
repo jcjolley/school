@@ -1,0 +1,264 @@
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++    -c -o currentDriver.o currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir2405ac43-77b7-4a9c-8774-f4c90a4d257f/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++    -c -o currentDriver.o currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir984c7244-342f-4d4e-8fff-7b7b7de65f67/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++    -c -o currentDriver.o currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir70a04722-3f33-4213-953b-8c6326645a49/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir46e7dc36-6b94-4350-9ac9-17a869f5093b/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir29b34554-f33a-4271-84f4-2d16055dc139/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir53b80afc-1f23-4b9e-a8d1-44b3d95e635d/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDirc45e5b24-0c8b-4c56-b8d6-65364b6b6439/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir38a31dc2-1b5f-4b68-a61d-23dec496816f/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir094eabfa-fd6a-4a7f-be1d-ba9380d7d6b6/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDirb39bef4b-16ee-4e00-92a4-e96c9894707c/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir03b4f3ff-effe-4123-8304-7e757fa6d95d/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 
+
+# mkdir currentDriver.tar.dir 2>> currentDriver.compile 
+
+# cp currentDriver.tar currentDriver.tar.dir/tar.tar 2>> currentDriver.compile 
+
+# tar -xf  currentDriver.tar.dir/tar.tar -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+
+# make a.out -C currentDriver.tar.dir 2>> currentDriver.compile >> currentDriver.compile 
+make: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+g++ -c date.cpp
+g++ -c currentDriver.cpp
+g++ -o a.out currentDriver.o date.o
+tar -cf currentDriver.tar *.h *.cpp makefile
+make clean
+make[1]: Entering directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+rm *.o
+make[1]: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+make: Leaving directory `/home/jol10005/workfromhome/CS165/date/currentDriver.tar.dir'
+
+# mv currentDriver.tar.dir/a.out /tmp/testbed/compileDir5ad6a83f-5954-44f5-b4d1-4133e441ad44/currentDriver 2>> currentDriver.compile >> currentDriver.compile 
+
+# rm -rf currentDriver.tar.dir 2>> currentDriver.compile 

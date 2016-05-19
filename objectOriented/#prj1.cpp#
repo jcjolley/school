@@ -1,0 +1,269 @@
+/***********************************************************************
+* Program:
+*    Project 1, (Chess)
+*    Brother Helfrich, CS165
+* Author:
+*    Joshua Jolley
+* Summary: 
+*    
+*    Estimated:  4.0 hrs   
+*    Actual:     0.0 hrs
+*      Please describe briefly what was the most difficult part
+************************************************************************/
+
+#include <iostream>
+#include <cstdlib>
+#include <cassert>
+#include <cctype>
+using namespace std;
+
+#ifdef DEBUG
+#define debug(x) cout << #x << ": " << x << endl;
+#else
+#define debug(x)
+#endif
+
+void interact(char board[][8][8]);
+bool displayTest(const char board[][8][8]);
+void displayBoard(const char board[][8][8]);
+void displayOptions();
+void listMoves(const int turn, const char move[], char moves[][5]);
+void loadGame(int turn, char moves[][5], char board[][8][8]);
+void getFilename(char filename[]);
+void readFile(char moves[][5], int &numMoves, const char filename[]);
+void quitGame(const char moves[][5]);
+void getSavename(char filename[]);
+void writeFile(const char moves[][5], const char filename[]);
+bool movePiece(const int turn, const char move[], char board[][8][8]);
+int isInvalidMove(const char move[]);
+void convertMove(const char move[], int &startRow, int &startCol,
+                 int &endRow, int &endCol, bool isCastle);
+void makeMove(const int startRow, const int startCol, const int endRow,
+              const int endCol, const int turn, const bool isCastle,
+              char board[][8][8]);
+
+/**********************************************************************
+* Main
+* This is the driver program.  It initializes the board and passes it
+* off to interact.
+***********************************************************************/
+int main()
+{
+   char board[2][8][8] =
+      {
+         'R','N','B','Q','K','B','N','R',
+         'p','p','p','p','p','p','p','p',
+         ' ',' ',' ',' ',' ',' ',' ',' ',
+         ' ',' ',' ',' ',' ',' ',' ',' ',
+         ' ',' ',' ',' ',' ',' ',' ',' ',
+         ' ',' ',' ',' ',' ',' ',' ',' ',
+         'p','p','p','p','p','p','p','p',
+         'R','N','B','Q','K','B','N','R',
+         
+         'b','b','b','b','b','b','b','b',
+         'b','b','b','b','b','b','b','b',
+         ' ',' ',' ',' ',' ',' ',' ',' ',
+         ' ',' ',' ',' ',' ',' ',' ',' ',
+         ' ',' ',' ',' ',' ',' ',' ',' ',
+         ' ',' ',' ',' ',' ',' ',' ',' ',
+         'w','w','w','w','w','w','w','w',
+         'w','w','w','w','w','w','w','w',
+      };
+   displayBoard(board);
+   interact(board);
+   
+        return 0;
+}
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void interact(char board[][8][8])
+{
+   bool test = false;
+   int turn = 0;
+   if (turn %2 = 0)
+      cout << "(White): ";
+   else
+      cout << "(Black): ";
+   char move[5] = {};
+   cin >> move;
+   while (move != "quit")
+      switch (move)
+         c
+   
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+bool displayTest(const char board[][8][8])
+{
+   system("clear");
+   cout << "   abcdefgh\n";
+   for (int row = 0; row <8; row++)
+      for (int col = 0; col < 8; col++)
+      {
+         if (col == 0)
+            //the rows are backwards, this math sets it right
+            cout << " " << row + (7 - (2 * row)) + 1 << " ";
+         if (board[1][row][col] == 'w') //if it is white
+            cout << (char)tolower(board[0][row][col]); //make it lowercase
+         else if (board[1][row][col] == 'b') //if it's black
+            cout << (char)toupper(board[0][row][col]); //uppercase!
+         else
+            cout << board[0][row][col];  //if it's empty, who cares? ;)
+         if (col == 7)
+            cout << endl;
+      }
+                            
+   return true;
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void displayBoard(const char board[][8][8])
+{
+   system("clear");
+   cout << "    a  b  c  d  e  f  g  h \n";
+   for (int row = 0; row <8; row++)
+      for (int col = 0; col < 8; col++)
+      {
+         if (col == 0)
+            cout << " " << row + (7 - (2 * row)) + 1 << " ";  
+         if (row %2 == 0 && col %2 == 0 && board[1][row][col] == 'w')
+            cout << "\E[31;47m" << " " << board[0][row][col] << " "
+                 << "\E[0m";
+         if (row %2 == 0 && col %2 != 0 && board[1][row][col] == 'w')
+            cout << "\E[37;41m " << board[0][row][col] << " \E[0m";
+          if (row %2 == 0 && col %2 == 0 && board[1][row][col] == 'b')
+            cout << "\E[30;47m" << " " << board[0][row][col] << " "
+                 << "\E[0m";
+         if (row %2 == 0 && col %2 != 0 && board[1][row][col] == 'b')
+            cout << "\E[30;41m " << board[0][row][col] << " \E[0m";
+         if (row %2 == 0 && col %2 == 0 && board[1][row][col] == ' ')
+            cout << "\E[47m   \E[0m";
+         if (row %2 == 0 && col %2 != 0 && board[1][row][col] == ' ')
+            cout << "\E[41m   \E[0m";
+         
+         if (row %2 != 0 && col %2 != 0 && board[1][row][col] == 'w')
+            cout << "\E[31;47m" << " " << board[0][row][col] << " "
+                 << "\E[0m";
+         if (row %2 != 0 && col %2 == 0 && board[1][row][col] == 'w')
+            cout << "\E[37;41m " << board[0][row][col] << " \E[0m";
+          if (row %2 != 0 && col %2 != 0 && board[1][row][col] == 'b')
+            cout << "\E[30;47m" << " " << board[0][row][col] << " "
+                 << "\E[0m";
+         if (row %2 != 0 && col %2 == 0 && board[1][row][col] == 'b')
+            cout << "\E[30;41m " << board[0][row][col] << " \E[0m";
+         if (row %2 != 0 && col %2 != 0 && board[1][row][col] == ' ')
+            cout << "\E[47m   \E[0m";
+         if (row %2 != 0 && col %2 == 0 && board[1][row][col] == ' ')
+            cout << "\E[41m   \E[0m";
+         if (col == 7)
+            cout << endl;
+      }
+}
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void displayOptions()
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void listMoves(const int turn, const char move[], char moves[][5])
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void loadGame(int turn, char moves[][5], char board[][8][8])
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void getFilename(char filename[])
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void readFile(char moves[][5], int &numMoves, const char filename[])
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void quitGame(const char moves[][5])
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void getSavename(char filename[])
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void writeFile(const char moves[][5], const char filename[])
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+bool movePiece(const int turn, const char move[], char board[][8][8])
+{
+   return true;
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+int isInvalidMove(const char move[])
+{
+   return 0;
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void convertMove(const char move[], int &startRow, int &startCol,
+                 int &endRow, int &endCol, bool isCastle)
+{
+}
+
+/**********************************************************************
+ *
+ *
+ **********************************************************************/
+void makeMove(const int startRow, const int startCol, const int endRow,
+              const int endCol, const int turn, const bool isCastle,
+              char board[][8][8])
+{
+}

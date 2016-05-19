@@ -1,0 +1,96 @@
+CS416 Puzzle Model - Week 07
+Joshua Jolley
+
+Puzzle model
+
+Estimation 
+
+Single-small (20 piece)
+
+I think it will take me 2 minutes to complete this puzzle.  I'm currently home alone and watching my 15 month old child. I would be able to do it faster if I didn't need to keep an eye on her.  It's only a 20 piece puzzle.
+gSingle-large 100 piece
+
+I estimate 15 minutes for the 100 piece puzzle.  This is mostly due to the size of the puzzle.  Notice that my estimation did not directly follow from my 2 minute estimation at 20 pieces.  A straight application would have been a 10 minute estimate, but I think the additional complexity will add time.
+
+Two-Small
+
+I think it will take 2 people roughly 1.5 minutes to complete the puzzle.  We won't quite double our time because we will likely get in each other's way a bit.
+
+Four-Small
+
+I think 4 people on the small puzzle will take about 1.5 minutes.  Any benefits gained by the additional people is likely to be lost in the additional communication and coordination required to complete the puzzle. 
+
+Two-Large
+
+I estimate 8 minutes for two people to complete the 100 piece puzzle.  There are enough pieces to permit each person to work more or less independently. 
+
+Four-Large
+
+I estimate that four people will take 5 minutes to complete the 100 piece puzzle.  Again, there are enough pieces to permit each person to work more or less independently.  The overhead from coordination is what prevents this from being the single-large time divided by four. 
+
+Data
+
+Single-small
+1:44
+
+Single-Large
+31:55
+
+
+
+Equation
+
+Variables. 
+
+Name: N - "Number of puzzle pieces"
+Description: The number of pieces the puzzle has (e.g., 20 pieces). 
+Rational: The number of puzzle pieces in the puzzle has the strongest impact on completion time of all the variables.
+
+Name: C - "Puzzle image complexity"
+Description: The complexity of the image the puzzle is formed from, rated on a scale of 0.5 - 2.0
+Rational: The image can either provide useful hints as the puzzle is arranged and reduce the amount of time it takes to complete the puzzle, (e.g., several balls of yarn with distinct colors) or the image could be extremely complex, or extremely simple (e.g., each piece could be exactly the same color) and greatly hinder the completion of the puzzle. The higher the value, the more difficult the puzzle is to complete.
+
+Name: P - "Number of participants"
+Description: The number of participants attempting to complete the puzzle
+Rational: The number of people involved is an important factor. To few and it takes too long, too many and it also takes too long.
+
+Name: PP - "Participants and Pieces"
+ESLOC/PM, and S is similar to T. C Could be compared to the project complexity.  
+
+I'm not sure how I would have gone about creating a more accurate model.  I tweaked my values for some time, attempting to find a balnce, and whenever I met one metric, it skewed something that was already where I wanted it.  
+Description: This variable is a quadratic function relating the participants to the number of puzzle pieces. This factor is calculated as 1/P(1 - n/20)^2 + .5
+Rationale: The difficulty of completing the puzzle scaled exponentially based on puzzle size. This time could be reduced (up to a point) by the number of particpants.  By shifting the origin of the parabola to start at (1, 0.5) and widening it based on the number of participant, we were able to replicate my results fairly well. The model seems to hold up well at the 24 and 100 piece puzzle range.  Outside of that range the exponent grows far to quickly to be accurate.   
+
+Name: T - total time it takes to complete
+Description: This is the final value we are attempting to compute.  It is the total time to complete a puzzle measured in minutes.
+T = (C + 1.75) * PP + 1 
+Rational: Time is a relatively good measurement of the difficulty of completing a puzzle. 
+
+Verification
+Single-small 
+Predicted: 1.875 minutes
+Actual: 1.733 minutes
+
+Two-Small
+Predicted: 1.875
+
+Four-Small 
+Predicted: 1.875
+
+Single-Large
+Predicted:29.875
+Actual: 31:55
+
+Two-Large
+Predicted:15.875
+
+Four-Large
+Predicted: 8.875
+
+Reflection
+This assignment, and the unit it's from, were a frustration to me.  I had difficulty overcoming my skepticism regarding estimation models and that interfered with my ability to complete the assigned tasks. I hope to do better next week and plan on re-applying myself to this work.
+
+As far as variables are concerned, N is a lot like the effective size, O is kind of like ESLOC/PM, and S is similar to T. C Could be compared to the project complexity.  
+
+I'm not sure how I would have gone about creating a more accurate model.  I tweaked my values for some time, attempting to find a balnce, and whenever I met one metric, it skewed something that was already where I wanted it.  
+

@@ -1,0 +1,303 @@
+body{
+   padding: 0px;
+   margin: 0px;
+   font-family:Arial,Helvetica,sans-serif;color:#666666;
+   height:800px;
+}
+
+header{
+   padding:0px;
+   margin:0px;
+}
+#header2{
+   padding:0px;
+   margin:0px;
+   position: relative;
+   width: 100%;
+   height: 133px; 
+   /* FF3.6+ */ /* Chrome,Safari4+ */
+   background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,255,255,0)), color-stop(0.77, rgba(244,244,244,1)), to(rgba(241,241,241,1)));
+   background: -webkit-linear-gradient(rgba(255,255,255,0) 0%, rgba(244,244,244,1) 77%, rgba(241,241,241,1) 100%);
+   background: -moz-linear-gradient(rgba(255,255,255,0) 0%, rgba(244,244,244,1) 77%, rgba(241,241,241,1) 100%);
+   background: -o-linear-gradient(rgba(255,255,255,0) 0%, rgba(244,244,244,1) 77%, rgba(241,241,241,1) 100%);
+   background: linear-gradient(rgba(255,255,255,0) 0%, rgba(244,244,244,1) 77%, rgba(241,241,241,1) 100%); /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */ /* W3C */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#f1f1f1',GradientType=0 ); /* IE6-9 */
+   margin-left:auto;
+   margin-right:auto;
+   border-bottom: 1px solid black;
+}
+
+#main{
+   position:relative;
+   width:850px;
+   top:-115px;
+   height:660px;
+   margin-left: auto;
+   margin-right: auto;
+   
+}
+#blackbar{
+   position: relative;
+   width: 100%;
+   height: 45px;
+   background:#252525;
+}
+
+#bodyblackbar{
+   background:#252525;
+   height:45px;
+}
+#navigation{
+   color:white;
+   font-size:140%;
+}
+img{
+   padding:15px;
+   padding-left:5px;
+}
+#bluebar{
+   position: relative;
+   width: 100%;
+   height: 70px;
+   background:#326BA9;
+}
+
+#bodybluebar{
+   position: relative;
+   width: 100%;
+   height: 70px;
+   background:#326BA9;
+   
+}
+
+#bluebar2{
+   position: relative;
+   top:-15px;
+   width: 100%;
+   height: 60px;
+   background:#326BA9;
+}
+
+#bodybluebar2{
+   position: relative;
+   bottom:185px;
+   width: 100%;
+   height: 60px;
+   background:#326BA9;
+   z-index:0;
+}
+#campusd{
+   position: relative;
+   top:-30px;
+   color:green;
+}
+
+#title{
+   padding:10px;
+   position: relative;
+   left:40px;
+}
+
+#students{
+   border-collapse:collapse;
+   position: relative;
+   bottom:-30px;  
+   width: 650px;
+   height:360px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+#studentsTable{
+   font-size:80%;
+  border-collapse:collapse; 
+}
+#studentsTable th{
+   font-size:110%;
+   background:#999999;
+   color:#F8FFFF;
+   padding: 8px;
+   font-weight:bold;
+   border-bottom:1px solid black;
+}
+#studentsTable td{
+   text-align:left;
+   color:black;
+   padding:5px;
+   border-bottom: 1px dotted #999999;
+}
+
+#fpic{
+   position: absolute;
+   height:160px;
+   width: 100%;
+   left:-5px;
+   z-index:1;
+   top:415px;
+   
+}
+
+#blackbar2{
+   position: relative;
+   width:100%;
+   height:180px;
+   z-index: 1;
+   top:-17px;
+}
+#bodyblackbar2{
+   position: relative;
+   width:100%;
+   height:180px;
+   bottom:185px;
+   background:black;
+}
+
+
+#nav{
+   color:white;
+   font-size:100%;
+   position: relative;
+   top:8px
+}
+
+#nav td{
+   font-size:75%;
+   padding-left:15px;
+   padding-right:15px;
+   
+   padding-top:5px;
+   padding-bottom:5px;
+   color:white;
+   border-right: 1px solid grey;
+}
+
+button{
+   background: rgb(26,95,168); /* Old browsers */
+   background: -moz-linear-gradient(top,  rgba(26,95,168,1) 0%, rgba(11,86,165,1) 50%, rgba(26,95,168,1) 100%); /* FF3.6+ */
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(26,95,168,1)), color-stop(50%,rgba(11,86,165,1)), color-stop(100%,rgba(26,95,168,1))); /* Chrome,Safari4+ */
+   background: -webkit-linear-gradient(top,  rgba(26,95,168,1) 0%,rgba(11,86,165,1) 50%,rgba(26,95,168,1) 100%); /* Chrome10+,Safari5.1+ */
+   background: -o-linear-gradient(top,  rgba(26,95,168,1) 0%,rgba(11,86,165,1) 50%,rgba(26,95,168,1) 100%); /* Opera 11.10+ */
+   background: -ms-linear-gradient(top,  rgba(26,95,168,1) 0%,rgba(11,86,165,1) 50%,rgba(26,95,168,1) 100%); /* IE10+ */
+   background: linear-gradient(to bottom,  rgba(26,95,168,1) 0%,rgba(11,86,165,1) 50%,rgba(26,95,168,1) 100%); /* W3C */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a5fa8', endColorstr='#1a5fa8',GradientType=0 ); /* IE6-9 */
+   color:white;
+   font-size:75%;
+   border-radius: 5px;
+   margin:2.5px;
+   padding:3.5px;
+   padding-left:10px;
+   padding-right:10px;
+   border:none;
+   text-shadow:2px 3px 4px black;
+}
+
+#buttons{
+   position: absolute;
+   right:0px;
+   top:30px;  
+}
+
+
+#search{
+   width:275px;
+   color:white;
+   position: absolute;
+   top:0px;
+   right:0px;
+   z-index:2;
+   background:#01538D;
+   box-shadow:-5px -5px 20px black;
+   
+}
+
+#smallnav{
+   width:275px;
+   margin-left: auto;
+   margin-right: auto;
+   color:white;
+   font-size:70%;
+   background:#01538D;
+}
+
+#smallnav td{
+   padding-right:4px;
+   padding-left:4px;
+   border-right:1px solid grey;
+}
+#sbar{
+   width:260px;
+   padding:3px;
+   margin:5px;
+}
+
+#searchPic{
+   position: absolute;
+   right:0px;
+   top:13px;
+}
+
+#buttons2{
+   position: absolute;
+   left:0px;
+   top:20px;
+   z-index:1;  
+}
+
+#bodygreybar{
+   position: relative;
+   z-index: 0;
+   top:-437px;
+   height:12px;
+   width:100%;
+   background:#EBEBEB;
+}
+
+label{
+   font-size: 75%;
+   letter-spacing:2px;
+   font-weight: bold;
+   color:#898989;   
+}
+
+#header2 input, select{
+   margin-left:10px;
+   margin-right:10px;
+}
+
+#header2 button{
+   letter-spacing:1.5px;
+   font-weight:bold;
+   width:150px;
+   background:#E7682C;
+   text-shadow: 1px 1px 10px black;
+}
+
+#rightnav{
+   position: absolute;
+   right:0px;
+   z-index: 2;
+   color:white;
+}
+
+#rightnav td{
+   position: relative;
+   top:23px;
+   font-size:80%;
+   padding-left:10px;
+   padding-right:10px;
+   border-right:1px solid grey;
+}
+
+#churchlogo{
+   position: relative;
+   top:25px;
+}
+
+#info{
+   text-align:right;
+   position: relative;
+   padding:15px;
+   top:-92px;
+   color:grey;
+   
+}

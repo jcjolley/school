@@ -1,0 +1,122 @@
+/***********************************************************************
+* Program:
+*    Assignment 32, Simple Inheritance
+*    Brother Helfrich, CS165
+* Author:
+*    Joshua Jolley
+* Summary: 
+*    This program is designed to demonstrate simple inheritance
+*
+*    Estimated:  0.5 hrs   
+*    Actual:     0.5 hrs
+*      Simple error, had ', ' which is a multi character character constant
+************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+
+/***********************************************************
+ * Point: Position of an item on the screen.
+ ***********************************************************/
+class Point
+{
+public:
+   Point() : x(0), y(0)   {                         };
+   Point(int x, int y)    { setX(   x); setY(   y); };
+   Point(const Point &pt) { setX(pt.x); setY(pt.y); };
+   int  getX() const      { return x;               };
+   int  getY() const      { return y;               };
+   void setX(int x)       { this->x = x;            };
+   void setY(int y)       { this->y = y;            };
+   friend ostream & operator << (ostream & out, const Point & pt);
+   friend istream & operator >> (istream & in ,       Point & pt);
+private:
+   int x;
+   int y;
+};
+/**********************************************************************
+ * Circle: A circle that contains a point
+ **********************************************************************/
+class Circle : public Point
+{
+public:
+   Circle() : Point(0, 0), r(0) {};
+   Circle(int x, int y, int r) : Point(x,y), r(r) {};
+   Circle(const Circle &circle)      {setX(circle.getX()); setY(circle.getY()); setRadius(circle.r);}
+   int getRadius ()             {return r;}
+   int setRadius (int r)        {this->r = r;}
+   friend ostream & operator << (ostream & out, const Circle & circle);
+   friend istream & operator >> (istream & in,        Circle & circle);
+private:
+   int r;
+};
+
+/**********************************************************************
+ * << Overload
+ * Overloads the << operator for circle class
+ **********************************************************************/
+ostream & operator << (ostream & out, const Circle & circle)
+{
+   out << "(" << circle.getX() << ", " << circle.getY() << ", r=" << circle.r << ")";
+   return out;
+}
+
+/**********************************************************************
+ * >> Overload
+ * Overloads the << operator for the circle class
+ **********************************************************************/
+istream & operator >> (istream & in, Circle & circle)
+{
+   int x;
+   int y;
+   int r;
+   in >> x >> y >> r;
+   circle.setX(x);
+   circle.setY(y);
+   circle.setRadius(r);
+   return in;
+}
+
+/**********************************************************************
+ * MAIN: A simple driver program to exercise the Point and Circle
+ *       classes. 
+ ***********************************************************************/
+int main()
+{
+   // point test
+   Point pt;
+   cout << "Please enter a position (x y): ";
+   cin  >> pt;
+   cout << pt << endl;
+
+   // circle test
+   Circle circle;
+   cout << "Please enter a circle (x y radius): ";
+   cin  >> circle;
+   cout << circle << endl;
+   
+   return 0;
+}
+
+
+/*********************************************
+ * POINT INSERTION
+ * Write a point to the screen
+ ********************************************/
+ostream & operator << (ostream & out, const Point & pt)
+{
+   out << '(' << pt.x << ", " << pt.y << ')';
+   return out;
+}
+
+/********************************************
+ * POINT EXTRACTION
+ * Read a point in from the user
+ *******************************************/
+istream & operator >> (istream & in, Point & pt)
+{
+   in >> pt.x >> pt.y;
+   return in;
+}
+

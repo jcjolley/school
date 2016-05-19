@@ -1,0 +1,106 @@
+/***********************************************************************
+ * Program:
+ *    Assignment 25, Date class
+ *    Brother Grimmett, CS165
+ * Author:
+ *    Biff Henderson
+ * Summary:
+ *    This header file describes all the interfaces associated with
+ *    manipulating dates.
+ ************************************************************************/
+
+#ifndef DATE_H
+#define DATE_H
+
+#include <string>
+using std::string;
+
+
+class Date{
+  public:
+   // Initialize the date
+   Date();
+
+   Date(int year, int month = 1, int day = 1);
+
+   Date(const Date & rhs);
+
+   Date operator + (const int day);
+   Date operator - (const int day);
+   
+   Date & operator = (const Date & rhs);
+
+   Date & operator += (const int day);
+
+   Date & operator -= (const int day);
+   
+   Date operator ++ (const int day);
+   Date operator -- (const int day);
+   Date & operator ++ ()
+   {
+      return operator += (1);
+   };
+   Date & operator -- ()
+   {
+      return operator -= (1);
+   };
+
+   bool operator == (const Date & rhs);
+   bool operator != (const Date & rhs);
+   bool operator >= (const Date & rhs);
+   bool operator <= (const Date & rhs);
+   
+   bool operator > (const Date & rhs);
+   bool operator < (const Date & rhs);
+   
+   // Uninitialize the date
+   void uninitialize();
+
+   // set the current date
+   bool setDate(int year, int month, int day);
+
+// Long version of the same
+   void displayLong();
+
+   int getYear() const;
+   int getMonth() const;
+   int getDay() const;
+      
+   bool setYear(int inputYear);
+   bool setMonth(int inputMonth);
+   bool setDay(int inputDay);
+   
+  private:
+
+   void assertDate();
+
+   //
+   // Utility functions
+   //
+
+   // How many days are in the current month?
+   int daysMonth(int month, int year);
+
+   // Is the current year a leap year?
+   bool isLeapYear(int year);
+
+   // adjust the date by a fixed number of days
+   void adjustDay(int adjustment);
+
+   // adjust the date by a fixed number of months
+   void adjustMonth(int adjustment);
+
+   // adjust the date by a fixed number of years
+   void adjustYear(int adjustment);
+
+   
+   
+   int *data;
+
+};
+
+#endif // DATE_H
+
+
+   
+   

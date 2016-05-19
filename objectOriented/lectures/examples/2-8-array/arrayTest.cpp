@@ -1,0 +1,42 @@
+/***********************************************************************
+ * This program is designed to demonstrate:
+ *      This is a simple driver program for the array type
+ ************************************************************************/
+
+#include <iostream>
+#include "array.h"
+using namespace std;
+
+/**********************************************************************
+* This will be just a simple driver program 
+***********************************************************************/
+int main()
+{
+   Array array1;
+
+   // fill the array
+   double value;
+   cout << "Enter values, 0 to stop.\n> ";
+   cin  >> value;
+   while (value != 0.0)
+   {
+      array1 += value;
+      cout << "> ";
+      cin  >> value;
+   }
+
+   // display the contents
+   cout << "array1: " << array1 << endl;
+
+   // fill array2 with some fixed values
+   Array array2;
+   array2 += 4;
+   array2 += 10;
+   array2 += 6;
+   cout << "array2: " << array2 << endl;
+
+   cout << "array1 || array2 : " << (array1 || array2) << endl;
+   cout << "array1 && array2 : " << (array1 && array2) << endl;
+   
+   return 0;
+}

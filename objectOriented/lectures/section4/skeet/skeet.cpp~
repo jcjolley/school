@@ -1,0 +1,200 @@
+/***********************************************************************
+ * Program:
+ *    Skeet. 
+ * Author:
+ *    Br. Helfrich
+ * Summary:
+
+ ***********************************************************************/
+
+#include "point.h"       // the ball has a position
+#include "vector.h"
+#include "gameEntities.h"
+#include "uiInteract.h"  // interface with OpenGL
+#include "uiDraw.h"      // all the draw primitives exist here
+#include <iostream>
+using namespace std;
+
+
+// set the bounds of the game
+float Point::xMin = -128.0;
+float Point::xMax =  128.0;
+float Point::yMin = -128.0;
+float Point::yMax =  128.0;
+
+#define NUM_BULLETS 5
+#define BIRD_SIZE 20
+
+/*****************************************
+ * Skeet
+ ****************************************/
+class Skeet
+{
+public:
+   Skeet();                         // set up the game
+   void draw();                     // draw everything
+   void interact(const Interface *pUi);
+   void advance();
+private:
+   Bird bird;
+   Bullet bullets[NUM_BULLETS];
+   Rifle rifle;
+   int hit;
+   int missed;
+};
+
+/***************************************************
+ * Skeet:: CONSTRUCTOR
+ * Give the bird a random vertical velocity and set
+ * the positions of everything else.
+ ***************************************************/
+Skeet::Skeet()
+{
+   hit = 0;
+   missed = 0;
+
+   bird.setX(bird.getXMin() + 1.0);
+   bird.setDx(4.0);
+   bird.setDy((float)random(-2, 2));
+
+};
+
+/********************************************
+ * Skeet :: ADVANCE
+ * Move the ball forward by some amount
+ *******************************************/
+void Skeet::advance()
+{
+
+
+   // draw the bullets if they are alive
+   for (int i = 0; i < NUM_BULLETS; i++)
+      if (!bullets[i].isDead())
+         bullets[i].advance();
+
+// move the bird;
+   if (bird.isDead())
+   {
+      if (0 == (random(0, 30)))
+         bird.regenerate();
+   }
+   else
+   {
+      if (bird.advance())
+      {
+         //  Adding one to score
+         missed++;
+      }
+   }
+   // did we hit?
+   if (!bird.isDead())
+      for (int i = 0; i < NUM_BULLETS; i++)
+      {
+
+         if (!bullets[i].isDead())
+            if ((BIRD_SIZE > abs((bullets[i].getX() - bird.getX()))) &&
+                (BIRD_SIZE > abs((bullets[i].getY() - bird.getY()))))
+            {
+               bird.kill();
+               bullets[i].kill();
+               i = NUM_BULLETS;
+               hit++;
+            }
+      }
+     
+
+}
+
+
+/**************************************************
+ * Skeet : Interact
+ * Move the paddle
+ *************************************************/
+void Skeet::interact(const Interface *pUI)
+{
+   // move the rifle as necessary
+   rifle.move(pUI->isUp()   + pUI->isRight(),
+              pUI->isDown() + pUI->isLeft());
+
+   // shoot a bullet
+   if (pUI->isSpace())
+   {
+//      cerr << "Space bar pressed \n";
+      
+      for (int i = 0; i < NUM_BULLETS; i++)
+         if (bullets[i].isDead())
+         {
+            bullets[i].fire(rifle.getAngle());
+            i = NUM_BULLETS;
+         }
+   }
+   
+}
+
+/*************************************************
+ * Skeet : DRAW
+ * Draw the stuff
+ ************************************************/
+void Skeet::draw()
+{
+
+   // draw the rifle
+   rifle.draw();
+
+   // draw the bird
+   bird.draw();
+
+   // draw the bullets if they are alive
+   for (int i = 0; i < NUM_BULLETS; i++)
+      if (!bullets[i].isDead())
+         bullets[i].draw();
+
+   // put the score on the screen
+   static const Point point;
+   Point pointHit(point.getXMin() + 2, point.getYMax() - 2);
+   Point pointMiss(point.getXMax() - 30, point.getYMax() - 2);
+   drawNumber(pointHit, hit);
+   drawNumber(pointMiss, missed);
+   
+}
+
+/*********************************************
+ * CALLBACK
+ * The main interaction loop of the engine.
+ * This gets called from OpenGL.  It give us our
+ * interface pointer (where we get our events from)
+ * as well as a void pointer which we know is our
+ * game class.
+ *********************************************/
+void callBack(const Interface *pUI, void *p)
+{
+   // we know the void pointer is our game class so
+   // cast it into the game class.
+   Skeet *pSkeet = (Skeet *)p;
+
+   // advance the bullet and bird
+   pSkeet->interact(pUI);
+
+   pSkeet->advance();
+
+   // draw it
+   pSkeet->draw();
+}
+
+
+/*********************************
+ * MAIN
+ * initialize the drawing window, initialize
+ * the game,and run it!
+ *********************************/
+int main(int argc, char **argv)
+{
+   // Start the drawing
+   Interface ui(argc, argv, "Skeet");
+
+   // play the game.  Our function callback will get called periodically
+   Skeet skeet;  
+   ui.run(callBack, (void *)&skeet);
+
+   return 0;
+}

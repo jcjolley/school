@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Joshua Jolley's Assignment #9</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans'
+               rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu'
+               rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="a09.css"/>
+    <script>
+      function loadXMLDoc()
+      {
+        //the URL to the text files
+        var baseURL = "http://157.201.194.254/~ercanbracks/";
+
+        //the index of our options array for the currently 
+        //chosen item from our select box
+        var index = document.getElementById("mySelect").selectedIndex;
+
+        //an array of all the available options
+        var options = document.getElementById("mySelect").options;
+
+        //the full URL, composed of baseURL and the 
+        //currently selected option's value 
+        var ajaxURL = baseURL + options[index].value
+
+        //Make an XMLHttpRequest object for the right browser
+        if (window.XMLHttpRequest) // Everything other than IE
+        {
+          xmlhttp=new XMLHttpRequest();
+        }
+        else  //for IE
+        {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        
+        //Make a callback function
+        xmlhttp.onreadystatechange=function()
+        {
+          //if the request loaded and
+          //that we have found the file we want
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+          {
+            //get our file and make it beautiful
+            var info = xmlhttp.responseText;
+                  //beautification goes here
+            var population = info.split(/[a-z\-]+\s?[a-z]*/i);
+            var cities = info.split(/[0-9\,]+/)
+            population.shift();  //delete extra item at the beginning
+            cities.pop(); //delete extra item at the end
+            var page = "<table style=\"border-collapse:collapse; border: 5px solid #3E1396; width:280px;margin-left:auto; margin-right:auto;\">";
+            for (var i = 0; i < cities.length; i++)
+            {
+              if (i % 2 == 0)
+              {
+                page = page + "<tr><td style=\"text-align:left; padding:10px; background:#A43F7B; border-right:2px solid #3E1396; color:white; font-weight:bold; width:170px;\">" + cities[i] + "</td>";
+                page = page + "<td style=\"text-align:left; padding:10px; background:#A43F7B; border-right:2px solid #3E1396; color:white;\">" + population[i] + "</td></tr>";
+              }
+              else
+              {
+              page = page + "<tr><td style=\"text-align:left; padding:10px; background:#7A2E88; border-right:2px solid #3E1396; color:white; font-weight:bold; width:170px;\">" + cities[i] + "</td>";
+              page = page + "<td style=\"text-align:left; padding:10px; background:#7A2E88; border-right:2px solid #3E1396; color:white;\">" + population[i] + "</td></tr>";  
+              }  
+            }
+            page = page + "</table>";
+            //put our beautified file into the ajaxDiv 
+            document.getElementById("ajaxDiv").innerHTML=page;
+          }
+        }
+
+        //call the methods of our XMLHttpRequest object
+        xmlhttp.open("GET",ajaxURL,true);
+        xmlhttp.send();
+      }
+
+      function loadXMLDoc2()
+      {
+        var URL = document.getElementById("myInput").value;
+        
+        //Make an XMLHttpRequest object for the right browser
+        if (window.XMLHttpRequest) //everything other than IE
+        {
+          xmlhttp=new XMLHttpRequest();
+        }
+        else  //for IE
+        {
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        
+        //our callback function
+        xmlhttp.onreadystatechange=function()
+        {
+          //when it's ready and found the file
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+          {
+          //insert it into ajaxDiv2
+          document.getElementById("ajaxDiv2").innerHTML=xmlhttp.responseText;
+          }
+        }
+
+        //call the methods to actually get it to do the work! :)
+        xmlhttp.open("GET",URL,true);
+        xmlhttp.send();
+      }
+    </script>
+  </head>
+  <body>
+    <div id="main">
+    <h1> Top 10 Biggest Cities </h1>
+    <hr>
+      <select id="mySelect" onchange="loadXMLDoc()">
+        <option value="usa.txt">USA</option>
+        <option value="canada.txt">Canada</option>
+        <option value="mexico.txt">Mexico</option>
+        <option value="russia.txt">Russia</option>
+      </select>
+
+      <button onclick="loadXMLDoc();">Get Population List</button>
+      <div id="ajaxDiv" style="width:350px; height:500px; margin-left:auto; margin-right:auto;">
+      </div>
+      <h1> Load your own page </h1>
+      <hr>
+      <label>Insert URL:</label><input type="text" id="myInput" onblur="loadXMLDoc2();"/>
+       <button onclick="loadXMLDoc2();">Load URL</button><br/><br/><br/>
+      </div>
+      <div id="ajaxDiv2" style="max-width:500px; max-height:500px;">
+    </div>
+  </body>
+</html>

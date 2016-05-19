@@ -1,0 +1,179 @@
+html{   overflow-x: hidden;}
+
+body{   background-image:url(images/a4bg.jpg);
+        margin:0px;
+        padding:0px;
+        font-family:Open Sans;
+        line-height:160%;}
+
+#masterContainer{   width:952px;
+                    height:940px;
+                    margin-left:auto;
+                    margin-right:auto;
+                    background:#FFFFFF;}
+
+#logo{  width:220px;}
+
+#nav{   position:relative;
+        top:-20px;
+        width:940px;
+        margin-left:auto;
+        margin-right:auto;
+        height:40px;
+        border-radius: 0px 50px;
+        background:#c1e1a6;}
+
+#nav a{ position:relative;
+        top:8px;
+        left:35px;
+        background:#118C4E;
+        padding:9px;
+        margin:10px;
+        border:none;
+        border-top-right-radius: 20px 20px;
+        color:#FFFFFF;
+        text-decoration:none;
+        font-weight:bold;
+        z-index:3;}
+
+#nav a:hover{   color:#FF9009;
+                opacity:1;}
+
+#favVids{   position:relative;
+            left:137px;
+            top:15px;
+            display:none;
+            height:178px;
+            width:160px;
+            background:#c1e1a6;
+            line-height:140%;
+            border:4px solid #c1e1a6;
+            border-left:none;
+            border-bottom-right-radius:20px;
+            box-shadow:5px 5px 20px 0px black;
+            z-index:10;}
+
+#favVids a{ position:relative;
+            top:10px;
+            left:0px;
+            padding:9px;
+            border-top-right-radius:0px 0px;
+            border-bottom-right-radius:20px;
+            text-align:left;
+            margin:0px;
+            opacity:.9;
+            border:4px solid #c1e1a6;
+            border-left:none;}
+
+#browse{    position:absolute;
+            left:263px;
+            top:40px;
+            display:none;
+            height:268px;
+            width:160px;
+            background:#c1e1a6;
+            line-height:140%;
+            border:4px solid #c1e1a6;
+            border-left:none;
+            border-bottom-right-radius:20px;
+            box-shadow:5px 5px 20px 0px black;
+            z-index:10;}
+
+#browse a{  position:relative;
+            top:10px;
+            left:0px;
+            padding:9px;
+            border-top-right-radius:0px 0px;
+            border-bottom-right-radius:20px;
+            text-align:left;
+            margin:0px;
+            opacity:.9;
+            border:4px solid #c1e1a6;
+            border-left:none;}
+
+header{ position:relative;
+        top:0px;
+        background:#FFFFFF;
+        height:120px;
+        width:100%;
+        padding:0px;
+        margin:0px;}
+
+#header{height:100px;}
+
+#tagline{   position:absolute;
+            right:10px;
+            top:70px;
+            font-size:200%;
+            font-style:oblique;
+            text-align:right;
+            z-index:1}
+
+#signin{    position:absolute;
+            top:0px;
+            right:30px;
+            text-align:right;}
+
+#signin a{  font-weight:bold;
+            color:#FF9009;
+            text-decoration:none;}
+
+#signin img{width:20px;
+            position:relative;
+            top:5px;}
+
+#sidebar{   display:none;}
+
+#rightsidebar{  position:relative;
+                float:right;
+                top:-40px;
+                width:40px;
+                height:880px;
+                z-index:0;
+                border-radius: 0px 50px;
+                background:#c1e1a6;}
+
+#rightsidebar2{ position:relative;
+                float:right;
+                bottom:300px;
+                left:5px;
+                width:40px;
+                height:340px;
+                z-index:0;
+                border-radius: 0px 40px;
+                background:#c1e1a6;}
+
+#leftsidebar{   position:relative;
+                float:left;
+                bottom:500px;
+                width:40px;
+                height:540px;
+                z-index:0;
+                border-radius: 0px 40px;
+                background:#c1e1a6;}
+
+#main{  width:912px;
+        margin-top:40px;
+        padding-left:20px;
+        padding-right:20px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;}
+
+footer{ position:fixed;
+        bottom:0px;
+        width:947px;
+        height:40px;
+        background:#c1e1a6;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;}
+
+footer p{
+        position:relative;
+        bottom:-290px;
+        width:200px;
+        left:-540px;
+        text-align:center;
+
+}

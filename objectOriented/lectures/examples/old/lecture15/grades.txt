@@ -1,0 +1,7 @@
+6
+  Project1 	100 	-1
+  Project2 	100 	-1
+   Midterm 	200 	-1
+  Project3 	100 	-1
+  Project4 	100 	-1
+     Final 	400 	-1

@@ -1,0 +1,175 @@
+/***********************************************************************
+ * Program:
+ *    Example 3.4, Polymorphism with virtual functions
+ *    Brother Helfrich, CS165
+ * Author:
+ *    Br. Helfrich
+ * Summary:
+ *    This program is designed to demonstrate simple polymorphism
+ *    through the use of virtual functions.  Here the display() function
+ *    will be differently defined in each of the inherited time classes.
+ ************************************************************************/
+
+#include <iostream>
+#include <cassert>
+using namespace std;
+
+/**********************************************************
+ * DATE
+ * Base date class.
+ **********************************************************/
+class Date
+{
+public:
+   // only a default constructor here
+   Date() : month(1), day(1), year(2000) {}
+
+   // copy.  This could the be assignment operator of course
+   void copy(Date & date)
+   {
+      month = date.month;
+      day   = date.day;
+      year  = date.year;
+   }
+
+   //input through >> operator
+   friend istream & operator >> (istream & in,        Date & date);
+   friend ostream & operator << (ostream & out, const Date & date);
+   
+   // empty display function
+   virtual ostream & display(ostream & out) const { return out; }
+
+protected:
+   int day;
+   int month;
+   int year;
+};
+
+/***********************************************
+ * DATE SHORT
+ * The short (1/1/2000) version of the class
+ ***********************************************/
+class DateShort : public Date
+{
+public:
+   // default constructor
+   DateShort() : Date() {}
+
+   // display, defined elsewhere
+   virtual ostream & display(ostream & out) const;
+};
+
+/***********************************************
+ * DATE LONG
+ * The long (1st of January, 2000) version
+ ***********************************************/
+class DateLong : public Date
+{
+public:
+   // default constructor
+   DateLong() : Date() {}
+
+   // display, defined elsewhere
+   virtual ostream & display(ostream & out) const;
+};
+
+/****************************************
+ * INSERTION FOR DATE
+ ***************************************/
+ostream & operator << (ostream & out, const Date & date)
+{
+   return date.display(out);
+}
+
+/*****************************************
+ * EXTRACTION FOR DATE
+ ****************************************/
+istream & operator >> (istream & in, Date & date)
+{
+   in >> date.year >> date.month >> date.day;
+   return in;
+}
+
+/*******************************************
+ * DATE SHORT :: DISPLAY
+ * The short version of a date 1/1/2000
+ ******************************************/
+ostream & DateShort :: display(ostream & out) const
+{
+   out << month << "/" << day << "/" << year;
+   return out;
+}
+
+/*******************************************
+ * DATE LONG :: DISPLAY
+ * Display the long version of the date 1st of January, 2000
+ ******************************************/
+ostream & DateLong :: display(ostream & out) const
+{
+   // day
+   out << day;
+   switch (day)
+   {
+      case 1:
+      case 21:
+      case 31:
+         out << "st";
+         break;
+      case 2:
+      case 22:
+         out << "nd";
+         break;
+      case 3:
+      case 23:
+         out << "rd";
+         break;
+      default:
+         out << "th";
+   }
+
+   // month
+   const char MONTHS[12][10] =
+      {
+         "January", "February", "March",     "April",   "May",      "June",
+         "July",    "August",   "September", "October", "November", "December"
+      };
+
+   out << " of " << MONTHS[month - 1] << ", ";
+
+   // year
+   out << year;
+   return out;
+}
+
+/**********************************************************************
+ * MAIN:  This is a driver program to exercise our Date class.  In this
+ *        case, we will have an array of three dates.  Each date will remember
+ *        it is actually a generic date, a short date, or a long date.  Any
+ *        humorous puns or play-on-words is completely accidental.
+ ***********************************************************************/
+int main()
+{
+   Date      date;
+   DateShort dateShort;
+   DateLong  dateLong;
+   Date *    dates[3];
+
+   // user input
+   cout << "Specify year, month, day: ";
+   cin  >> date;
+
+   // We want the same date for the short and long version
+   dateLong.copy(date);
+   dateShort.copy(date);
+   dates[0] = &date;
+   dates[1] = &dateShort;
+   dates[2] = &dateLong;
+
+   // Finally, display the output
+   cout << "Base class with empty display: \"" << *dates[0] << "\"\n";
+   cout << "Short version:                 \"" << *dates[1] << "\"\n";
+   cout << "Long version:                  \"" << *dates[2] << "\"\n";
+
+   return 0;
+}
+

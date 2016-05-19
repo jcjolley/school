@@ -1,0 +1,398 @@
+GNOME_KEYRING_SOCKET=/tmp/keyring-ZuqAdt/socket
+SSH_AUTH_SOCK=/tmp/keyring-ZuqAdt/socket.ssh
+
+(process:30616): GLib-WARNING **: goption.c:2132: ignoring no-arg, optional-arg or filename flags (8) on option of type 0
+
+(process:30616): GLib-WARNING **: goption.c:2132: ignoring no-arg, optional-arg or filename flags (8) on option of type 0
+
+(process:30616): GLib-WARNING **: goption.c:2132: ignoring no-arg, optional-arg or filename flags (8) on option of type 0
+
+(polkit-gnome-authentication-agent-1:30676): GLib-GObject-WARNING **: cannot register existing type `_PolkitError'
+
+(polkit-gnome-authentication-agent-1:30676): GLib-CRITICAL **: g_once_init_leave: assertion `initialization_value != 0' failed
+Initializing nautilus-open-terminal extension
+Initializing nautilus-dropbox 1.6.0
+Initializing nautilus-gdu extension
+Failed to play sound: File or data not found
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:30888): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+Gtk-Message: Failed to load module "canberra-gtk-module"
+Gtk-Message: Failed to load module "pk-gtk-module"
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31006): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+Gtk-Message: Failed to load module "canberra-gtk-module"
+Gtk-Message: Failed to load module "pk-gtk-module"
+Vector smash protection is enabled.
+
+(rhsm-icon:30634): libnotify-CRITICAL **: notify_notification_close: assertion `notification != NULL' failed
+
+(rhsm-icon:30634): GLib-GObject-CRITICAL **: g_object_unref: assertion `G_IS_OBJECT (object)' failed
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31106): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+Gtk-Message: Failed to load module "canberra-gtk-module"
+Gtk-Message: Failed to load module "pk-gtk-module"
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:31242): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+Gtk-Message: Failed to load module "canberra-gtk-module"
+Gtk-Message: Failed to load module "pk-gtk-module"
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:31356): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+Gtk-Message: Failed to load module "canberra-gtk-module"
+Gtk-Message: Failed to load module "pk-gtk-module"
+SystemMessageCache: initWARNING: content window passed to PrivateBrowsingUtils.isWindowPrivate. Use isContentWindowPrivate instead (but only for frame scripts).
+pbu_isWindowPrivate@resource://gre/modules/PrivateBrowsingUtils.jsm:25:14
+nsBrowserAccess.prototype.openURI@chrome://browser/content/browser.js:15174:21
+WARNING: content window passed to PrivateBrowsingUtils.isWindowPrivate. Use isContentWindowPrivate instead (but only for frame scripts).
+pbu_isWindowPrivate@resource://gre/modules/PrivateBrowsingUtils.jsm:25:14
+nsBrowserAccess.prototype.openURI@chrome://browser/content/browser.js:15174:21
+Window manager warning: Window 0x4000020 (Welcome to) sets an MWM hint indicating it isn't resizable, but sets min size 1 x 1 and max size 2147483647 x 2147483647; this doesn't make much sense.
+Window manager warning: Window 0x4000020 (Welcome to) sets an MWM hint indicating it isn't resizable, but sets min size 1 x 1 and max size 2147483647 x 2147483647; this doesn't make much sense.
+Window manager warning: Window 0x4000020 (Welcome to) sets an MWM hint indicating it isn't resizable, but sets min size 1 x 1 and max size 2147483647 x 2147483647; this doesn't make much sense.
+Window manager warning: Received a _NET_WM_MOVERESIZE message for 0x3200003 (jolleyboy@); these messages lack timestamps and therefore suck.
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(firefox:32730): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+Gtk-Message: Failed to load module "canberra-gtk-module"
+Gtk-Message: Failed to load module "pk-gtk-module"
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:506): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+Gtk-Message: Failed to load module "canberra-gtk-module"
+Gtk-Message: Failed to load module "pk-gtk-module"
+SystemMessageCache: initWindow manager warning: Received a _NET_WM_MOVERESIZE message for 0x4e00003 (Calculator); these messages lack timestamps and therefore suck.
+
+(evolution-alarm-notify:30611): evolution-alarm-notify-WARNING **: alarm.c:253: Requested removal of nonexistent alarm!
+Window manager warning: Received a _NET_WM_MOVERESIZE message for 0x4c01737 (New Tab - ); these messages lack timestamps and therefore suck.
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+console.error: 
+  [CustomizableUI]
+  Custom widget with id loop-button does not return a valid node
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+
+(<unknown>:4715): Gtk-WARNING **: Unable to locate theme engine in module_path: "clearlooks",
+Gtk-Message: Failed to load module "canberra-gtk-module"
+Gtk-Message: Failed to load module "pk-gtk-module"
+SystemMessageCache: initgnome-session[30477]: WARNING: Unable to find desktop file 'ddd.desktop': Valid key file could not be found in search dirs
+gnome-session[30477]: WARNING: Unable to find desktop file 'gnome-ddd.desktop': Valid key file could not be found in search dirs
+
+(gnome-power-manager:30731): GLib-GObject-CRITICAL **: g_object_unref: assertion `G_IS_OBJECT (object)' failed
+Shutting down nautilus-gdu extension
+Shutting down nautilus-open-terminal extension
+
+--- Hash table keys for warning below:
+--> l29
+--> jolleyboy
+--> student
+--> joshua clark jolley
+--> inode/directory
+
+(nautilus:30606): Eel-WARNING **: "unique eel_ref_str" hash table still has 5 elements at quit time (keys above)
+
+(nautilus:30606): Eel-WARNING **: "nautilus-directory.c: directories" hash table still has 3 elements at quit time
+Window manager warning: CurrentTime used to choose focus window; focus window may not be correct.
+Window manager warning: Got a request to focus the no_focus_window with a timestamp of 0.  This shouldn't happen!
+
+(polkit-gnome-authentication-agent-1:30676): polkit-gnome-1-WARNING **: Error enumerating temporary authorizations: Remote Exception invoking org.freedesktop.PolicyKit1.Authority.EnumerateTemporaryAuthorizations() on /org/freedesktop/PolicyKit1/Authority at name org.freedesktop.PolicyKit1: org.freedesktop.PolicyKit1.Error.Failed: Cannot determine session the caller is in
+gnome-settings-daemon: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+evolution-alarm-notify: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+gnome-volume-control-applet: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+abrt-applet: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+polkit-gnome-authentication-agent-1: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+gpk-update-icon: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+rhsm-icon: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+gnome-screensaver: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+gdu-notification-daemon: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+applet.py: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+firefox: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.
+gcalctool: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.

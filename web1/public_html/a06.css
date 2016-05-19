@@ -1,0 +1,185 @@
+/* CSS for Assign06.html */
+
+
+body{
+   font-family: "Open Sans";
+   background: url("images/a06bg.jpg");
+   background-repeat:no-repeat;
+   line-height: 190%;
+}
+
+h1, h2{
+   font-family:"Ubuntu";
+}
+h1{
+   position:absolute;
+   text-align: right;
+   font-size: 235%;
+   color:black;
+   width:700px;
+   height:60px;
+   left:0px;
+   top:-24px;
+   padding-top: 40px;
+   background:rgba(229, 163, 28, .80);
+   -webkit-border-top-left-radius: 50px;
+           border-top-left-radius: 50px;
+   -webkit-border-top-right-radius: 50px;
+           border-top-right-radius: 50px;
+   text-shadow: 3px 2px 2px #ffc040;
+}
+
+
+img{
+   position: absolute;
+   width:110px;
+   top:-60px;
+   left:0px;
+   z-index:3;
+}
+hr{
+   position: relative;
+   width: 690px;
+   left:-40px;
+   border:5px solid #E5A31C;
+   
+}
+form{
+   position: relative;
+   top: 50px;
+   margin-left:auto;
+   margin-right: auto;
+   color:#ffc040;
+   background:rgba(126, 78, 4, 0.80);
+   width: 620px;
+   height: 1050px;
+   padding-left: 40px;
+   padding-right: 40px;
+   padding-top: 80px;
+      -webkit-border-radius: 50px 50px 50px 50px;
+           border-radius: 50px 50px 50px 50px;
+   
+   text-shadow: 3px 2px 10px black;
+}
+
+form input{
+   background:rgba(255,255,255,.5);
+   -webkit-border-radius: 20px;
+           border-radius: 20px;
+   border:none;
+   -webkit-box-shadow: 2px 2px black;
+           box-shadow: 2px 2px black;
+   color:black;
+   padding-left: 20px;
+   padding-right: 10px;
+   padding-top:1.5px;
+   padding-bottom:1.5px;
+   font-size: 105%;
+   
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:#857f71;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#857f71;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#857f71;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#857f71;
+}
+input[type="radio"]{
+   -webkit-box-shadow:none;
+           box-shadow:none;
+   -webkit-border-radius:80px;
+           border-radius:80px;
+    margin-right: 20px;
+}
+label{
+ font-weight: bold;
+ width: 150px;
+ float: left;
+}
+select{
+  background:rgba(255,255,255,.5);
+  height:25px;
+  width:80px;
+  -webkit-border-radius:5px;
+          border-radius:5px;
+  border:none;
+}
+
+.valid{
+   visibility:hidden;
+   position: absolute;
+   font-size: 100%;
+   color:#ffc040;
+   left:440px;
+   font-weight: bold;
+   background:rgba(255,0,0,.5);
+   padding-left: 10px;
+   padding-right: 10px;
+   -webkit-border-radius: 5px;
+           border-radius: 5px;
+   
+}
+
+table{
+  position: relative;
+  width:600px;
+  border: 2px solid #ffc040;;
+  }
+
+td{
+  padding:20px;
+  text-align: center;
+  border: 1px solid #ffc040;;
+}
+#output{
+  position: relative;
+  top: 10px;
+  padding-bottom: 10px;
+}
+
+input[type="reset"], input[type="submit"]{
+  padding:7px;
+  margin:0px;
+  width:100px;
+  margin-right: 180px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+#thanks{
+  position: relative;
+  top: 100px;
+  width: 500px;
+  height:300px;
+  line-height: 400%;
+  text-align:center;
+  margin-right: auto;
+  margin-left: auto;
+  color:#ffc040;
+  background:rgba(126, 78, 4, .60);
+  text-shadow: 3px 2px 10px black;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 80px;
+  -webkit-border-radius: 50px 50px 50px 50px;
+          border-radius: 50px 50px 50px 50px;
+   
+}
+
+#search{
+  color:white;
+  position
+  position: relative;
+  z-index: 5;
+  background:#01538D;
+  left:100px;
+}
+
+#smallnav{
+  background:#01538D;
+}

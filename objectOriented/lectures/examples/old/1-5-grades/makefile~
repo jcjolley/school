@@ -1,0 +1,38 @@
+###############################################################
+# Program:
+#     Lecture 1.5, Grade program demo
+#     Brother Helfrich, CS165
+# Author:
+#     Br. Helfrich
+# Summary:
+#     This program will keep track of a student's grades in a given
+#     class.  The data will be stored in a file so potentially the
+#     grades for many classes can be tracked at the same time.
+###############################################################
+
+##############################################################
+# The main rule
+##############################################################
+a.out: grading.o file.o interface.o grades.o
+	g++ -o a.out grading.o file.o interface.o grades.o
+	tar -cf assign15.tar *.h *.cpp makefile
+
+##############################################################
+# The individual components
+#      file.o       : All code working with the file format
+#      interface.o  : All the code interfacing with the user
+#      grading.o    : All the logic working with grades: average, etc
+#      grades.o     : Main
+##############################################################
+file.o: file.cpp file.h grades.h
+	g++ file.cpp -c
+
+interface.o: interface.cpp interface.h grading.h grades.h
+	g++ interface.cpp -c
+
+grading.o: grading.cpp grading.h grades.h
+	g++ grading.cpp -c
+
+grades.o: grades.cpp grades.h file.h interface.h
+	g++ grades.cpp -c
+

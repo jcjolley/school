@@ -1,0 +1,62 @@
+/***********************************************************************
+ * This demo program is designed to:
+ *      Demonstrate pure Virtual Functions.  Note that we cannot
+ *      create an object out of an abstract class so we will
+ *      get a compile error
+ ************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+/*****************************
+ * Base class
+ * This is an abstract class because
+ * of the pure virtual function 
+ *****************************/
+class Base
+{
+public:
+   /**********************************************
+    * BASE :: METHOD
+    * This is a pure virtual function (because of the = 0)
+    * at the end of the method definition Thus the VTable
+    * has a NULL pointer and the compiler will not allow us
+    * create an object of type Base
+    *********************************************/
+   virtual void method() = 0;
+};
+
+/***************************
+ * Derived class
+ **************************/
+class Derived: public Base
+{
+public:
+   /*********************************************
+    * DERIVED :: METHOD
+    * This is a derived class.  Note that, though
+    * it is defined in the class definition, it is not
+    * an inline function.  Virtual functions cannot
+    * be inline
+    *********************************************/
+   virtual void method()
+   {
+      cout << "Derived!\n";
+   }
+};
+
+/**********************************************************************
+ * main(): just a drive program to demonstrate the comile error
+ **********************************************************************/
+int main()
+{
+   Base base; // compile error.  Because Base is an Abstract Class due to the
+              //                 pure virtual function method(), we cannot
+              //                 instantiate an object of this type.
+
+   // even if we could create an object called base, we would crash
+   // here due to the NULL pointer in the VTable of Base
+   base.method();
+   
+   return 0;
+}

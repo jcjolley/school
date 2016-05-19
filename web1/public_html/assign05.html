@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+    <head>
+        <title>Joshua Jolley's Assignment 5</title>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans'
+              rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu'
+              rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="a05.css"/>
+        <script src = "a05.js" type="text/javascript"></script>
+    </head>
+    <body>
+    <div id="master">
+        <div id="header">
+        </div>
+        <div id="calculator">
+            <h1>Mortgage Calculator</h1>
+            <form id="calc" name="calc" onchange="calculateMortgage(document.getElementById('amount').value,document.getElementById('term').value, document.getElementById('apr').value);">
+                <label>Amount Loaned:</label>
+                <input id="amount" type="text" name="amount"
+                       onchange="displayState(validateAmount(document.getElementById('amount').value), document.getElementById('amountError'));"/>
+                <span id="amountError">Invalid Input: Must be a number</span>
+                <br/><br/>
+                <label>Mortgage Term:</label>
+                <input id="term" type="text" name="term" maxlength="2"
+                       onchange="displayState(validateTerm(document.getElementById('term').value), document.getElementById('termError'));"/>
+                <span id="termError">Invalid Input: Must be a number</span>
+                <br/><br/>
+                <label>Interest Rate:</label>
+                <input id="apr" type="text" name="apr"
+                       onchange="displayState(validateAPR(document.getElementById('apr').value), document.getElementById('aprError'));"/>
+                <span id="aprError">Invalid Input: Must be a number</span>
+                <br/><br/>
+                <input type="reset" value="Clear Form"/>
+                <input type="button" id="calculate"                 onclick="calculateMortgage(document.getElementById('amount').value,document.getElementById('term').value, document.getElementById('apr').value);"
+                   value="Calculate Payment"
+               />
+            </form>
+            <div id="display">
+            <!-- To be filled by javascript -->
+            </div> 
+        </div>
+    </div>
+        <script>
+            document.getElementById('amount').focus();
+        </script>
+    </body>
+</html>

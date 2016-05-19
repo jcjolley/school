@@ -1,0 +1,75 @@
+/***********************************************************************
+ * Source File:
+ *    Point : The representation of a position on the screen
+ * Author:
+ *    Br. Helfrich
+ * Summary:
+ *    Everything we need to know about a location on the screen, including
+ *    the location and the bounds.
+ ************************************************************************/
+
+
+
+#include "vector.h"
+#include <cassert>
+
+/******************************************
+ * Vector : CONSTRUCTOR WITH Point, dx, dy
+ * Initialize the vector  to the passed position an dx, dy
+ *****************************************/
+Vector::Vector()
+{
+//   setPoint(currentPoint);
+   setDx(0);
+   setDy(0);
+}
+
+
+/*******************************************
+ * Vector : setPoint
+ * Set the point position 
+ *******************************************/
+void Vector::setPoint(Point currentPoint)
+{
+   // check the point
+   this->point = currentPoint;
+}
+
+/*******************************************
+ * Vector : SET X
+ * Set the Dx value is within range
+ *******************************************/
+void Vector::setX(float valDx)
+{
+   this->point.setX(valDx);
+}
+
+/*******************************************
+ * Vector : SET Y
+ * Set the Dx value is within range
+ *******************************************/
+void Vector::setY(float valDy)
+{
+   this->point.setY(valDy);
+}
+
+/*******************************************
+ * Vector : SET DX
+ * Set the Dx value is within range
+ *******************************************/
+void Vector::setDx(float valDx)
+{
+   this->dx = valDx;
+}
+
+/*******************************************
+ * Vector : SET DY
+ * Set the Dy value is within range
+ *******************************************/
+void Vector::setDy(float valDy)
+{
+   this->dy = valDy;
+}
+
+
+

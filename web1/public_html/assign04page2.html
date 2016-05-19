@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+   <title>MyTube</title>
+   <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+   <link rel="stylesheet" type="text/css" href="assign4.css" />
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+   </script>
+   <style>
+      #main{   line-height:180%;}
+      
+      #signup{ float:left;
+               padding:20px;
+               margin:15px;
+               margin-left:55px;
+               margin-top:50px;
+               width:325px;
+               background:#c1e1a6;
+               text-align:left;
+               border: 10px solid #118C4E;}
+
+      #login{  float:left;
+               padding:20px;
+               margin:15px;
+               margin-top:50px;
+               width:325px;
+               background:#c1e1a6;
+               text-align:left;
+               border: 10px solid #118C4E;
+               height:237px;}
+
+      label{   width:150px;
+               display:block;
+               float:left;}
+      
+      input{   float:left;
+               display:block;}
+      input[type="submit"]{   float:right;
+                              position:relative;
+                              top:10px;}
+   </style>
+   <script>
+     //Waits until the document is fully loaded
+     $(document).ready(function(){
+         //When mouse enters the bounds of "MyVids" display its menu
+         $("#myVids").mouseenter(function(){
+            $("#favVids").css("display","block");
+            $("#browse").css("display","none");
+         });
+         //When mouse leaves the bounds of the menu, hide it.
+         $("#favVids").mouseleave(function(){    
+            $("#favVids").css("display","none");
+         });
+         //When mouse enters the bounds of "myBrowse" display its menu
+         $("#myBrowse").mouseenter(function(){
+            $("#browse").css("display","block");
+            $("#favVids").css("display","none");
+         });
+         //When mouse leaves the bounds of the menu, hide it.
+         $("#browse").mouseleave(function(){
+            $("#browse").css("display","none");
+         });
+      });
+   </script>
+</head> 
+<body>
+   <div id="masterContainer">
+      <header>
+         <div id="header">
+            <img src="images/logo.png" id="logo"/>
+            <div id=nav>
+               <a href="assign04.html">Home</a>
+               <a id="myVids" href="assign04page2.html">My Videos</a>
+               <a id="myBrowse" href="assign04page2.html">Browse Videos</a>
+               <a href="assign04page2.html">Contact Us</a>             
+               <div id="favVids">
+                  <a href="http://www.youtube.com/watch?v=aHjpOzsQ9YI">Crystalize</a><br/><br/>
+                  <a href="http://www.youtube.com/watch?v=QZkqC4Lz8dU">HISHE Avengers</a><br/><br/>
+                  <a href="http://www.youtube.com/watch?v=NwTsZHGQ6FE">Hot Kool Aid</a><br/><br/>
+                  <a href="http://www.youtube.com/watch?v=gxJ4M7tyLRE">Why is it Dark</a>
+               </div>
+               <div id="browse">
+                  <a href="assign04page2.html">Music Videos</a><br/><br/>
+                  <a href="assign04page2.html">Movie Trailers</a><br/><br/>
+                  <a href="assign04page2.html">VLogs</a><br/><br/>
+                  <a href="assign04page2.html">Educational</a><br/><br/>
+                  <a href="assign04page2.html">Comedy</a><br/><br/>
+                  <a href="assign04page2.html">Entertainment</a>
+               </div>
+            </div>    
+         </div>
+         <div id="rightsidebar">
+         </div>
+         <div id="tagline">
+            <p> Access your favorite vids anytime &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>... even offline!</p>
+         </div>
+         <div id="signin">
+            <a href="assign04page2.html">Sign Up &nbsp;/&nbsp; Log In</a><br/>
+            <form>
+               <input type="search"/>
+               <img src="images/search.jpg"/>
+            </form>
+         </div>
+      </header>
+      <div id="main">
+         <form id="signup" name="signup">
+         <h1>Sign Up</h1>
+            <label>Desired Username:</label>
+            <input type="text" maxlength="20"/><br/>
+            <label>Password:</label>
+            <input type="password" maxlength="20"/><br/>
+            <label>Confirm Password:</label>
+            <input type="password" maxlength="20"/><br/>
+            <label>Email Address:</label>
+            <input type="email" maxlength="30"/><br/>
+            <label>Name:</label>
+            <input type="text" maxlength="20"><br/>
+            <input type="submit">
+         </form>
+         <form id="login" name="login">
+         <h1>Log In</h1>
+            <label>Username:</label>
+            <input type="text" maxlength="20"/><br/>
+            <label>Password:</label>
+            <input type="password" maxlength="20"/><br/>
+            <input type="submit">
+         </form>
+      </div>
+      <footer>
+         <div id="leftsidebar"></div>
+         <div id="rightsidebar2"</div>
+         <div id="bottom">
+         <p>&copy; 2013 Joshua Jolley</p>
+         </div>
+      </footer>
+   </div>
+</body>
+</html>

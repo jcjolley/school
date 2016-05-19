@@ -1,0 +1,211 @@
+* Introduction
+Designing algorithms is more difficult than I ever expected it to be, and let me assure you
+that I came into this class expecting a heaping amount of difficulty.  My struggle is getting out
+of the 'code and fix' methodology.  Creating and executing a plan, rather than iteratively working
+with the feedback of code, doesn't come naturally to me.  While working on part two, I discovered
+another problem. Coding is too much fun, especially in a /fun/ctional language! I spent many hours
+perusing Clojure's documentation and applying various built-in functions and approaches to 
+solving part two, and it ate up the time I should have been spending on this write up.  Foolish me.
+
+With these difficulties in mind, I tackled the task of creating algorithms to solve part one of this
+mysterious exploration.  What task, you ask?  The task of breaking a positive integer 
+into n unequal positive integers. 
+
+* Part 1: Breaking Up Is Hard To Do
+
+** My first attempt
+Please excuse my ugly lisp, this is my first real foray into the land of functional programming,
+and my second attempt at picking up a lisp language.  Back in the days of CS237 I first tried to learn elisp,
+but I didn't give it enough time, and wasn't sufficiently motivated to make the adjustment to the new
+paradigm.  
+
+This first attempt works by subtracting b from a, until b becomes one. At this point, we throw whats left of
+A into the vector, which guarantees that the vector still adds up to A (at least in theory)
+This implementation suffers from many problems.  The first of which is that it needlessly limits its domain
+by subtracting b, with b starting at B, rather than starting b at 1, and working our way up as high as we need to go.
+
+Secondly, this implmentation doesn't restrict bad output.  You can get vectors that have duplicate items,
+violating the premise of the algorithm.  Clearly, we needed to go somewhere from here.
+
+*** Clojure
+(defn simple_breakup [A B]
+  (loop [myvec [] a A b B]
+    (if (<= b 1)
+      (conj myvec a)
+      (recur (conj myvec b) (- a b) (dec b))
+    )
+  )
+)
+
+(simple_breakup 25 3) ;; [3, 2, 20]
+
+
+** My second attempt
+This algorithm was a step in right direction, though it didn't quite arrive.
+By switching my container to a set, I removed the possibility of duplicate items.  I also switched
+the value of b around so that it starts a 1 and works its way up.  This ever so slightly stretches the 
+domain of this function.  It can still provide bad output though, as we can get a collection returned
+that does not divide A into B pieces, but rather B - 1 or worse.
+
+*** Clojure
+(defn simple_breakup [A B]
+   (loop [myset #{} a A b 1]
+      (if (>= b B)
+         (conj myset a)
+         (recur (conj myset b) (- a b) (inc b))
+      )
+   )
+)
+
+(simple_breakup 6 3) 
+
+
+** My Third attempt
+My third attempt is another step in the right direction.  The error handling in this algorithm
+prevents negative numbers from fouling up the results, and also ensures that we are indeed getting
+B unequal pieces out of the algorithm. 
+
+This algorithm's lowest Big O value is O(n).  B determines the number of times the loop recurs, and every
+operation in the loop occurs in constant time 0(1)
+*** Clojure
+(defn simple_breakup [A B]
+   (let [results 
+      (loop [myset #{} a A b 1]
+         (if (>= b B)
+            (conj myset a)
+            (recur (conj myset b) (- a b) (inc b))
+         )
+      )]
+      (cond
+         (not (= (count results) B)) "Invalid Input"                     ;;incorrect number of outputs
+         (not (= 0 (count (filter #(<= %1 0) results)))) "Invalid Input" ;;no negatives
+         :else results
+      )
+   )
+)
+
+(simple_breakup 3 2)
+
+
+** For Fun
+I tried two other approaches to this problem,  this one is just a variation on the first approach,
+but it doubles B each time.
+*** Clojure
+(defn another_breakup [A B]
+  (loop [myvec [] a A b B]
+    (if (<= b 1)
+      (conj myvec a)
+      (recur (conj myvec (* b 2)) (- a (* b 2)) (dec b))
+    )
+  )
+)
+
+(another_breakup 25 3) ;;[6, 4, 15]
+
+** For Fun Part 2
+This attempt uses consecutive division.  It can handle a lot fewer B values than the first algorithm can,
+as the division eats up slices of the unequal pie pretty quickly.
+*** Clojure
+(defn half [n]
+  (Math/round (double (/ n 2))))
+
+(defn div_breakup [A B]
+  (loop [myvec [] a A b B mysum 1 originalA A]
+    (if (<= b 1)
+      (conj myvec (+ 1 (- originalA mysum)))
+      (recur (conj myvec (half a)) (half a) (dec b) (+ mysum (half a)) originalA)
+      )
+    )
+  )
+
+(div_breakup 23 3) ;; [12, 6, 5]
+* Part 2
+** Algorithm 1
+*** Explanation of my thought process
+I started by creating a map from the values of the alphabet to their score, initializing them all to 0
+I then mapped all of the words to their score. /See Code Section 2.1.1/
+
+After this, I spent a while in thought, thinking about how I would be able to identify the correct word to start with.
+My goal is to replicate what we did in class, namely, recognize the a word with only one vowel where the value of the vowel
+must be one. What I decided to use was the factors of the score.  If the result of multiplying all of the factors of a 
+score (excluding the score itself) is that score, and there is only one vowel in the word, the vowel must have a value of one.  /See Code Section 2.1.2/
+
+Next we need to figure out what we need to do next.  I'm inclined to ferret out all of the vowels now, as
+this was mentioned as a viable technique in class. I start by finding words that differ by one letter. The clojure code for this
+took a long time and several iterations to get working.  /See Code Section 2.1.3/
+
+Sadly, I spent *far* too much time working on this program in clojure (I blame my lack of experience with the language, and the joy of coding),
+and will have to start giving items in pseudo code from here on out.  I may not finish this algorithm due to my poor time management while playing with this.
+
+From here I need to find a way to derive the values of vowels using words that are similar to words I've already figured out.
+Using (* vowels (+ consonants)) I should be able to ferret out the values of the rest of the vowels using a method similar to
+findStartingWord.
+*** Code
+**** Section 2.1.1
+(def vowelsLeft (atom #{\a \e \i \o \u}))
+(def letterScores (atom {\a 0, \b 0 \e 0 \g 0 \i 0 \k 0 \l 0 \m 0 \n 0 \o 0 \p 0 \r 0 \s 0 \t 0 \u 0 \v 0 \w 0}))
+(def wordScores {
+ "plum"   36   "plume"   48 "melt"   15
+ "rome"   98   "save"    51 "west"   20
+ "lame"   18   "plane"   39 "viper"  150
+ "piper"  110  "out"     81 "greet"  40
+ "melba"  51   "western" 70 "paper"  66})
+**** Section 2.1.2
+(defn countVowels [word]
+  (count (filter #{\a \e \i \o \u} word)))
+
+(defn getFirstVowel [word]
+  (first (filter #{\a \e \i \o \u} word)))
+
+(defn factors [n]
+  (filter #(zero? (rem n %)) (range 1 n)))
+
+(defn findStartingWord [words]
+  (doseq [[k v] words]
+    (if (and (= (reduce * (factors v)) v)
+             (= 1 (countVowels k)))
+      (and (swap! letterScores assoc-in [(getFirstVowel k)] 1)
+           (swap! vowelsLeft disj (getFirstVowel k))))))
+**** Section 2.1.3
+(defn differByOneLetter [word1 word2]
+   (loop [w1 word1 w2 word2]
+      (if (= 0 (count w1))
+         (if (=  0 (count w2))
+            true
+            false)
+         (recur (subs w1 1) (replace-first w2 (first w1) ""))
+      )
+   )
+)
+
+(defn getSimilarWords [words]
+  (for [w1 (keys words) w2 (keys words)]
+    (if (differByOneLetter w1 w2)
+       [w1 w2]
+    )
+  )
+)
+
+** Algorithm 2 - Brute Force
+As described in class, the high level description of this approach consists of two steps.
+1. Writing a "solveIt" function that accepts as parameters the values for each letter, and then tests
+the supplied values with the rules supplied ((= (* vowels (+ consonants)) theScoreFromTheHandout))[fn:1].
+2. Looping through all 20 possible values for each character, returning when the "solveIt" body of the inner-most loop returns true.  
+
+
+[fn:1] Inlining a lisp parenthetical is hard.
+
+** Algorithm 3 - Random
+This approach may never work, or it may beat the astronomical odds, and return the correct answer on the very first try.  The main
+idea isn't much different from the brute force approach, but instead of looping through all possible answers for each character,
+randomly generate an ordered set of 20 integers ranging from 1 to 20, and assign every consonant a value from the set, and do the same for an ordered set
+of 5 integers ranging from 1 to 5, and assign every vowel a value from that set.  By throwing this entire process into a while loop that returns once the
+"solveIt" function form Algorithm 2 returns true, you may someday get an answer.
+* Conclusion
+Part one proved to be pretty enjoyable, despite its high difficulty.  I enjoyed getting to
+to learn Clojure a bit better, and, while frequently frustrating, it was enjoyable to play around with
+math and see my algorithm take shape.  I'm sure this isn't the most efficient, or most general version
+by leagues, but it's what I have, and I'm relatively proud of it. 
+
+Part two was also a lot of fun.  I challenged myself to try and replicate my own process for solving the puzzle in Clojure.  While I did not fully
+succeed at this challenge, it was an enlightening experience translating each step I took on my own into something general the computer could do.

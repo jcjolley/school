@@ -1,0 +1,103 @@
+/***********************************************************************
+ * This program is designed to demonstrate:
+ *      How to create a simple container class: arrays.  This will
+ *      be simliar to the vector class
+ ************************************************************************/
+
+#include "array.h"   // the class definition to be implemented
+#include <iostream>  // for CIN and COUT
+using namespace std;
+
+/****************************************
+ * ARRAY :: GROW
+ * Grow the array to a given size, also
+ * copying over the old buffer as appropriate
+ ***************************************/
+void Array :: grow(int capacity) throw(bool)
+{
+   // bail if the capacity is bogus
+   if (capacity < 0)
+      throw false;
+   // bail if we are big enough
+   if (capacity < sizeArray)
+      return;
+
+   // the new array buffer.  Allocate it
+   double * newData;
+   try
+   {
+      newData = new double[capacity];
+   }
+   catch (bad_alloc)
+   {
+      throw false;
+   }
+
+   // copy over data as needed
+   if (size())
+      for (int i = 0; i < size(); i++)
+         newData[i] = data[i];
+
+   // delete the old buffer as needed
+   if (this->capacity())
+      delete [] data;
+
+   // assign everything over
+   data = newData;
+   this->capacityArray = capacity;
+}
+
+/********************************************
+ * ARRAY && (INTERSECTION)
+ * Return a new array representing the intersection
+ * between this and rhs
+ ********************************************/
+Array Array :: operator && (const Array & rhs) const
+{
+   Array array;                         // the new Array to be returned
+
+   for (int i = 0; i < size(); i++)     // go though all the items
+      if (rhs.isMember(data[i]))        // if it is not present
+         array += data[i];              // add it.
+
+   return array;                        // return the new array by value
+}
+
+/********************************************
+ * ARRAY || (UNION)
+ * Return a new array representing the union
+ * between this and rhs
+ ********************************************/
+Array Array :: operator || (const Array & rhs) const
+{
+   Array array(rhs);
+
+   for (int i = 0; i < size(); i++)
+      if (!array.isMember(data[i]))
+         array += data[i];
+   for (int i = 0; i < rhs.size(); i++)
+      if (!array.isMember(rhs.get(i)))
+         array += rhs.get(i);
+   
+   return array;
+}
+
+
+
+/********************************************
+ * ARRAY <<
+ * Display the contents of the array
+ ********************************************/
+ostream & operator << (ostream & out, const Array & rhs)
+{
+   out << '{';
+   for (int i = 0; i < rhs.size() - 1; i++)
+      out << rhs.get(i) << ", ";
+   if (rhs.size())
+      out << rhs.get(rhs.size() - 1);
+   out << "}";
+       
+   return out;
+}
+
+

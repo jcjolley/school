@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<!DOCTYPE bsa SYSTEM "assign07.dtd">
+<bsa>
+   <council name="The Plucky Pals">
+      <troop number="13" unit="Pals for Life">
+         <scout>
+            <fname>Joshua</fname>
+            <lname>Jolley</lname>
+            <phone>3604594007</phone>
+            <address>
+               <street>4248 79th Ave. SE</street>
+               <city>Olympia</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="March 2001">Tenderfoot</rank>
+            <meritbadge date-earned="January 2013">First Aid</meritbadge>
+            <meritbadge date-earned="February 2013">Sportmanship</meritbadge>
+            <meritbadge date-earned="March 2013">Sword Manufacturing</meritbadge>
+            <meritbadge date-earned="January 2013">Lightsaber Training</meritbadge>
+            <meritbadge date-earned="May 2013">Swimming</meritbadge>
+            <meritbadge date-earned="June 2013">Canooing</meritbadge>
+            <meritbadge date-earned="July 2013">Hiking</meritbadge>
+            <meritbadge date-earned="August 2013">Fishing</meritbadge>
+            <meritbadge date-earned="September 2013">Hunting</meritbadge>
+            <meritbadge date-earned="Octobe 2013">Firestarting</meritbadge>
+            <meritbadge date-earned="November 2013">Loving</meritbadge>
+         </scout>
+
+         <scout>
+            <fname>Abbott</fname>
+            <lname>Smith</lname>
+            <phone>3604594340</phone>
+            <address>
+               <street>100 Main</street>
+               <city>Kandahar</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="February 2013">1st Class</rank>
+         </scout>
+
+         <scout>
+            <fname>Asa</fname>
+            <lname>Johnson</lname>
+            <phone>3604594673</phone>
+            <address>
+               <street>101 Street</street>
+               <city>Herat</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="March 2013">2nd CLass</rank>
+         </scout>
+
+         <scout>
+            <fname>Asher</fname>
+            <lname>Williams</lname>
+            <phone>3604595006</phone>
+            <address>
+               <street>102 Church</street>
+               <city>Mazar-i-Sharif</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="April 2013">Star</rank>
+         </scout>
+
+         <scout>
+            <fname>Auden</fname>
+            <lname>Jones</lname>
+            <phone>3604595339</phone>
+            <address>
+               <street>103 Street</street>
+               <city>Kunduz</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="May 2013">Eagle</rank>
+         </scout>
+      </troop>
+   <troop number="14" unit="Pals for ever">
+         <scout>
+            <fname>Bay</fname>
+            <lname>Brown</lname>
+            <phone>3604595672</phone>
+            <address>
+               <street>104 Main</street>
+               <city>Taloqan</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="June 2013">Tenderfoot</rank>
+            <meritbadge date-earned="December 2013">Jumping</meritbadge>
+            <meritbadge date-earned="January 2013">Sitting</meritbadge>
+            <meritbadge date-earned="February 2013">Video Games</meritbadge>
+            <meritbadge date-earned="March 2013">Snoozing</meritbadge>
+            <meritbadge date-earned="July 2013">Napping</meritbadge>
+            <meritbadge date-earned="May 2013">Sleeping</meritbadge>
+            <meritbadge date-earned="June 2013">Yawining</meritbadge>
+            <meritbadge date-earned="July 2013">Snuggling</meritbadge>
+            <meritbadge date-earned="August 2013">Coughing</meritbadge>
+            <meritbadge date-earned="September 2013">Sneezing</meritbadge>
+            <meritbadge date-earned="Octobe 2013">Burping</meritbadge>
+         </scout>
+
+         <scout>
+            <fname>Callum</fname>
+            <lname>Davis</lname>
+            <phone>3604596005</phone>
+            <address>
+               <street>105 Street</street>
+               <city>Jalalabad</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="August 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Chance</fname>
+            <lname>Miller</lname>
+            <phone>3604596338</phone>
+            <address>
+               <street>106 North</street>
+               <city>Puli</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="September 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Declan</fname>
+            <lname>Wilson</lname>
+            <phone>3604596671</phone>
+            <address>
+               <street>107 High</street>
+               <city>Khumri</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="Octobe 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Elijah</fname>
+            <lname>Moore</lname>
+            <phone>3604597004</phone>
+            <address>
+               <street>108 Street</street>
+               <city>Charikar</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="November 2013">Tenderfoot</rank>
+         </scout>
+      </troop>
+   </council>
+   <council name="The Dastardly Devils">
+      <troop number="13" unit="Devils for Life">
+         <scout>
+            <fname>Ever</fname>
+            <lname>Taylor</lname>
+            <phone>3604597337</phone>
+            <address>
+               <street>109 Main</street>
+               <city>Sheberghan</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="December 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Ezekiel</fname>
+            <lname>Anderson</lname>
+            <phone>3604597670</phone>
+            <address>
+               <street>110 Street</street>
+               <city>Ghazni</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="January 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Ezra</fname>
+            <lname>Thomas</lname>
+            <phone>3604598003</phone>
+            <address>
+               <street>111 South</street>
+               <city>Sar-e</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="February 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Gabriel</fname>
+            <lname>Jackson</lname>
+            <phone>3604598336</phone>
+            <address>
+               <street>112 Elm</street>
+               <city>Pol</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="March 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Gavin</fname>
+            <lname>White</lname>
+            <phone>3604598669</phone>
+            <address>
+               <street>113 Street</street>
+               <city>Khost</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="April 2013">Tenderfoot</rank>
+         </scout>
+      </troop>
+   <troop number="14" unit="Devils for ever">
+         <scout>
+            <fname>Gideon</fname>
+            <lname>Harris</lname>
+            <phone>3604599002</phone>
+            <address>
+               <street>114 Main</street>
+               <city>Chaghcharan</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="May 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Henry</fname>
+            <lname>Martin</lname>
+            <phone>3604599335</phone>
+            <address>
+               <street>115 Street</street>
+               <city>Mihtarlam</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="June 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>James</fname>
+            <lname>Thompson</lname>
+            <phone>3604599668</phone>
+            <address>
+               <street>116 West</street>
+               <city>Farah</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="July 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Jude</fname>
+            <lname>Garcia</lname>
+            <phone>3604600001</phone>
+            <address>
+               <street>117 Washington</street>
+               <city>Pul-i-Alam</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="August 2013">Tenderfoot</rank>
+         </scout>
+
+         <scout>
+            <fname>Kaden</fname>
+            <lname>Martinez</lname>
+            <phone>3604600334</phone>
+            <address>
+               <street>118 Street</street>
+               <city>Samangan</city>
+               <state>WA</state>
+            </address>
+            <rank date-earned="September 2013">Tenderfoot</rank>
+         </scout>
+      </troop>
+   </council>
+</bsa>
+    
+    

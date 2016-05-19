@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Mileage Calculator</title>
+    <link rel="stylesheet" type="text/css" href="a12.css"/>
+    <script src="a12.js" type="text/javascript"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans'
+               rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu'
+               rel='stylesheet' type='text/css'/>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+  </head> 
+  <body>
+    <div id="master">
+      <div id="header">
+      <img src="images/plane.png"/>
+      <h1>Jolley Travel Agency</h1>
+        <div id="nav">
+        </div>
+      </div>
+      <div id="content">
+        <h1>Ready to travel?</h1>
+        <h2>See how far you're going to go</h2> 
+        <label>Starting City: </label><input type="text" id="startCity" name="startCity" placeholder="Seattle"/><br/>
+        <label>Starting State: </label><input type="text" id="startState"name="startState" placeholder="WA"/><br/><br/>
+        <label>Ending City: </label><input type="text" id="endCity"   name="endCity" placeholder="Denver"/><br/>
+        <label>Ending State: </label><input type="text" id="endState"  name="endState" placeholder="CO"/><br/>
+        <input type="button" onclick="ajax();" value="Find Distance"/><br/>
+      </div>
+      <div id="display">
+      </div>
+      <div id="footer">
+      </div>
+    </div>
+  </body>
+</html>

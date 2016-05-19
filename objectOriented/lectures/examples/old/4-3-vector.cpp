@@ -1,0 +1,98 @@
+/***********************************************************************
+ * This demo program is designed to:
+ *      Demonstrate class templates by creating our own Vector class
+ ************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+/***********************************
+ * VECTOR: an array that can grow!
+ ***********************************/
+template <class T>
+class Vector
+{
+public:
+   // default constructor... All is empty
+   Vector() : numAllocated(0), numUsed(0), list(NULL) {        }
+
+   // delete everything please
+   ~Vector();
+
+   // just like with the vector in STL, no error checking is done!
+   T & operator [] (int i) { return list[i];                   }
+
+   // the list is marked as empty
+   void clear()            { numUsed = 0;                      }
+
+   // what is the current size?
+   int size() const        { return numUsed;                   }
+
+   // double the size please
+   void grow();
+
+   // add a new item to our vecotr
+   Vector & operator += (const T & t)
+   {
+      if (numUsed >= numAllocated)
+         grow();
+      list[numUsed++] = t;
+   }
+private:
+   int numAllocated;   // number of items in our allocated list
+   int numUsed;        // number currently used
+   T * list;           // the actual list
+};
+
+/**********************************************************************
+ * MAIN: Driver program to test our vector
+ ***********************************************************************/
+int main()
+{
+   Vector <float> vFloat;
+
+   // fill it up with the += operator. Much nicer than push_back()
+   for (float i = 1.0; i <= 128.0; i *= 2.0)
+      vFloat += i;
+
+   // now display the results with the [] operator
+   for (int i = 0; i < vFloat.size(); i++)
+      cout << vFloat[i] << endl;
+   return 0;
+}
+
+
+/***************************************
+ * VECTOR : GROW
+ * Double the size of the vector
+ **************************************/
+template <class T>
+void Vector <T> :: grow()
+{
+   // if we already have a list, then double it.
+   if (numAllocated)
+   {
+      // first, allocate a new list
+      T *p = new T[numAllocated *= 2];
+
+      // next, copy the contents
+      for (int i = 0 ; i < numUsed; i++)
+         p[i] = list[i];
+
+      // finally, delete the old.
+      delete [] list;
+      list = p;
+   }
+   else
+   {
+      // otherwise, just create a new list of size 2
+      list = new T[numAllocated = 2];
+   }
+}
+   
+template <class T>
+Vector <T> :: ~Vector()
+{
+   if (numAllocated)
+      delete [] list;
+}

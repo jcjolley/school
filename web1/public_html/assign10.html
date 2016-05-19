@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+    <head>
+        <title>Joshua Jolley's Assignment 10</title>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans'
+              rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu'
+              rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="a10.css"/>
+        <script src = "a10.js" type="text/javascript"></script>
+    </head>
+    <body>
+    <div id="master">
+        <div id="header">
+        </div>
+        <div id="calculator">
+            <h1>Mortgage Calculator</h1>
+            <form id="calc" name="calc" onsubmit="return validateAll();">
+                <label>Amount Loaned:</label>
+                <input id="amount" type="text" name="amount"
+                       onchange="validateAmount()"/>
+                <span id="amountError">Invalid Input: Must be a number</span>
+                <br/><br/>
+                <label>Mortgage Term:</label>
+                <input id="term" type="text" name="term" maxlength="2"
+                       onchange="validateTerm();"/>
+                <span id="termError">Invalid Input: Must be a number</span>
+                <br/><br/>
+                <label>Interest Rate:</label>
+                <input id="apr" type="text" name="apr"
+                       onchange="validateAll();"/>
+                <span id="aprError">Invalid Input: Must be a number</span>
+                <br/><br/>
+                <input type="reset" value="Clear Form"/>
+                <input type="button" id="calculate" value="Calculate Payment"
+                 onclick="validateAll();"/>
+            </form>
+            <div id="display">
+            <!-- To be filled by javascript -->
+            </div> 
+        </div>
+    </div>
+        <script>
+            document.getElementById('amount').focus();
+        </script>
+    </body>
+</html>

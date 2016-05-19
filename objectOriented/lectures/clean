@@ -1,0 +1,5 @@
+rm -f *~
+rm -f *#
+rm -f deleteme.txt
+rm -f tmp.cpp
+rm -f a.out

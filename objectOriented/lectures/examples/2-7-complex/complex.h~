@@ -1,0 +1,219 @@
+/***********************************************************************
+ * This is the header file for Complex, a real an imaginary number is
+ * the form of "4 + 3i" where 4 is the real component and 3 is the imaginary
+ ************************************************************************/
+
+#include <iostream>    // for ISTREAM and OSTREAM
+
+/**********************************************************************
+ * COMPLEX
+ ***********************************************************************/
+class Complex
+{
+   public:
+      // constructors
+      Complex()                         : r(0.0), i(0.0) {              }
+      Complex(double r, double i = 0.0) : r(r),   i(i)   {              }
+      Complex(const Complex & c)        : r(c.r), i(c.i) {              }  
+
+      // getters and setters
+      double getReal()      const                        { return r;    } 
+      double getImaginary() const                        { return i;    } 
+      void   setReal(double r)                           { this->r = r; }
+      void   setImaginary(double i)                      { this->i = i; }
+      void   set(double r, double i)
+      {
+         this->r = r;
+         this->i = i;
+      }
+      
+   private:
+      double r;   // real component of the number
+      double i;   // imaginary component of the number
+
+   public:
+      
+     /*******************************************
+      * INSERTION AND EXTRACTION
+      *******************************************/
+      inline friend std::ostream & operator << (std::ostream & out,
+                                                const Complex & rhs)
+      {
+         out << rhs.r;
+         if (rhs.i != 0.0)                       // only display the imaginary
+            out << " + " << rhs.i << "i";        //    component if non-zero
+         return out;                             // return "out"
+      }
+      inline friend std::istream & operator >> (std::istream & in,
+                                                Complex & rhs)
+      {
+         in >> rhs.r >> rhs.i;      // input directly into the member varibles
+         return in;                 // do not forget to return "in"
+      }
+
+     /*******************************************
+      * ARITHMETIC OPERATORS
+      *******************************************/
+      inline friend Complex operator + (const Complex & rhs,
+                                        const Complex & lhs)
+      {  // (a + bi) + (c + di) = (a + c) + (b + d)i
+         return Complex(rhs.r + lhs.r, rhs.i + lhs.i);
+      }
+      inline friend Complex operator + (const Complex & rhs, double lhs)
+      {
+         return Complex(rhs.r + lhs, rhs.i);
+      }
+      inline friend Complex operator + (int rhs, const Complex & lhs)
+      {                        // communitive property of addition
+         return lhs + rhs;     // define a + b in terms of b + a
+      }
+
+      inline friend Complex operator - (const Complex & rhs,
+                                        const Complex & lhs)
+      {  // (a + bi) - (c + di) = (a - c) + (b - d)i
+         return Complex(rhs.r - lhs.r, rhs.i - lhs.i);
+      }
+      inline friend Complex operator - (const Complex & rhs, double lhs)
+      {
+         return Complex(rhs.r - lhs, rhs.i);
+      }
+      inline friend Complex operator - (double rhs, const Complex & lhs)
+      {         
+         return Complex(rhs - lhs.r, -lhs.i);
+      }
+
+      inline friend Complex operator * (const Complex & rhs,
+                                        const Complex & lhs)
+      {  // (a + bi)(c + di) = (ac - bd) + i(ad + bc)
+         return Complex((rhs.r * lhs.r - rhs.i * lhs.i),
+                        (rhs.r * lhs.i + rhs.i * lhs.r));
+      }
+      inline friend Complex operator * (const Complex & rhs, double lhs)
+      {  // (a + bi)c = ac + bci
+         return Complex(rhs.r * lhs, rhs.i * lhs);
+      }
+      inline friend Complex operator * (double rhs, const Complex & lhs)
+      {                      // communitive property of multiplication
+         return lhs * rhs;   // define "a * b" as "b * a"
+      }
+
+      inline friend Complex operator / (const Complex & rhs, double lhs)
+      { // (a + bi)/c = a/c + bi/c
+         return Complex(rhs.r / lhs, rhs.i / lhs);
+      }
+      // the others are too complex ;-)
+
+     /*******************************************
+      * ADD-ONTO OPERATORS
+      *******************************************/
+      inline friend Complex & operator += (Complex & rhs, const Complex & lhs)
+      {  // (a + bi) + (c + di) = (a + c) + (b + d)i
+         rhs.r += lhs.r;
+         rhs.i += lhs.i;
+         return rhs;
+      }
+      inline friend Complex & operator += (Complex & rhs, double lhs)
+      {  // (a + bi) + c = (a + c) + bi
+         rhs.r += lhs;
+         return rhs;
+      }
+      inline friend Complex & operator -= (Complex & rhs, const Complex & lhs)
+      {  // (a + bi) - (c + di) = (a - c) + (b - d)i
+         rhs.r -= lhs.r;
+         rhs.i -= lhs.i;
+         return rhs;
+      }
+      inline friend Complex & operator -= (Complex & rhs, double lhs)
+      {  // (a + bi) - c = (a - c) + bi
+         rhs.r -= lhs;
+         return rhs;
+      }
+      inline friend Complex & operator *= (Complex & rhs, const Complex & lhs)
+      {  // (a + bi)(c + di) = (ac - bd) + i(ad + bc)
+         rhs.r = (rhs.r * lhs.r - rhs.i * lhs.i);
+         lhs.i = (rhs.r * lhs.i + rhs.i * lhs.r);
+         return rhs;
+      }
+      inline friend Complex & operator *= (Complex & rhs, double lhs)
+      {   // (a + bi)c = ac + bci
+         rhs.r *= lhs;
+         rhs.i *= lhs;
+         return rhs;
+      }
+      inline friend Complex & operator /= (Complex & rhs, double lhs)
+      {   // (a + bi)/c = a/c + (b/c)i
+         rhs.r /= lhs;
+         rhs.i /= lhs;
+         return rhs;
+      }
+
+     /*******************************************
+      * INCREMENT AND DECREMENT
+      *******************************************/
+      inline friend Complex & operator ++ (Complex & c)
+      {
+         return c += 1.0;        // prefix ++ is exactly the same as += 1
+      }
+      inline friend Complex & operator -- (Complex & c)
+      {
+         return c -= 1.0;        // prefix -- is exactly the same as -= 1
+      }
+      inline friend Complex operator ++ (Complex & c, int postfix)
+      {
+         Complex old(c);      // the easiest way is to remember the old value
+         c += 1.0;            //    and return it after we have done
+         return old;          //    the increment
+      }
+      inline friend Complex operator -- (Complex & c, int postfix)
+      {
+         c -= 1.0;               // another way is to increment and then
+         return c + 1.0;         //    return an equivalent value
+      }
+
+     /*******************************************
+      * NEGATIVE AND NOT
+      ******************************************/
+      inline friend Complex operator - (const Complex & c)
+      {
+         return c * -1.0;                     // -c is the same as c * -1.0
+      }
+      inline friend bool operator ! (const Complex & c)
+      {
+         return (c.r == 0.0 && c.i == 0.0);
+      }
+
+     /******************************************
+      * COMPARISION
+      ******************************************/
+      inline friend bool operator == (const Complex & lhs, const Complex & rhs)
+      {
+         return (lhs.r == rhs.r && lhs.i == rhs.i);
+      }
+      inline friend bool operator != (const Complex & lhs, const Complex & rhs)
+      {
+         return !(lhs == rhs);
+      }
+      inline friend bool operator > (const Complex & lhs, const Complex & rhs)
+      {  // the distance from the origin
+         return (lhs.r * lhs.r + lhs.i * lhs.i) >
+            (rhs.r * rhs.r + rhs.i * rhs.i);
+      }
+      inline friend bool operator >= (const Complex & lhs, const Complex & rhs)
+      {
+         return (lhs > rhs) || (lhs == rhs);
+      }
+      inline friend bool operator < (const Complex & lhs, const Complex & rhs)
+      {
+         return !(lhs >= rhs);
+      }
+      inline friend bool operator <= (const Complex & lhs, const Complex & rhs)
+      {
+         return !(lhs > rhs);
+      }
+};
+
+   
+
+
+
+

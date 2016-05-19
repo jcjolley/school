@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+  <head>
+    <title>Joshua Jolley's Home Page</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+  </head> 
+  <body>
+    <div id="masterContainer">
+    <header>
+      <div id="header">
+        <h1 id="title"> Jolley's Nook</h1>
+        <div id="nav">
+          <br/><br/><br/><br/><br/>
+          <ul class="links">
+            <li>
+              <a href="index.html">Home</a></li>
+            <li>
+              <a href="assign02.html">CS 213 Assignments</a></li>
+            <li>
+              <a href="aboutme.html">About Me</a></li>
+            <li>
+              <a href="pprojects.html">Personal Projects</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div id="main" class="main">
+      <p>
+        <span style=" font-size:300%;
+                      font-family:AlexBrush-Regular, cursive;">
+                      Hi</span>
+        <span style=" font-size:350%;
+                      font-family:AlexBrush-Regular, cursive;">!</span>
+          &nbsp;&nbsp;Welcome to my alcove in the web.  If you came here searching for a Web Engineer with an eye for design coupled with programming best practices, look no further; 
+          <span style="font-style:Oblique;">you've found what you're looking for.</span><br/>
+          I am Joshua Jolley, a student of computer science at Brigham Young University - Idaho, a lover of fantasy fiction novels, and a happily married mormon man.  Feel free to take a look around the place. All of these pages have hand coded and stylized to help you see what I'm capable of.
+      </p> 
+      <hr/>
+      <h2>My Schedule</h2><br/>
+      <div id="scheduleTable" class="schedule">
+        <table>
+          <tr>
+            <th>Course #</th>
+            <th>Description</th>
+            <th>Section</th>
+            <th>Time</th>
+            <th>Location</th>
+          </tr>
+          <tr>
+            <td>CS 213</td>
+            <td>Web Engineering I</td>
+            <td style=" text-align:center; padding:10px;
+                        background:#bdac5e;
+                        border-right:2px solid #665500;">01</td>
+            <td>TR 9:45 - 11:15 AM</td>
+            <td>Austin 208</td>
+          </tr>
+          <tr>
+            <td class="alt">CS 235</td>
+            <td class="alt">Data Structures</td>
+            <td class="alt"style="text-align:center; padding:10px;
+                       background:#deca6e;
+                       border-right:2px solid #665500;">01</td>
+            <td class="alt">MWF 9:00 - 10:00 AM</td>
+            <td class="alt">Austin 208</td>
+          </tr>
+          <tr>
+            <td>FDREL 301</td>
+            <td>Old Testament</td>
+            <td style="text-align:center; padding:10px;
+                       background:#bdac5e;
+                       border-right:2px solid #665500;">04</td>
+            <td>MW 10:15 - 11:15 AM</td>
+            <td>Taylor 278</td>
+          </tr>
+          <tr>
+            <td class="alt">FDSCI 299</td>
+            <td class="alt">Robotics</td>
+            <td style="text-align:center; padding:10px;
+                       background:#deca6e;
+                       border-right:2px solid #665500;">04</td>
+            <td class="alt">R 11:30 AM - 1:45 PM</td>
+            <td class="alt">Romney 126</td>
+          </tr>
+          <tr>
+            <td>MATH 341</td>
+            <td>Linear Algebra</td>
+            <td style="text-align:center; padding:10px;
+                       background:#bdac5e;
+                       border-right:2px solid #665500;">01</td>
+            <td>MWF 11:30 AM - 12:30 PM</td>
+            <td>Ricks 180</td>
+          </tr>
+        </table>
+      </div>
+    <hr style="border:none; height:15px; width:75%; background-image:url(images/hr.jpg);margin-top:40px; margin-bottom:40px;"/>
+      <div id="form" style="line-height:150%;
+                            width:500;
+                            color:#deca6e;
+                            margin-left:auto;
+                            margin-right:auto;
+                            font-size:120%;
+                            ">
+        <p style="width:500px; text-align:center; margin-left:auto; margin-right:auto;">
+          As I mentioned earlier, I'm a huge fan of fantasy novels.<br/>  
+          I often find that the best novels I read come from recommendations.  
+          Take a minute and tell me about a book I should read!</p>
+     <hr style="border:none;
+                height:15px; width:75%; background-image:url(images/hr.jpg);margin-top:40px; margin-bottom:40px;"/>
+          <h2 style="width:500px; text-align:center; margin-left:auto; margin-right:auto;">Book Suggestions</h2>
+        
+        <form id="bookform" action="book.asp" 
+                style=" width:600px;
+                        padding:20px;
+                        margin:10px;
+                        text-align:left;
+                        position:relative;
+                        left:100px;">
+          <fieldset>
+            <label form="bookform" style="width:150px;
+                          float:left;
+                          padding-right:20px;
+                          font-weight:bold;">Title:</label>
+            <input style="float:left;
+                          padding-right:20px;" type="text" name="title"/><br/>
+            <label form="bookform" style="width:150px;
+                          float:left;
+                          padding-right:20px;
+                          font-weight:bold;">Author's Name:</label>
+            <input style="float:left;
+                          padding-right:20px;" type="text" name="author"/><br/>
+            <label form="bookform" style="width:150px;
+                          float:left;
+                          padding-right:20px;
+                          font-weight:bold;">Description:</label>
+            <textarea name="description" form="bookform" rows="5" cols="32">Please enter a brief description of the book here.  NO SPOILERS!</textarea><br/>
+            <label form="bookform" style="width:150px;
+                          float:left;
+                          padding-right:20px;
+                          font-weight:bold;">Sub Genre(s):</label><br/>
+              <table>
+                <tr>
+                  <td style="width:170px;">
+                    <input style="float:left;" type="checkbox" name="subgenre" value="magic"/>Magic
+                  </td>
+                  <td style="width:170px;">
+                    <input style="float:left;" type="checkbox" name="subgenre" value="epic"/>Epic Fantasy
+                  </td>
+                  <td style="width:170px;">
+                    <input style="float:left;" type="checkbox" name="subgenre" value="romance"/>Romance
+                  </td>
+                </tr>
+                </table>
+                <table>
+                <tr>
+                  <td style="width:170px;">  
+                    <input style="float:left;" type="checkbox" name="subgenre" value="ya"/>Young Adult
+                  </td>
+                  <td style="width:170px;">
+                    <input style="float:left;" type="checkbox" name="subgenre" value="politics"/>Politics
+                  </td>
+                  <td style="width:170px;">              
+              <input style="float:left;" type="checkbox" name="subgenre" value="religion"/>Religion
+                  </td>
+                </tr>
+                </table>
+                <table>
+                <tr>
+                  <td style="width:170px;">              
+              <input style="float:left;" type="checkbox" name="subgenre" value="history"/>History
+                  </td>
+                  <td style="width:170px;">              
+              <input style="float:left;" type="checkbox" name="subgenre" value="mystery"/>Mystery
+                  </td>
+                  <td style="width:170px;">              
+              <input style="float:left;" type="checkbox" name="subgenre" value="modern"/>
+              Modern</td>
+              </tr></table>
+            <label form="bookform" style="width:150px;
+                          float:left;
+                          padding-right:20px;
+                          font-weight:bold;">Quality:</label><br/>
+              <input style="float:left;
+                            padding-left:20px;
+                            margin-bottom:-20px;" type="range" name="quality" min="1" max="10"/><br/><br/>
+            <label form="bookform" style="width:150px;
+                          float:left;
+                          padding-right:20px;
+                          font-weight:bold;">Length:</label><br/>
+             <input style="padding-left:20px;" type="radio" name="length" value="short"/>Short
+             <input style="padding-left:20px;" type="radio" name="length" value="medium"/>Medium
+             <input style="padding-left:20px;" type="radio" name="length" value="long"/>Long
+            <br/><br/><label form="bookform" style="width:180px;
+                          float:left;
+                          font-weight:bold;">Time until hooked:</label>
+              <select name="hooktime">
+                <option value="1stPage">First page</option>
+                <option value="20mins">Twenty minutes</option>
+                <option value="1stHour">First hour</option>
+                <option value="half">A few hours</option>
+                <option value="never">I never got hooked</option>
+              </select><br/>
+            <input style="float:right;
+                          padding:7px;
+                          margin:30px;
+                          margin-right:290px;
+                          text-align:center;" type="reset" value="Reset"/>&nbsp;&nbsp;&nbsp;
+            <input style="float:right;
+                          padding:7px;
+                          margin:30px;
+                          text-align:center;" type="submit" value="Submit"/><br/><br/>
+          </fieldset>
+        </form>
+      </div>
+    <div id="picQuote" style="position:absolute;
+                              right:-440px; 
+                              top:-95px;
+                              float:right;
+                              width:300px;
+                              height:520px;
+                              background:#adad4d;
+                              border-radius: 1em 4em 1em 4em / 2em 1em 2em 1em;
+                              padding: 2em;
+                              margin: 2em;
+                              box-shadow: 5px 5px 5px 5px #665500;">
+       <!-- can be #AABB11 or #a3a349 -->
+       <a href="hidden.html">
+        <img alt="Picture of a path through the forest" src="images/roadgoeson.jpg" style=" position:relative;
+                                width:280px;
+                                border:5px solid #665500;
+                                border-radius: 1em 4em 1em 4em / 2em 1em 2em 1em;"/></a>
+        <div id="quote" style=" position:relative;
+                                top:-20px;
+                                left:-30px;
+                                padding-top:20px;
+                                padding-bottom-20px;
+                                margin:0px;
+                                font-family:AlexBrush-Regular,cursive;
+                                font-size:150%;
+                                width:400px;">
+          <blockquote>
+          <p>
+            The Road goes ever on and on<br/>
+            Down from the door where it began.<br/>
+            Now far ahead the Road has gone,<br/>
+            And I must follow, if I can,<br/>
+            Pursuing it with eager feet,<br/>
+            Until it joins some larger way,<br/>
+            Where many paths and errands meet.<br/>
+          </p>
+          </blockquote>
+        </div>
+      </div>
+      <footer>
+        <div id="bottom" style="position:fixed;
+                                width:1280px;
+                                height:50px;
+                                bottom:-1px;
+                                text-align:center;
+                                background:#999944;
+                                border-top-left-radius: 80px 50px;
+                                border-top-right-radius: 80px 50px;
+                                box-shadow: 0px -5px 5px 5px #665500
+                                "><a href="#header"
+                                     style="text-align:center;padding-right:20px;">Top</a>
+                                     <a href="#form"
+                                     style="text-align:center;">Book Suggestion</a><br/>
+          <div id="authorInfo" style="width:1280px;
+                                      text-align:center;
+                                      margin-left:auto;
+                                      margin-right:auto;
+                                      box-shadow: 0px 0px 10px #665500;
+                                      border-top-left-radius: 80px 50px;
+                                      border-top-right-radius: 80px 50px;
+                                      font-family:monospace;">
+            Author: Joshua Jolley | Major: Computer Science | Hometown: Olympia, WA  
+             
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  </body>
+</html>

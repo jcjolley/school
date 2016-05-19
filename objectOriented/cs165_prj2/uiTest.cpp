@@ -1,0 +1,95 @@
+/***********************************************************************
+* Program:
+*    UITEST.CPP, Skeet
+*    Brother Helfrich, CS165
+* Author:
+*    Sam Barney and Joshua Jolley
+* Summary:
+*    This program emulates the game of Skeet, complete with menus,
+*    original sound, levels, and powerups.  
+*    Estimated:  15.0 hrs
+*    Actual:     30.0 hrs
+*    Homing was difficult to implement well, and learning how to uses
+*    classess and pass the right information between classes wwas,
+*    well, a learning experience.
+**********************************************************************/
+///****************************************
+// * UI TEST
+// * Just a simple program to test the user
+// * interface consisting of uiDraw and uiInteract
+// ***************************************/
+//
+//
+//#include "point.h"
+//#include "uiInteract.h"
+//#include "uiDraw.h"
+//using namespace std;
+//
+///************************************
+// * Test structure to capture the ball
+// * that I will move around the screen
+// ***********************************/
+//class Ball
+//{
+//public:
+//   Ball() : sides(3), rotation(0), pt() { };
+//   Point pt;      // this is just for testing purposes.  Don't
+//   int sides;     // make member variables public!  Please!
+//   int rotation;
+//};
+//
+///*************************************
+// * All the interesting work happens here, when
+// * I get called back from OpenGL to draw a frame.
+// * When I am finished drawing, then the graphics
+// * engine will wait until the proper amount of
+// * time has passed and put the drawing on the screen.
+// **************************************/
+//void callBack(const Interface *pUI, void *p)
+//{
+//   Ball *pBall = (Ball *)p;
+//   
+//   if (pUI->isRight())
+//      pBall->pt.addX(1);
+//   if (pUI->isLeft())
+//      pBall->pt.addX(-1);
+//   if (pUI->isUp())
+//      pBall->pt.addY(1);
+//   if (pUI->isDown())
+//      pBall->pt.addY(-1);
+//   
+//   // use the space bar to change the number os sides.
+//   if (pUI->isSpace())
+//      pBall->sides++;
+//   if (pBall->sides == 12)
+//      pBall->sides = 3;
+//
+//   // rotate constantly
+//   pBall->rotation++;
+//   
+//   // draw
+//   drawCircle(pBall->pt, /*position*/
+//              20, /* radius */
+//              pBall->sides /*segments*/,
+//              pBall->rotation /*rotation*/);
+//}
+//
+//// set the bounds of the drawing rectangle
+//float Point::xMin = -200.0;
+//float Point::xMax =  200.0;
+//float Point::yMin = -200.0;
+//float Point::yMax =  200.0;
+//
+///*********************************
+// * Main is pretty sparse.  Just initialize
+// * my ball type and call the display engine.
+// * That is all!
+// *********************************/
+//int maini(int argc, char ** argv)
+//{
+//   Interface ui(argc, argv, "Test");
+//   Ball ball;
+//   ui.run(callBack, &ball);
+//
+//   return 0;
+//}

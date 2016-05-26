@@ -132,80 +132,29 @@ int main(int argc, char** argv)
 
 *** Data
 *Timing Table*          
-Bubble Sort | OPS:67 TIME:0.00user RUNS:10000 |  OPS:8767 TIME:0.04user RUNS:1000 |  OPS:954534 TIME:0.32user RUNS:100 |  OPS:98165182 TIME:3.95user RUNS:10 |  OPS:9885001149 TIME:43.89user RUNS:1 |                                                                                                                                                                                         
+| n       |  1  | 10 | 100 | 1,000 | 10,000 | 100,000 | 1,000,000 |
+| time(s) |     |    |     |       |        |         |           |
 
-Best case: When the list is presorted. n
-Average case: Just under n^2
-Worst case: When the list is reverse sorted.  n^2
+Best case:
+Average case:
+Wors
 ** Algorithm 2 - n^2
 *** Algorithm
-#+BEGIN_SRC c++ :tangle
-#include <iostream>
-#include <cstdlib>
-#include <time.h>
-
-using namespace std;
-int main(int argc, char** argv)
-{
-   if (argc != 3)
-   {
-      cout << "USAGE: bubble [n] [numRuns]" << endl;
-      exit(1);
-   }
-
-   srand(time(NULL));
-   long long count = 0;
-   int n = atoi(argv[1]);
-	const int RUNS = atoi(argv[2]);
-
-   int ** arr = new int*[RUNS];
-
-   //create RUNS random arrays of length n
-   for (int i = 0; i < RUNS; i++)
-   {
-      arr[i] = new int[n];
-      for (int j = 0; j < n; j++)
-      {
-         arr[i][j] = rand() % 100;
-      }
-   }
-
-   //start 100 selection sorts
-   for (int run = 0; run < RUNS; run++)
-   {
-      int min = 0;
-      for (int i = 0; i < n; i++) {
-         for (int j = i, min = i; j < n; j++) {
-            count++; //the comparison in this if is the critical operation
-            if (arr[run][j] < arr[run][min]) {
-               min = j;
-            }
-         }
-      int temp = arr[run][i];
-      arr[run][i] = arr[run][min];
-      arr[run][min] = temp;
-  }
-}
-     
-   //clean up the mess we made of the heap
-   for (int i = 0; i < RUNS; i++)
-   {
-      delete [] arr[i];
-   }
-   delete [] arr;
-
-   //print out the average number of critical operations.
-   cout << count / RUNS << endl;
-}
-#+END_SRC
 *** Data
 *Timing Table*          
-Select Sort: | OPS:55 TIME:0.00user RUNS:10000 |  OPS:5050 TIME:0.01user RUNS:1000 |  OPS:500500 TIME:0.10user RUNS:100 |  OPS:50005000 TIME:1.10user RUNS:10 |  OPS:5000050000 TIME:11.09user RUNS:1 | 
+| n       |  1  | 10 | 100 | 1,000 | 10,000 | 100,000 | 1,000,000 |
+| time(s) |     |    |     |       |        |         |           |
 
-The best case, worst caste, and average case of this sort are all the same. For small runs, its n^1.75ish, but as n grows, it gets closer and closer to n^2
+Best case:
+Average case:
+Worst case:
 
-The selection sort is faster on average than the bubble sort.  You would only ever
-want to use the bubble sort on lists that you think may already be sorted.
+
+** Comparisons 
+*Comparison Table*          
+| n       | 1 | 10 | 100 | 1,000 | 10,000 | 100,000 | 1,000,000 |
+| a1 - a2 |   |    |     |       |        |         |           |
+
 
 * Part 2
 ** Algorithm 3 - n log n
@@ -234,7 +183,3 @@ Worst case:
 
 ** Comparisons
 * Conclusion
-I didn't realize before doing this assignment that the selection sort had a fixed number of runs.
-This is kind of neat.  I had a lot of fun getting my bash script and c++ programs setup just so in order to make
-automating the runs easier.  The framework I setup should prove useful for part two of this exploration.
-

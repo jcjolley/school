@@ -1,3 +1,3 @@
 all: bubble.cpp selection.cpp
-	g++ -o bubble bubble.cpp
-	g++ -o selection selection.cpp
+	g++ -03 -o bubble bubble.cpp
+	g++ -03 -o selection selection.cpp

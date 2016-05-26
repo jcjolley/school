@@ -76,7 +76,7 @@ string getR(vector<string> & tokens)
   if (tokens.size() > 1) {
     for (int i = history.size(); i > 0; i--)
       {
-	if (tokens[0][1] == history[i][0])
+	if (tokens[0][0] == history[i][0])
 	  {
 	    history.push_back(history[i]);
 	    return history[i];
@@ -84,11 +84,8 @@ string getR(vector<string> & tokens)
       }
   }
   else {
-    if(!history.empty())
-    {
-      history.push_back(history.back());
-      return history.back();
-    }
+    history.push_back(history.back());
+    return history.back();
   }
 
   return "";

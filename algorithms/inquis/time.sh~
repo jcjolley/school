@@ -25,7 +25,8 @@ do
     SELECT_TABLE="$SELECT_TABLE OPS:$CRIT_OPS TIME:$TIME RUNS:$RUNS | "
 
     #This prevents us from running less than once for the big ones.
-    if [ $RUNS -gt 1 ]
+    echo "Runs: $RUNS"
+    if [$RUNS -gt 1]
     then
 	RUNS=$(bc <<< "$RUNS/10")
     fi

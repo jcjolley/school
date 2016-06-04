@@ -1,0 +1,114 @@
+#+AUTHOR: Joshua Jolley
+#+Title: Chapter 2 Exercises
+
+* Exercise 1 on page 50
+** a
+*** n
+*** addition of two numbers
+*** no
+** b
+*** 1 number (n, the number whose factorial you are computing)
+*** multiplication of two numbers
+*** yes
+** c
+*** n
+*** comparison of two numbers
+*** no
+** d
+*** 
+*** the modulo of two numbers
+*** yes
+** e
+*** 1 number (n, the number that you want to find primes <= to)
+*** 
+*** no
+
+* Exercise 8 on page 51
+** a - log2(n)
+log2(4n/n)
+= log2(4n) - log2(n)
+= log2(4) + log2(n) - log2(n)
+= log2(4)
+= 2
+
+** sqrt(n)
+sqrt(4n) / sqrt(n)
+= sqrt(4)
+= 2
+
+** n
+4n / n
+= 4
+
+** n^2
+(4n)^2 / n^2
+= 4^2
+=16
+
+** n^3
+(4n)^3 / n ^ 2
+= 4^3
+= 64
+
+** 2^n
+2^(4n) / 2^n
+= 2^3n
+
+* Exercise 3 on page 59
+** a - (n^2 + 1)^10
+= n^20+10 n^18+45 n^16+120 n^14+210 n^12+252 n^10+210 n^8+120 n^6+45 n^4+10 n^2+1
+= Theta(n^20)
+** b - sqrt(10n2 + 7n + 3)
+= Theta(n)
+** d - 2^(n+1)  + 3^(n - 1)
+= 2^n
+
+* Exercise 1 on page 67
+** a - SUM from 1 to 500 (2i - 1) ... I don't know how to reduce this ...
+** b - SUM from 1 to 10 (2^n) ... I don;t know how to reduce this ... 
+** c - SUM from 3 to n + 1 (1)
+  = SUM from 1 to n - 1 (1)
+  = n - 1
+** d - SUM from 3 to n + 1 (i)
+= SUM from 0 to n + 1 (i) - SUM from 0 to 2 (i)
+** e - 
+
+* Exercise 2 on page 67
+** a SUM from 0 to n - 1 ((i^2 + 1)^2
+= SUM from 0 to n - 1 (i^4 + 2i + 1)
+= SUM from 0 to n - 1 (i^4) + SUM from 0 to n-1 (2i^2) + SUM from 0 to n-1 (1)
+= Theta(n^5)
+
+** b 
+** c
+* Exercise 2 on page 76
+F(n)
+
+* Exercise 3 on page 76
+** a - S(n)
+** b - I think it's a lot worse
+* Exercise 7 on page 78
+** a
+** b
+
+* Exercise 13 on page 78
+** a
+** b
+** c
+* Exercise 6 on page 83 
+(def fib-seq
+   (lazy-cat [0 1] (map + (rest fib-seq) fib-seq)))
+
+** a
+(loop [i 1 n (pow 2 31)]
+   (if (> (take i fib-seq) n)
+      (- 1 i)
+      (recur (inc i) n)))
+      
+** b
+(loop [i 1 n (pow 2 63)]
+   (if (> (take i fib-seq) n)
+      (- 1 i)
+      (recur (inc i) n)))
+* Exercise 9 on page 84
+** Completed in class

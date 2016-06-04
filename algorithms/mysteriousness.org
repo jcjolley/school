@@ -1,33 +1,39 @@
-* Introduction
-Designing algorithms is more difficult than I ever expected it to be, and let me assure you
-that I came into this class expecting a heaping amount of difficulty.  My struggle is getting out
-of the 'code and fix' methodology.  Creating and executing a plan, rather than iteratively working
-with the feedback of code, doesn't come naturally to me.  While working on part two, I discovered
-another problem. Coding is too much fun, especially in a /fun/ctional language! I spent many hours
-perusing Clojure's documentation and applying various built-in functions and approaches to 
-solving part two, and it ate up the time I should have been spending on this write up.  Foolish me.
-
-With these difficulties in mind, I tackled the task of creating algorithms to solve part one of this
-mysterious exploration.  What task, you ask?  The task of breaking a positive integer 
-into n unequal positive integers. 
+#+AUTHOR: Joshua Jolley
+#+TITLE: Mysteriousness
 
 * Part 1: Breaking Up Is Hard To Do
+** Introduction
+Designing algorithms is more difficult than I ever expected it to be, and let me
+assure you that I came into this class expecting a heaping amount of difficulty.
+My struggle is getting out of the 'code and fix' methodology.  Creating and
+executing a plan, rather than iteratively working with the feedback of code,
+doesn't come naturally to me. 
 
-** My first attempt
-Please excuse my ugly lisp, this is my first real foray into the land of functional programming,
-and my second attempt at picking up a lisp language.  Back in the days of CS237 I first tried to learn elisp,
-but I didn't give it enough time, and wasn't sufficiently motivated to make the adjustment to the new
-paradigm.  
+With these difficulties in mind, I tackled the task of creating algorithms to
+solve part one of this mysterious exploration.  What task, you ask?  The task of
+breaking a positive integer into n unequal positive integers.
 
-This first attempt works by subtracting b from a, until b becomes one. At this point, we throw whats left of
-A into the vector, which guarantees that the vector still adds up to A (at least in theory)
-This implementation suffers from many problems.  The first of which is that it needlessly limits its domain
-by subtracting b, with b starting at B, rather than starting b at 1, and working our way up as high as we need to go.
+** Algorithm 1
+*** My first attempt
+Please excuse my ugly lisp, this is my first real foray into the land of
+functional programming, and my second attempt at picking up a lisp language.
+Back in the days of CS237 I first tried to learn lisp, but I didn't give it
+enough time, and wasn't sufficiently motivated to make the adjustment to the new
+paradigm.
 
-Secondly, this implmentation doesn't restrict bad output.  You can get vectors that have duplicate items,
-violating the premise of the algorithm.  Clearly, we needed to go somewhere from here.
+This first attempt works by subtracting b from a, until b becomes one. At this
+point, we throw whats left of A into the vector, which guarantees that the
+vector still adds up to A (at least in theory) This implementation suffers from
+many problems.  The first of which is that it needlessly limits its domain by
+subtracting b, with b starting at B, rather than starting b at 1, and working
+our way up as high as we need to go.
+
+Secondly, this implementation doesn't restrict bad output.  You can get vectors
+that have duplicate items, violating the premise of the algorithm.  Clearly, we
+needed to go somewhere from here.
 
 *** Clojure
+#+BEGIN_SRC Clojure
 (defn simple_breakup [A B]
   (loop [myvec [] a A b B]
     (if (<= b 1)
@@ -38,16 +44,19 @@ violating the premise of the algorithm.  Clearly, we needed to go somewhere from
 )
 
 (simple_breakup 25 3) ;; [3, 2, 20]
+#+END_SRC
 
-
-** My second attempt
-This algorithm was a step in right direction, though it didn't quite arrive.
-By switching my container to a set, I removed the possibility of duplicate items.  I also switched
-the value of b around so that it starts a 1 and works its way up.  This ever so slightly stretches the 
-domain of this function.  It can still provide bad output though, as we can get a collection returned
-that does not divide A into B pieces, but rather B - 1 or worse.
+*** My second attempt
+This algorithm was a step in right direction, though it didn't quite arrive.  By
+switching my container to a set, I removed the possibility of duplicate items.
+I also switched the value of b around so that it starts a 1 and works its way
+up.  This ever so slightly stretches the domain of this function.  It can still
+provide bad output though, as we can get a collection returned that does not
+divide A into B pieces, but rather B - 1 or worse.
 
 *** Clojure
+
+#+BEGIN_SRC Clojure
 (defn simple_breakup [A B]
    (loop [myset #{} a A b 1]
       (if (>= b B)
@@ -59,15 +68,17 @@ that does not divide A into B pieces, but rather B - 1 or worse.
 
 (simple_breakup 6 3) 
 
+#+END_SRC
 
-** My Third attempt
-My third attempt is another step in the right direction.  The error handling in this algorithm
-prevents negative numbers from fouling up the results, and also ensures that we are indeed getting
-B unequal pieces out of the algorithm. 
+*** My Third attempt
+My third attempt is another step in the right direction.  The error handling in
+this algorithm prevents negative numbers from fouling up the results, and also
+ensures that we are indeed getting B unequal pieces out of the algorithm.
 
-This algorithm's lowest Big O value is O(n).  B determines the number of times the loop recurs, and every
-operation in the loop occurs in constant time 0(1)
+This algorithm's lowest Big O value is O(n).  B determines the number of times
+the loop recurs, and every operation in the loop occurs in constant time 0(1)
 *** Clojure
+#+BEGIN_SRC Clojure
 (defn simple_breakup [A B]
    (let [results 
       (loop [myset #{} a A b 1]
@@ -86,11 +97,13 @@ operation in the loop occurs in constant time 0(1)
 
 (simple_breakup 3 2)
 
+#+END_SRC
 
-** For Fun
-I tried two other approaches to this problem,  this one is just a variation on the first approach,
-but it doubles B each time.
+** Algorithm 2 
+I tried two other approaches to this problem, this one is just a variation on
+the first approach, but it doubles B each time.
 *** Clojure
+#+BEGIN_SRC Clojure
 (defn another_breakup [A B]
   (loop [myvec [] a A b B]
     (if (<= b 1)
@@ -101,11 +114,14 @@ but it doubles B each time.
 )
 
 (another_breakup 25 3) ;;[6, 4, 15]
+#+END_SRC
 
-** For Fun Part 2
-This attempt uses consecutive division.  It can handle a lot fewer B values than the first algorithm can,
-as the division eats up slices of the unequal pie pretty quickly.
+** Algorithm 3 
+This attempt uses consecutive division.  It can handle a lot fewer B values than
+the first algorithm can, as the division eats up slices of the unequal pie
+pretty quickly.
 *** Clojure
+#+BEGIN_SRC Clojure
 (defn half [n]
   (Math/round (double (/ n 2))))
 
@@ -119,29 +135,77 @@ as the division eats up slices of the unequal pie pretty quickly.
   )
 
 (div_breakup 23 3) ;; [12, 6, 5]
+
+#+END_SRC
+
+** Compare and Contrast
+*** Compare
+**** Order of Growth
+     The worst case of each of these algorithms is O(n) where n = B;
+**** Code complexity
+     All three of these algorithms are relatively easy to comprehend.
+     They each take advantage of a recursive loop that performs a simple
+     operation on A in order to break A up into B unequal pieces.
+**** Usefulness
+     All 3 algorithms are /roughly/ in the same ball park of usefulness, but
+     there's more to say about this in the contrasting section than here.
+*** Contrast
+**** Order of Growth
+     Assuming that division takes longer, and that the error catching code from
+     the first algorithm was implemented in the second two, the last function is
+     going to be slower than the other two algorithms (but still in the same
+     category)
+**** Code complexity
+     Since these are all relatively simple algorithms, the contrasts here are
+     small.  I spent the most time designing the first algorithm, but a lot of
+     the time was devoted to understanding the problem and exploring the problem
+     space. I don't think that additional time is indicative of additional
+     complexity.
+**** Usefulness
+     While these are all relatively useful algorithms, the first algorithm is
+     likely to be the most useful.  Its error checking, and the way it
+     partitions the space allows for the largest range of B values of all of the
+     functions.
+** Conclusion
+Part one proved to be pretty enjoyable, despite its high difficulty.  I enjoyed
+getting to to learn Clojure a bit better, and, while frequently frustrating, it
+was enjoyable to play around with math and see my algorithm take shape.  I'm
+sure this isn't the most efficient, or most general version by leagues, but it's
+what I have, and I'm relatively proud of it.
+
 * Part 2
+** Introduction
+While working on part two, I discovered another problem. Coding is too much fun,
+especially in a /fun/ctional language! I spent many hours perusing Clojure's
+documentation and applying various built-in functions and approaches to solving
+part two, and it ate up the time I should have been spending on this write up.
+
 ** Algorithm 1
 *** Explanation of my thought process
-I started by creating a map from the values of the alphabet to their score, initializing them all to 0
-I then mapped all of the words to their score. /See Code Section 2.1.1/
+I started by creating a map from the values of the alphabet to their score,
+initializing them all to 0 I then mapped all of the words to their score. /See
+Code Section 2.1.1/
 
-After this, I spent a while in thought, thinking about how I would be able to identify the correct word to start with.
-My goal is to replicate what we did in class, namely, recognize the a word with only one vowel where the value of the vowel
-must be one. What I decided to use was the factors of the score.  If the result of multiplying all of the factors of a 
-score (excluding the score itself) is that score, and there is only one vowel in the word, the vowel must have a value of one.  /See Code Section 2.1.2/
+After this, I spent a while in thought, thinking about how I would be able to
+identify the correct word to start with.  My goal is to replicate what we did in
+class, namely, recognize the a word with only one vowel where the value of the
+vowel must be one. What I decided to use was the factors of the score.  If the
+result of multiplying all of the factors of a score (excluding the score itself)
+is that score, and there is only one vowel in the word, the vowel must have a
+value of one.  /See Code Section 2.1.2/
 
-Next we need to figure out what we need to do next.  I'm inclined to ferret out all of the vowels now, as
-this was mentioned as a viable technique in class. I start by finding words that differ by one letter. The clojure code for this
-took a long time and several iterations to get working.  /See Code Section 2.1.3/
+Next we need to figure out what we need to do next.  I'm inclined to ferret out
+all of the vowels now, as this was mentioned as a viable technique in class. I
+start by finding words that differ by one letter. The Clojure code for this took
+a long time and several iterations to get working.  /See Code Section 2.1.3/
 
-Sadly, I spent *far* too much time working on this program in clojure (I blame my lack of experience with the language, and the joy of coding),
-and will have to start giving items in pseudo code from here on out.  I may not finish this algorithm due to my poor time management while playing with this.
-
-From here I need to find a way to derive the values of vowels using words that are similar to words I've already figured out.
-Using (* vowels (+ consonants)) I should be able to ferret out the values of the rest of the vowels using a method similar to
-findStartingWord.
+From here I need to find a way to derive the values of vowels using words that
+are similar to words I've already figured out.  Using (* vowels (+ consonants))
+I should be able to ferret out the values of the rest of the vowels using a
+method similar to findStartingWord.
 *** Code
 **** Section 2.1.1
+#+BEGIN_SRC Clojure
 (def vowelsLeft (atom #{\a \e \i \o \u}))
 (def letterScores (atom {\a 0, \b 0 \e 0 \g 0 \i 0 \k 0 \l 0 \m 0 \n 0 \o 0 \p 0 \r 0 \s 0 \t 0 \u 0 \v 0 \w 0}))
 (def wordScores {
@@ -150,7 +214,9 @@ findStartingWord.
  "lame"   18   "plane"   39 "viper"  150
  "piper"  110  "out"     81 "greet"  40
  "melba"  51   "western" 70 "paper"  66})
+#+END_SRC
 **** Section 2.1.2
+#+BEGIN_SRC Clojure
 (defn countVowels [word]
   (count (filter #{\a \e \i \o \u} word)))
 
@@ -166,7 +232,9 @@ findStartingWord.
              (= 1 (countVowels k)))
       (and (swap! letterScores assoc-in [(getFirstVowel k)] 1)
            (swap! vowelsLeft disj (getFirstVowel k))))))
+#+END_SRC
 **** Section 2.1.3
+#+BEGIN_SRC Clojure
 (defn differByOneLetter [word1 word2]
    (loop [w1 word1 w2 word2]
       (if (= 0 (count w1))
@@ -185,27 +253,158 @@ findStartingWord.
     )
   )
 )
+#+END_SRC
 
 ** Algorithm 2 - Brute Force
-As described in class, the high level description of this approach consists of two steps.
+As described in class, the high level description of this approach consists of
+two steps.
+
+#+BEGIN_VERSE
 1. Writing a "solveIt" function that accepts as parameters the values for each letter, and then tests
-the supplied values with the rules supplied ((= (* vowels (+ consonants)) theScoreFromTheHandout))[fn:1].
-2. Looping through all 20 possible values for each character, returning when the "solveIt" body of the inner-most loop returns true.  
+the supplied values with the rules supplied ((= (* vowels (+ consonants))
+theScoreFromTheHandout))[fn:1].
+2. Looping through all 20 possible values for each character, returning when the
+   "solveIt" body of the inner-most loop returns true.
+#+END_VERSE
 
-
-[fn:1] Inlining a lisp parenthetical is hard.
+[fn:1] In-lining a lisp parenthetical is hard.
 
 ** Algorithm 3 - Random
-This approach may never work, or it may beat the astronomical odds, and return the correct answer on the very first try.  The main
-idea isn't much different from the brute force approach, but instead of looping through all possible answers for each character,
-randomly generate an ordered set of 20 integers ranging from 1 to 20, and assign every consonant a value from the set, and do the same for an ordered set
-of 5 integers ranging from 1 to 5, and assign every vowel a value from that set.  By throwing this entire process into a while loop that returns once the
-"solveIt" function form Algorithm 2 returns true, you may someday get an answer.
-* Conclusion
-Part one proved to be pretty enjoyable, despite its high difficulty.  I enjoyed getting to
-to learn Clojure a bit better, and, while frequently frustrating, it was enjoyable to play around with
-math and see my algorithm take shape.  I'm sure this isn't the most efficient, or most general version
-by leagues, but it's what I have, and I'm relatively proud of it. 
 
-Part two was also a lot of fun.  I challenged myself to try and replicate my own process for solving the puzzle in Clojure.  While I did not fully
-succeed at this challenge, it was an enlightening experience translating each step I took on my own into something general the computer could do.
+#+BEGIN_VERSE
+1. Write a "solveIt" function.
+2. Randomly generate an ordered set of 20 integers ranging from 1 to 20.
+3. Randomly assign a value from this set to each consonant in the problem with no duplicates assigned
+4. Randomly generate an ordered set of 5 integers.
+5. Randomly assign a value from this second set to each vowel in the problem.
+6. Test the letters using the solveIt function. If it passes, quit. Else, go to step 2.  
+#+END_VERSE
+
+This approach may never work, or it may beat the astronomical odds, and return
+the correct answer on the very first try.  The main idea isn't much different
+from the brute force approach, but instead of looping through all possible
+answers for each character, randomly generate an ordered set of 20 integers
+ranging from 1 to 20, and assign every consonant a value from the set, and do
+the same for an ordered set of 5 integers ranging from 1 to 5, and assign every
+vowel a value from that set.  By throwing this entire process into a while loop
+that returns once the "solveIt" function form Algorithm 2 returns true, you may
+someday get an answer.
+
+
+** Compare and Contrast
+*** Compare
+**** Order of Growth
+The order of growth of the first algorithm is hard to define.  It should be much
+much less than the second and third algorithms. More on this in the contrasting section.
+**** Code complexity
+The code complexity of the second and third algorithms is much smaller than the
+code complexity of the first algorithm. The second and third algorithms share
+roughly equivalent code complexities.
+**** Usefulness
+The second and third algorithms share /roughly/ similar levels of usefulness,
+which is on the level of "only barely" useful.  More on this in the contrasting section.
+*** Contrast
+**** Order of Growth
+The second algorithm has an n^17 order of growth because of its almost
+frightening level of for loops. The third algorithm has an indeterminate order
+of growth.  It could get it right on the very first time, or we may need to
+approach an infinite number of runs before it gets the order right.  
+**** Code complexity
+The difference in code complexity between the first and second/third algorithms
+is vast.  The level of thought and detail that went into the first algorithm
+vastly outweighs the second and third algorithms. 
+**** Usefulness
+Despite being far more complex, the first algorithm is the only algorithm of any
+real use.  The brute force and random methods take far to long to be useful.
+
+** Conclusion
+Part two was also a lot of fun.  I challenged myself to try and replicate my own
+process for solving the puzzle in Clojure.  While I did not fully succeed at
+this challenge, it was an enlightening experience translating each step I took
+on my own into something general the computer could do.
+
+* Part 3
+** Introduction
+   We found the answer in part 2, now its time to find the question! This part
+   of the exploration, should the student choose to engage, takes you on a
+   journey through the orders of ignorance.  The numbers lead the student to
+   believe this is a problem of the traditional sort, but this mis-calibration
+   leads to naught but a dead end.  It turns out that to discover this question,
+   one actually needs more questions.
+** Algorithm 1 - Manners and Patience
+#+BEGIN_VERSE
+   - Wait until I have graduated.
+   - Promise Bro. Neff that I will not reveal the question to anyone else with
+     this assignment.
+   - Politely ask what the question is.
+   - Await the answer to the question.
+#+END_VERSE
+
+** Algorithm 2 - Brute Force
+   This algorithm requires a programmatic way to check if we have found the
+   correct question.  It assumes that Br. Neff has provided such a function.
+
+#+BEGIN_VERSE 
+   Attempt every combination of every word in the common word list provided by
+   Br. Neff, stopping once the provided function returns true and printing the
+   question.
+#+END_VERSE
+
+** Algorithm 3 - Random
+#+BEGIN_VERSE
+   - Create an array of 20 strings
+   - For each index i of the array
+     - Randomly select a word from the word list and assign it to the ith
+       position in the array.
+#+END_VERSE     
+
+** Compare and Contrast
+*** Compare
+**** Order of Growth
+     Surprisingly, the first algorithm has a shorter order of growth than the
+     second algorithm, considering that I plan to graduate at the end of this
+     semester. The second and third algorithms have roughly the same orders of
+     growth.
+**** Code complexity
+     The first and third algorithms have similar complexity, a.k.a not much.
+**** Usefulness
+     The second and third algorithms have about the same level of usefulness.
+     See above for how much.
+*** Contrast
+**** Order of Growth
+     Does sleep(4,320,000) count as one instruction for order of growth?
+     (That's roughly how many seconds I have until I plan to graduate.) If it
+     only counts as one, and awaiting the answer only counts as one, then this
+     algorithm runs in constant time.  If n is in seconds, then the inputs to
+     this function include how long the student has until graduation, how
+     trustworthy the student is, how inclined Br. Neff is to reveal the
+     question, and how patient the student is in awaiting the answer.  While
+     this could greatly increase the complexity, this algorithm is still very
+     likely to have a lower order of growth than the second and third algorithms.
+**** Code complexity
+     The complexity of the first and third algorithms is much less than the
+     complexity of the second algorithm, though the second algorithm isn't that
+     complex, it just runs for a long time.
+**** Usefulness
+     I think the only really useful algorithm here is the first one.  I
+     actually hope to implement this algorithm in a couple months.
+ 
+** Conclusion
+   While the assignment of this section of the exploration filled me with much
+   trepidation, the completing of this portion was actually the easiest of the
+   three parts.  This was in very large part due to my persistence in asking
+   questions of Brother Neff in an attempt to better understand the problem.  I
+   think understanding this problem, and the practical application of the orders
+   of ignorance, is the heart of this exploration. Convincing yourself that
+   there is always more to learn, and cultivating the humble mind of a curious
+   child are difficult propositions, particularly for software engineers like
+   myself who love dealing with concrete answers. Being able to get past that
+   difficulty and ask about what you don't understand and verify what you think
+   you understand seems to be the heart of progressing through the orders or
+   ignorance on a given topic. 
+
+* Acknowledgments.
+I used this opportunity to correct the lack of language in SRC blocks
+and wrapped my pseudo code in VERSE blocks
+I have checked the code for spelling issues and grammatical issues.
+I have compared and contrasted each question.

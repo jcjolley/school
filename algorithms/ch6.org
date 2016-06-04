@@ -1,0 +1,181 @@
+#+AUTHOR: Joshua Jolley
+#+TITLE: Chapter 6 Exercises
+
+* Exercise 1 on page 216
+
+We start by placing the coefficients of the equations into matrix
+form, and augmenting the matrix with the b values.
+
+Starting Augmented Matrix
+1  1  1  2
+2  1  1  3
+1 -1  3  8
+
+We can then use a series of elementary operations to transform the
+matrix without changing the relationship between the equations nor the
+values of the variables. 
+
+The elementary operations are:
+   * Exchanging two equations of the same system.
+   * Replacing an equation with its nonzero multiple
+   * Replacing an equation with a sum or difference of this equation and
+     some multiple of another equation.
+R2 = R2 - 2R1
+1  1  1  2
+0 -1 -1 -1
+1 -1  3  8
+
+R3 = R3 - R1
+1  1  1  2
+0 -1 -1 -1
+0 -2  2  6
+
+R3 = R3 + -2R2
+1  1  1  2
+0 -1 -1 -1
+0  0  4  8
+
+We now have an upper triangular matrix that we can solve using back
+substitutions.
+
+x3 = 8/4 = 2
+x2 = -2 + 1 = -1
+x1 = 2 - 2 + 1 = 1
+
+* Exercise 2 on page 216
+** A
+Performing an LU decomposition is similar to a Gaussian
+Elimination. The main differences are:
+   * keeping track of the matrix Esub(x,y)you multiplied the matrix from the
+     previous step by.
+   * switching rows is no longer allowed.
+   * After finding matrix U, you need to multiply each of the E
+     matrices by their inverses in the order you created them in. The
+     product of this is L.
+
+We're trying to solve Ax = b.  LU decomposition allows us to substitute
+LU for A, giving us LUx=b.
+
+Starting Matrix:
+      1  1  1  
+A  =  2  1  1
+      1 -1  3  
+  
+          1  0  0  
+E2,1  =  -2  1  0  
+          0  0  1  
+
+If you multiply E2,1 by the starting matrix, you should get the matrix below.
+
+1  1  1 
+0 -1 -1
+1 -1  3 
+
+         1  0  0
+E3,1  =  0  1  0
+        -1  0  1
+
+1  1  1
+0 -1 -1
+0 -2  2
+
+         1  0  0
+E3,2  =  0  1  0 
+         0 -2  1
+
+1  1  1
+0 -1 -1
+0  0  4
+
+                      1  1  1
+So, we now have U  =  0 -1 -1
+                      0  0  4
+
+
+Now all we need to do is flip the signs of the non-diagonals and combine the E's.
+
+      1  0  0
+L  =  2  1  0
+      1  2  1
+
+Lets let y = Ux.  This gives us that Ly = b.  Let's solve that.
+
+ 1 0 0   y1   2
+ 2 1 0 * y2 = 3
+ 1 2 1   y3   8
+
+y1 = 2
+y2 = 3 - 4 = -1
+y3 = 8 - 2 + 2 = 8
+
+Now that we know y, let's solve Ux = y.
+
+1  1  1   x1    2
+0 -1 -1 * x2 = -1 
+0  0  4   x3    8
+
+This is the same system we solved before in part 1, giving us:
+x3 = 8/4 = 2
+x2 = -2 + 1 = -1
+x1 = 2 - 2 + 1 = 1
+
+** B
+The algorithm design technique employed is a transform.  We took data
+in one form, manipulated it into an easier to work with form, and did
+our computations on the easier form.
+
+* Exercise 3 on page 216
+
+We want to augment our matrix with the 3x3 identify matrix.
+
+This gives us:
+1  1  1  1  0  0
+2  1  1  0  1  0
+1 -1  3  0  0  1
+
+R2 = R2 - 2R1
+1  1  1  1  0  0
+0 -1 -1 -2  1  0
+1 -1  3  0  0  1
+
+R2 = -R2
+1  1  1  1  0  0
+0  1  1  2 -1  0
+1 -1  3  0  0  1
+
+R3 = R3 - R1
+1  1  1  1  0  0
+0  1  1  2 -1  0
+0 -2  2 -1  0  1
+
+R3 = R3 + 2R2
+1  1  1  1  0  0
+0  1  1  2 -1  0
+0  0  4  3 -2  1
+
+R3 = 1/4R3
+1  1  1   1    0   0
+0  1  1   2   -1   0
+0  0  1  3/4 -1/2 1/4
+
+R1 = R1 - R2
+1  0  0  -1    1   0
+0  1  1   2   -1   0
+0  0  1  3/4 -1/2 1/4
+
+Finally, R2 = R2 - R3
+1  0  0  -1    1    0
+0  1  0  5/4 -1/2 -1/4
+0  0  1  3/4 -1/2  1/4
+
+This gives us:
+        -1    1    0  
+A^-1 =  5/4 -1/2 -1/4
+        3/4 -1/2  1/4
+
+When we multiply A^-1 * the right-hand side vector, we get:
+ -1    1    0     2     1
+ 5/4 -1/2 -1/4 *  3  = -1
+ 3/4 -1/2  1/4    8     2
+
+Which agrees with our other two methods of solving the matrix.

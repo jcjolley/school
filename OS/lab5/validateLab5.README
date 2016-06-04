@@ -1,0 +1,7 @@
+
+
+/home/jonesro/cs345/labHandouts/validateLab5.pl
+  This code is used like:
+     validateLab5.pl yourExecutable 2 1 1 >>print.txt 2>&1
+
+

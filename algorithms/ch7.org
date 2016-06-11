@@ -1,0 +1,89 @@
+#+AUTHOR: Joshua Jolley
+#+TITLE: Chapter 7 Exercises
+#+LANGUAGE: en
+#+OPTIONS: H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP: showeverything
+
+* Exercise 1 on page 274
+
+For the input 30, 20, 56, 75, 31, 19 and hash function \(h(K) = K\ \mbox{mod}\ 11\)
+
+*a.* construct the open hash table.
+    
+| 0 |  1 | 2 | 3 | 4 | 5 | 6 | 7 |  8 |  9 | 10 |
+|   | 56 |   |   |   |   |   |   | 30 | 20 |    |
+|   |    |   |   |   |   |   |   | 19 | 75 |    |
+|   |    |   |   |   |   |   |   |    | 31 |    |
+
+*b.* find the largest number of key comparisons in a successful search in this table.
+3 comparisons
+
+*c.* find the average number of key comparisons in a successful search in this table.
+1/6 + 1/6 + 2/6 + 1/6 + 2/6 + 3/6 = 10/6 or roughly 1.7 comparisons.
+
+* Exercise 2 on page 274
+
+For the input 30, 20, 56, 75, 31, 19 and hash function \(h(K) = K\ \mbox{mod}\ 11\)
+
+*a.* construct the closed hash table.
+|  0 |  1 |  2 | 3 | 4 | 5 | 6 | 7 |  8 |  9 | 10 |
+| 31 | 56 | 19 |   |   |   |   |   | 30 | 20 | 75 |
+
+*b.* find the largest number of key comparisons in a successful search in this table.
+6 comparisons
+
+*c.* find the average number of key comparisons in a successful search in this table.
+1/6 + 1/6 + 1/6 + 2/6 + 3/6 + 6/6 = 2.3
+
+* Exercise 3 on page 275
+
+Why is it not a good idea for a hash function to depend on just one
+letter (say, the first one) of a natural language word?
+
+You only have 26 buckets.  You will have a lot of collisions
+Also, not all letters occur in the same frequency,  Z will be empty, e
+will have a lot of collisions.
+
+* Exercise 4 on page 275
+
+Find the probability of all /n/ keys being hashed to the same cell
+of a hash table of size /m/ if the hash function distributes keys
+evenly among all the cells of the table.
+
+m nCr 1 * (1 / m)^n = m / (m^n) = 1/(m^(n-1))
+
+* Exercise 3 on page 279
+
+Find the minimum order of the B-tree that guarantees that the number
+of disk accesses in searching in a file of 100 million records does
+not exceed 3. Assume that the root's page is stored in main memory.
+
+height = 3, m = 585 of height at most 3.
+
+* Exercise 6 on page 279
+
+*a.* A /*top-down 2-3-4 tree*/ is a B-tree of order 4 with the
+  following modification of the /insert/ operation. Whenever a
+  search for a leaf for a new key encounters a full node (i.e., a
+  node with three keys), the node is split into two nodes by sending
+  its middle key to the node's parent (or, if the full node happens
+  to be the root, the new root for the middle key is
+  created). Construct a top-down 2-3-4 tree by inserting the
+  following list of keys in the initially empty tree:
+
+=10, 6, 15, 31, 20, 27, 50, 44, 18.=
+
+                        [ 20 ]
+		      /        \
+                 [ 10 ]        [ 31 ]
+                /     \        /     \
+             [ 6 ][ 15|18 ] [ 27 ][ 44|50 ]
+
+*b.* What is the principal advantage of this insertion procedure
+  compared with the one used for 2-3 trees in Section 6.3?  What is
+  its disadvantage?
+
+Advantage: You won't have chain reaction bubble up splits as often.
+Disadvantage: You end up with taller trees than the other method.
+
+

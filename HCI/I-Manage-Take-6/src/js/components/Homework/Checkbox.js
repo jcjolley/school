@@ -11,8 +11,6 @@ export default class Checkbox extends React.Component {
 
    const complete = () => {
       store.dispatch(completeHomework(this.props.hwid)) 
-      alert("Well done")
-      console.log(store.getState());
    }
 
     return (

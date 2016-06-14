@@ -1,0 +1,24 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+(require 'cl)
+(defun upper-bound (m)
+  (let ((n 100000000))
+    (floor (log (/ (1+ n) 4.0) (ceiling (/ m 2.0))))))
+
+(upper-bound 1000)
+2
+
+(loop for m from 1000 downto 1
+      when (> (upper-bound m) 2)
+      return m)
+584
+
+
+(upper-bound 585)
+2
+
+(upper-bound 584)
+3
+

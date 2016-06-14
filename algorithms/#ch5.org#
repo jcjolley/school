@@ -1,0 +1,18 @@
+#+AUTHOR: Joshua Jolley
+#+TITLE: Chapter 5 Exercises
+
+*Exercise 1
+** Pseudocode
+   Arguments:
+     arr // the items we're comparing
+     i //starting index
+     j //ending index
+
+   if (i == j - 1)
+   {
+      return (arr[i] > arr[i + 1] ? arr[i] : arr[i + 1]; 
+   }
+
+   //base case - return the max of 2 items i == j - 1 or list.size() == 2
+   //split the list in half and call maximum on each half
+   //

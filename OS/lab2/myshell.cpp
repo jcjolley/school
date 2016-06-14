@@ -71,6 +71,29 @@ void prompt()
         << GREEN << " $ " << CLEAR;
 }
 
+string getR(vector<string> & tokens)
+{
+  if (tokens.size() > 1) {
+    for (int i = history.size(); i > 0; i--)
+      {
+	if (tokens[0][1] == history[i][0])
+	  {
+	    history.push_back(history[i]);
+	    return history[i];
+	  }
+      }
+  }
+  else {
+    if(!history.empty())
+    {
+      history.push_back(history.back());
+      return history.back();
+    }
+  }
+
+  return "";
+}
+
 /*******************************************************************************
 * FUNCTION: getCommand 
 * Gets a command from the command line and returns a list of tokens.
@@ -91,13 +114,14 @@ vector<string> getCommand()
    
    vector<string> tokens = tokenize(input);
    
-   //this is a gimped implementation only repeats the last command
    if (tokens[0] == "r"){
-      tokens = tokenize(history.back());
-      history.push_back(history.back());
+     string rcmd = getR(tokens);
+     if (rcmd != "")
+       tokens = tokenize(getR(tokens));
    }
    return tokens;
 }
+
 
 /*******************************************************************************
 * FUNCTION: isBackground

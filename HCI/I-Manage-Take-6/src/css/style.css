@@ -1,0 +1,40 @@
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  -webkit-backface-visibility: hidden;
+  opacity: 0.01;
+  transition: opacity 500ms ease-out;
+}
+button:focus {outline:none;} ::-moz-focus-inner {border:0;}
+
+.btn-success {
+   background-color: #09297E;   
+}
+
+.btn-info {
+   background-color: #627CC4;
+}
+
+div.bg-primary {
+   background-color: #627CC4 !important;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+   background-color: #234FC5 !important;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+   background-color: #B7CAFF !important;
+}
+

@@ -1,0 +1,32 @@
+(defun first-half (lst)
+  (butlast lst (/ (length lst) 2))
+)
+
+(defun last-half (lst)
+  (last lst (/ (length lst) 2))
+)
+
+(defun recursive-max (lst)
+  (print lst)
+  (if (<= (length lst) 2)
+      (max (first lst) (first (last lst)))
+      (setq max_first (recursive-max (first-half lst)))
+      (setq max_last (recursive-max (last-half lst)))
+      (max max_first max_last)
+  )
+)
+
+(defun random-list (len lst)
+  (if (= len 0)
+      lst
+      (random-list (decf len) (cons (random 100) lst))
+      )
+  )
+
+(defun print-max-index (lst)
+  (print '(lst (position (recursive-max lst) lst)))
+)
+
+(print-max-index (random-list 10 '()))
+
+

@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Mysteriousness</title>
+<!-- 2016-06-01 Wed 15:39 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Joshua Jolley" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Mysteriousness</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Part 1: Breaking Up Is Hard To Do</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Introduction</a></li>
+<li><a href="#sec-1-2">1.2. Algorithm 1</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. My first attempt</a></li>
+<li><a href="#sec-1-2-2">1.2.2. Clojure</a></li>
+<li><a href="#sec-1-2-3">1.2.3. My second attempt</a></li>
+<li><a href="#sec-1-2-4">1.2.4. Clojure</a></li>
+<li><a href="#sec-1-2-5">1.2.5. My Third attempt</a></li>
+<li><a href="#sec-1-2-6">1.2.6. Clojure</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3. Algorithm 2</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1. Clojure</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">1.4. Algorithm 3</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1. Clojure</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5">1.5. Compare and Contrast</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1. Compare</a></li>
+<li><a href="#sec-1-5-2">1.5.2. Contrast</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">1.6. Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Part 2</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Introduction</a></li>
+<li><a href="#sec-2-2">2.2. Algorithm 1</a>
+<ul>
+<li><a href="#sec-2-2-1">2.2.1. Explanation of my thought process</a></li>
+<li><a href="#sec-2-2-2">2.2.2. Code</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">2.3. Algorithm 2 - Brute Force</a></li>
+<li><a href="#sec-2-4">2.4. Algorithm 3 - Random</a></li>
+<li><a href="#sec-2-5">2.5. Compare and Contrast</a>
+<ul>
+<li><a href="#sec-2-5-1">2.5.1. Compare</a></li>
+<li><a href="#sec-2-5-2">2.5.2. Contrast</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-6">2.6. Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Part 3</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Introduction</a></li>
+<li><a href="#sec-3-2">3.2. Algorithm 1 - Manners and Patience</a></li>
+<li><a href="#sec-3-3">3.3. Algorithm 2 - Brute Force</a></li>
+<li><a href="#sec-3-4">3.4. Algorithm 3 - Random</a></li>
+<li><a href="#sec-3-5">3.5. Compare and Contrast</a>
+<ul>
+<li><a href="#sec-3-5-1">3.5.1. Compare</a></li>
+<li><a href="#sec-3-5-2">3.5.2. Contrast</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-6">3.6. Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Part 1: Breaking Up Is Hard To Do</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Designing algorithms is more difficult than I ever expected it to be, and let me
+assure you that I came into this class expecting a heaping amount of difficulty.
+My struggle is getting out of the 'code and fix' methodology.  Creating and
+executing a plan, rather than iteratively working with the feedback of code,
+doesn't come naturally to me. 
+</p>
+
+<p>
+With these difficulties in mind, I tackled the task of creating algorithms to
+solve part one of this mysterious exploration.  What task, you ask?  The task of
+breaking a positive integer into n unequal positive integers.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Algorithm 1</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> My first attempt</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Please excuse my ugly lisp, this is my first real foray into the land of
+functional programming, and my second attempt at picking up a lisp language.
+Back in the days of CS237 I first tried to learn lisp, but I didn't give it
+enough time, and wasn't sufficiently motivated to make the adjustment to the new
+paradigm.
+</p>
+
+<p>
+This first attempt works by subtracting b from a, until b becomes one. At this
+point, we throw whats left of A into the vector, which guarantees that the
+vector still adds up to A (at least in theory) This implementation suffers from
+many problems.  The first of which is that it needlessly limits its domain by
+subtracting b, with b starting at B, rather than starting b at 1, and working
+our way up as high as we need to go.
+</p>
+
+<p>
+Secondly, this implementation doesn't restrict bad output.  You can get vectors
+that have duplicate items, violating the premise of the algorithm.  Clearly, we
+needed to go somewhere from here.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Clojure</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(defn simple_breakup [A B]
+  (loop [myvec [] a A b B]
+    (if (&lt;= b 1)
+      (conj myvec a)
+      (recur (conj myvec b) (- a b) (dec b))
+    )
+  )
+)
+
+(simple_breakup 25 3) ;; [3, 2, 20]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> My second attempt</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+This algorithm was a step in right direction, though it didn't quite arrive.  By
+switching my container to a set, I removed the possibility of duplicate items.
+I also switched the value of b around so that it starts a 1 and works its way
+up.  This ever so slightly stretches the domain of this function.  It can still
+provide bad output though, as we can get a collection returned that does not
+divide A into B pieces, but rather B - 1 or worse.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Clojure</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<pre class="example">
+(defn simple_breakup [A B]
+   (loop [myset #{} a A b 1]
+      (if (&gt;= b B)
+         (conj myset a)
+         (recur (conj myset b) (- a b) (inc b))
+      )
+   )
+)
+
+(simple_breakup 6 3)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> My Third attempt</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+My third attempt is another step in the right direction.  The error handling in
+this algorithm prevents negative numbers from fouling up the results, and also
+ensures that we are indeed getting B unequal pieces out of the algorithm.
+</p>
+
+<p>
+This algorithm's lowest Big O value is O(n).  B determines the number of times
+the loop recurs, and every operation in the loop occurs in constant time 0(1)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> Clojure</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<pre class="example">
+(defn simple_breakup [A B]
+   (let [results 
+      (loop [myset #{} a A b 1]
+         (if (&gt;= b B)
+            (conj myset a)
+            (recur (conj myset b) (- a b) (inc b))
+         )
+      )]
+      (cond
+         (not (= (count results) B)) "Invalid Input"                     ;;incorrect number of outputs
+         (not (= 0 (count (filter #(&lt;= %1 0) results)))) "Invalid Input" ;;no negatives
+         :else results
+      )
+   )
+)
+
+(simple_breakup 3 2)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Algorithm 2</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+I tried two other approaches to this problem, this one is just a variation on
+the first approach, but it doubles B each time.
+</p>
+</div>
+<div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Clojure</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<pre class="example">
+(defn another_breakup [A B]
+  (loop [myvec [] a A b B]
+    (if (&lt;= b 1)
+      (conj myvec a)
+      (recur (conj myvec (* b 2)) (- a (* b 2)) (dec b))
+    )
+  )
+)
+
+(another_breakup 25 3) ;;[6, 4, 15]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Algorithm 3</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+This attempt uses consecutive division.  It can handle a lot fewer B values than
+the first algorithm can, as the division eats up slices of the unequal pie
+pretty quickly.
+</p>
+</div>
+<div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Clojure</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<pre class="example">
+(defn half [n]
+  (Math/round (double (/ n 2))))
+
+(defn div_breakup [A B]
+  (loop [myvec [] a A b B mysum 1 originalA A]
+    (if (&lt;= b 1)
+      (conj myvec (+ 1 (- originalA mysum)))
+      (recur (conj myvec (half a)) (half a) (dec b) (+ mysum (half a)) originalA)
+      )
+    )
+  )
+
+(div_breakup 23 3) ;; [12, 6, 5]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Compare and Contrast</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Compare</h4>
+<div class="outline-text-4" id="text-1-5-1">
+</div><ol class="org-ol"><li><a id="sec-1-5-1-1" name="sec-1-5-1-1"></a>Order of Growth<br  /><div class="outline-text-5" id="text-1-5-1-1">
+<p>
+The worst case of each of these algorithms is O(n) where n = B;
+</p>
+</div>
+</li>
+<li><a id="sec-1-5-1-2" name="sec-1-5-1-2"></a>Code complexity<br  /><div class="outline-text-5" id="text-1-5-1-2">
+<p>
+All three of these algorithms are relatively easy to comprehend.
+They each take advantage of a recursive loop that performs a simple
+operation on A in order to break A up into B unequal pieces.
+</p>
+</div>
+</li>
+<li><a id="sec-1-5-1-3" name="sec-1-5-1-3"></a>Usefulness<br  /><div class="outline-text-5" id="text-1-5-1-3">
+<p>
+All 3 algorithms are <i>roughly</i> in the same ball park of usefulness, but
+there's more to say about this in the contrasting section than here.
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Contrast</h4>
+<div class="outline-text-4" id="text-1-5-2">
+</div><ol class="org-ol"><li><a id="sec-1-5-2-1" name="sec-1-5-2-1"></a>Order of Growth<br  /><div class="outline-text-5" id="text-1-5-2-1">
+<p>
+Assuming that division takes longer, and that the error catching code from
+the first algorithm was implemented in the second two, the last function is
+going to be slower than the other two algorithms (but still in the same
+category)
+</p>
+</div>
+</li>
+<li><a id="sec-1-5-2-2" name="sec-1-5-2-2"></a>Code complexity<br  /><div class="outline-text-5" id="text-1-5-2-2">
+<p>
+Since these are all relatively simple algorithms, the contrasts here are
+small.  I spent the most time designing the first algorithm, but a lot of
+the time was devoted to understanding the problem and exploring the problem
+space. I don't think that additional time is indicative of additional
+complexity.
+</p>
+</div>
+</li>
+<li><a id="sec-1-5-2-3" name="sec-1-5-2-3"></a>Usefulness<br  /><div class="outline-text-5" id="text-1-5-2-3">
+<p>
+While these are all relatively useful algorithms, the first algorithm is
+likely to be the most useful.  Its error checking, and the way it
+partitions the space allows for the largest range of B values of all of the
+functions.
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Conclusion</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Part one proved to be pretty enjoyable, despite its high difficulty.  I enjoyed
+getting to to learn Clojure a bit better, and, while frequently frustrating, it
+was enjoyable to play around with math and see my algorithm take shape.  I'm
+sure this isn't the most efficient, or most general version by leagues, but it's
+what I have, and I'm relatively proud of it.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Part 2</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+While working on part two, I discovered another problem. Coding is too much fun,
+especially in a /fun/ctional language! I spent many hours perusing Clojure's
+documentation and applying various built-in functions and approaches to solving
+part two, and it ate up the time I should have been spending on this write up.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Algorithm 1</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Explanation of my thought process</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+I started by creating a map from the values of the alphabet to their score,
+initializing them all to 0 I then mapped all of the words to their score. <i>See
+Code Section 2.1.1</i>
+</p>
+
+<p>
+After this, I spent a while in thought, thinking about how I would be able to
+identify the correct word to start with.  My goal is to replicate what we did in
+class, namely, recognize the a word with only one vowel where the value of the
+vowel must be one. What I decided to use was the factors of the score.  If the
+result of multiplying all of the factors of a score (excluding the score itself)
+is that score, and there is only one vowel in the word, the vowel must have a
+value of one.  <i>See Code Section 2.1.2</i>
+</p>
+
+<p>
+Next we need to figure out what we need to do next.  I'm inclined to ferret out
+all of the vowels now, as this was mentioned as a viable technique in class. I
+start by finding words that differ by one letter. The Clojure code for this took
+a long time and several iterations to get working.  <i>See Code Section 2.1.3</i>
+</p>
+
+<p>
+From here I need to find a way to derive the values of vowels using words that
+are similar to words I've already figured out.  Using (* vowels (+ consonants))
+I should be able to ferret out the values of the rest of the vowels using a
+method similar to findStartingWord.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Code</h4>
+<div class="outline-text-4" id="text-2-2-2">
+</div><ol class="org-ol"><li><a id="sec-2-2-2-1" name="sec-2-2-2-1"></a>Section 2.1.1<br  /><div class="outline-text-5" id="text-2-2-2-1">
+<pre class="example">
+(def vowelsLeft (atom #{\a \e \i \o \u}))
+(def letterScores (atom {\a 0, \b 0 \e 0 \g 0 \i 0 \k 0 \l 0 \m 0 \n 0 \o 0 \p 0 \r 0 \s 0 \t 0 \u 0 \v 0 \w 0}))
+(def wordScores {
+ "plum"   36   "plume"   48 "melt"   15
+ "rome"   98   "save"    51 "west"   20
+ "lame"   18   "plane"   39 "viper"  150
+ "piper"  110  "out"     81 "greet"  40
+ "melba"  51   "western" 70 "paper"  66})
+</pre>
+</div>
+</li>
+<li><a id="sec-2-2-2-2" name="sec-2-2-2-2"></a>Section 2.1.2<br  /><div class="outline-text-5" id="text-2-2-2-2">
+<pre class="example">
+(defn countVowels [word]
+  (count (filter #{\a \e \i \o \u} word)))
+
+(defn getFirstVowel [word]
+  (first (filter #{\a \e \i \o \u} word)))
+
+(defn factors [n]
+  (filter #(zero? (rem n %)) (range 1 n)))
+
+(defn findStartingWord [words]
+  (doseq [[k v] words]
+    (if (and (= (reduce * (factors v)) v)
+             (= 1 (countVowels k)))
+      (and (swap! letterScores assoc-in [(getFirstVowel k)] 1)
+           (swap! vowelsLeft disj (getFirstVowel k))))))
+</pre>
+</div>
+</li>
+<li><a id="sec-2-2-2-3" name="sec-2-2-2-3"></a>Section 2.1.3<br  /><div class="outline-text-5" id="text-2-2-2-3">
+<pre class="example">
+(defn differByOneLetter [word1 word2]
+   (loop [w1 word1 w2 word2]
+      (if (= 0 (count w1))
+         (if (=  0 (count w2))
+            true
+            false)
+         (recur (subs w1 1) (replace-first w2 (first w1) ""))
+      )
+   )
+)
+
+(defn getSimilarWords [words]
+  (for [w1 (keys words) w2 (keys words)]
+    (if (differByOneLetter w1 w2)
+       [w1 w2]
+    )
+  )
+)
+</pre>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Algorithm 2 - Brute Force</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+As described in class, the high level description of this approach consists of
+two steps.
+</p>
+<ol class="org-ol">
+<li>Writing a "solveIt" function that accepts as parameters the values for each letter, and then tests
+</li>
+</ol>
+<p>
+the supplied values with the rules supplied ((= (* vowels (+ consonants))
+theScoreFromTheHandout))<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>.
+</p>
+<ol class="org-ol">
+<li>Looping through all 20 possible values for each character, returning when the
+"solveIt" body of the inner-most loop returns true.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Algorithm 3 - Random</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+This approach may never work, or it may beat the astronomical odds, and return
+the correct answer on the very first try.  The main idea isn't much different
+from the brute force approach, but instead of looping through all possible
+answers for each character, randomly generate an ordered set of 20 integers
+ranging from 1 to 20, and assign every consonant a value from the set, and do
+the same for an ordered set of 5 integers ranging from 1 to 5, and assign every
+vowel a value from that set.  By throwing this entire process into a while loop
+that returns once the "solveIt" function form Algorithm 2 returns true, you may
+someday get an answer.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Compare and Contrast</h3>
+<div class="outline-text-3" id="text-2-5">
+</div><div id="outline-container-sec-2-5-1" class="outline-4">
+<h4 id="sec-2-5-1"><span class="section-number-4">2.5.1</span> Compare</h4>
+<div class="outline-text-4" id="text-2-5-1">
+</div><ol class="org-ol"><li><a id="sec-2-5-1-1" name="sec-2-5-1-1"></a>Order of Growth<br  /><div class="outline-text-5" id="text-2-5-1-1">
+<p>
+The order of growth of the first algorithm is hard to define.  It should be much
+much less than the second and third algorithms. More on this in the contrasting section.
+</p>
+</div>
+</li>
+<li><a id="sec-2-5-1-2" name="sec-2-5-1-2"></a>Code complexity<br  /><div class="outline-text-5" id="text-2-5-1-2">
+<p>
+The code complexity of the second and third algorithms is much smaller than the
+code complexity of the first algorithm. The second and third algorithms share
+roughly equivalent code complexities.
+</p>
+</div>
+</li>
+<li><a id="sec-2-5-1-3" name="sec-2-5-1-3"></a>Usefulness<br  /><div class="outline-text-5" id="text-2-5-1-3">
+<p>
+The second and third algorithms share <i>roughly</i> similar levels of usefulness,
+which is on the level of "only barely" useful.  More on this in the contrasting section.
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-2-5-2" class="outline-4">
+<h4 id="sec-2-5-2"><span class="section-number-4">2.5.2</span> Contrast</h4>
+<div class="outline-text-4" id="text-2-5-2">
+</div><ol class="org-ol"><li><a id="sec-2-5-2-1" name="sec-2-5-2-1"></a>Order of Growth<br  /><div class="outline-text-5" id="text-2-5-2-1">
+<p>
+The second algorithm has an n<sup>17</sup> order of growth because of its almost
+frightening level of for loops. The third algorithm has an indeterminate order
+of growth.  It could get it right on the very first time, or we may need to
+approach an infinite number of runs before it gets the order right.  
+</p>
+</div>
+</li>
+<li><a id="sec-2-5-2-2" name="sec-2-5-2-2"></a>Code complexity<br  /><div class="outline-text-5" id="text-2-5-2-2">
+<p>
+The difference in code complexity between the first and second/third algorithms
+is vast.  The level of thought and detail that went into the first algorithm
+vastly outweighs the second and third algorithms. 
+</p>
+</div>
+</li>
+<li><a id="sec-2-5-2-3" name="sec-2-5-2-3"></a>Usefulness<br  /><div class="outline-text-5" id="text-2-5-2-3">
+<p>
+Despite being far more complex, the first algorithm is the only algorithm of any
+real use.  The brute force and random methods take far to long to be useful.
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Conclusion</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Part two was also a lot of fun.  I challenged myself to try and replicate my own
+process for solving the puzzle in Clojure.  While I did not fully succeed at
+this challenge, it was an enlightening experience translating each step I took
+on my own into something general the computer could do.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Part 3</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+We found the answer in part 2, now its time to find the question! This part
+of the exploration, should the student choose to engage, takes you on a
+journey through the orders of ignorance.  The numbers lead the student to
+believe this is a problem of the traditional sort, but this mis-calibration
+leads to naught but a dead end.  It turns out that to discover this question,
+one actually needs more questions.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Algorithm 1 - Manners and Patience</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Wait until I have graduated.
+</li>
+<li>Promise Bro. Neff that I will not reveal the question to anyone else with
+this assignment.
+</li>
+<li>Politely ask what the question is.
+</li>
+<li>Await the answer to the question.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Algorithm 2 - Brute Force</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+This algorithm requires a programmatic way to check if we have found the
+correct question.  It assumes that Br. Neff has provided such a function.
+</p>
+
+<p>
+Attempt every combination of every word in the common word list provided by
+Br. Neff, stopping once the provided function returns true and printing the
+question.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Algorithm 3 - Random</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Create an array of 20 strings
+</li>
+<li>For each index i of the array
+<ul class="org-ul">
+<li>Randomly select a word from the word list and assign it to the ith
+position in the array.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Compare and Contrast</h3>
+<div class="outline-text-3" id="text-3-5">
+</div><div id="outline-container-sec-3-5-1" class="outline-4">
+<h4 id="sec-3-5-1"><span class="section-number-4">3.5.1</span> Compare</h4>
+<div class="outline-text-4" id="text-3-5-1">
+</div><ol class="org-ol"><li><a id="sec-3-5-1-1" name="sec-3-5-1-1"></a>Order of Growth<br  /><div class="outline-text-5" id="text-3-5-1-1">
+<p>
+Surprisingly, the first algorithm has a shorter order of growth than the
+second algorithm, considering that I plan to graduate at the end of this
+semester. The second and third algorithms have roughly the same orders of
+growth.
+</p>
+</div>
+</li>
+<li><a id="sec-3-5-1-2" name="sec-3-5-1-2"></a>Code complexity<br  /><div class="outline-text-5" id="text-3-5-1-2">
+<p>
+The first and third algorithms have similar complexity, a.k.a not much.
+</p>
+</div>
+</li>
+<li><a id="sec-3-5-1-3" name="sec-3-5-1-3"></a>Usefulness<br  /><div class="outline-text-5" id="text-3-5-1-3">
+<p>
+The second and third algorithms have about the same level of usefulness.
+See above for how much.
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-3-5-2" class="outline-4">
+<h4 id="sec-3-5-2"><span class="section-number-4">3.5.2</span> Contrast</h4>
+<div class="outline-text-4" id="text-3-5-2">
+</div><ol class="org-ol"><li><a id="sec-3-5-2-1" name="sec-3-5-2-1"></a>Order of Growth<br  /><div class="outline-text-5" id="text-3-5-2-1">
+<p>
+Does sleep(4,320,000) count as one instruction for order of growth?
+(That's roughly how many seconds I have until I plan to graduate.) If it
+only counts as one, and awaiting the answer only counts as one, then this
+algorithm runs in constant time.  If n is in seconds, then the inputs to
+this function include how long the student has until graduation, how
+trustworthy the student is, how inclined Br. Neff is to reveal the
+question, and how patient the student is in awaiting the answer.  While
+this could greatly increase the complexity, this algorithm is still very
+likely to have a lower order of growth than the second and third algorithms.
+</p>
+</div>
+</li>
+<li><a id="sec-3-5-2-2" name="sec-3-5-2-2"></a>Code complexity<br  /><div class="outline-text-5" id="text-3-5-2-2">
+<p>
+The complexity of the first and third algorithms is much less than the
+complexity of the second algorithm, though the second algorithm isn't that
+complex, it just runs for a long time.
+</p>
+</div>
+</li>
+<li><a id="sec-3-5-2-3" name="sec-3-5-2-3"></a>Usefulness<br  /><div class="outline-text-5" id="text-3-5-2-3">
+<p>
+I think the only really useful algorithm here is the first one.  I
+actually hope to implement this algorithm in a couple months.
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Conclusion</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+While the assignment of this section of the exploration filled me with much
+trepidation, the completing of this portion was actually the easiest of the
+three parts.  This was in very large part due to my persistence in asking
+questions of Brother Neff in an attempt to better understand the problem.  I
+think understanding this problem, and the practical application of the orders
+of ignorance, is the heart of this exploration. Convincing yourself that
+there is always more to learn, and cultivating the humble mind of a curious
+child are difficult propositions, particularly for software engineers like
+myself who love dealing with concrete answers. Being able to get past that
+difficulty and ask about what you don't understand and verify what you think
+you understand seems to be the heart of progressing through the orders or
+ignorance on a given topic. 
+</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+In-lining a lisp parenthetical is hard.
+</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Joshua Jolley</p>
+<p class="date">Created: 2016-06-01 Wed 15:39</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

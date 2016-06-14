@@ -1,0 +1,80 @@
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+      <script src="js/jquery-2.2.4.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <script>
+       $(function() {
+        $( "#datepicker" ).datepicker();
+      });
+
+       function deleteLI(){
+         alert("hello!")
+         $("li")[1].remove();
+      }
+      
+
+      
+      function addLI(){
+         var myli = $("li")[1];
+         $('ul').append($(myli).clone());
+      }
+      </script>
+   </head>
+<body>
+   <div class="container">
+      <header class="jumbotron">
+         <h1>I-Manage</h1>
+         <p>Your homework, all in one place.</p>
+      </header>
+      <div class="row">
+         <div class="col-sm-12">
+            <ul class="list-group">
+               <li class="list-group-item">
+                  <div class="input-group">
+                     <input type="text" class="form-control" id="newHomework" placeholder="Big essay for English101">
+                     <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="datepicker" >Due Date</button>
+                        <button class="btn btn-default" onclick="addLI()" type="button">Submit!</button>
+                     </span>
+                  </div>
+               </li>
+               <li class="list-group-item">
+                  <div class="row">
+                     <div class='col-sm-9 lead'> CS:371 Prototype</div>
+                     <div class="col-sm-2 text-primary text-center bg-primary" >5:00pm<br/> May 28th</div>
+                     <div class=col-sm-1><button onclick="deleteLI()" class="btn-lg btn-primary btn-block"><img src="img/checkbox.png" width="15" /></button></div>
+                  </div>
+               </li>
+               <li class="list-group-item">
+                  <div class="row">
+                     <div class='col-sm-9 lead'> CS:371 Prototype</div>
+                     <div class="col-sm-2 text-primary text-center bg-primary" >5:00pm<br/> May 28th</div>
+                     <div class=col-sm-1><button onclick="deleteLI()"" class="btn-lg btn-primary btn-block"><img src="img/checkbox.png" width="15"/></button></div>
+                  </div>
+               </li>
+                  <li class="list-group-item">
+                  <div class="row">
+                     <div class='col-sm-9 lead'> CS:371 Prototype</div>
+                     <div class="col-sm-2 text-primary text-center bg-primary" >5:00pm<br/> May 28th</div>
+                     <div class=col-sm-1><button onclick="deleteLI()" class="btn-lg btn-primary btn-block"><img src="img/checkbox.png" width="15"/></button></div>
+                  </div>
+               </li>
+                  <li class="list-group-item">
+                  <div class="row">
+                     <div class='col-sm-9 lead'> CS:371 Prototype</div>
+                     <div class="col-sm-2 text-primary text-center bg-primary" >5:00pm<br/> May 28th</div>
+                     <div class=col-sm-1><button onclick="deleteLI()" class="btn-lg btn-primary btn-block"><img src="img/checkbox.png" width="15"/></button></div>
+                  </div>
+               </li>
+
+            </ul>
+         </div>
+   </div>
+
+</body>
+</html>

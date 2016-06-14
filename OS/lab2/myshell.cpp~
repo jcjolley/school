@@ -1,0 +1,237 @@
+/***********************************************************************
+* Program:
+*    Lab UnixShell  
+*    Brother Jones, CS 345
+* Author:
+*    Joshua Jolley
+* Summary:
+*    A very simple shell, complete with a history feature.
+************************************************************************/
+
+#include <iostream>
+#include <stdio.h>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <ctime>
+#include <unistd.h>
+#include <cstdlib>
+#include <sys/wait.h>
+#include <signal.h>
+
+#define BLUE "\033[1;34m" 
+#define GREEN "\033[1;32m" 
+#define CLEAR "\033[0m"
+
+using namespace std;
+
+vector<string> history;
+/*******************************************************************************
+* FUNCTION: now 
+* returns the current military time
+*******************************************************************************/
+string now(){
+   char output[80];
+   time_t t = time(0); //get seconds since 1970
+   struct tm ts = *localtime(&t); //use localtime b/c I don't want to do math
+   strftime(output, 80, "%H:%M:%S", &ts); //use strftime for the same reason
+   return output;
+}
+
+/*******************************************************************************
+* FUNCTION: tokenize 
+* Splits a string into a vector of tokens
+*******************************************************************************/
+vector<string> tokenize(const string& input)
+{
+   istringstream ss(input);
+   vector<string> tokens;
+   string str;
+
+   while (getline(ss, str, ' '))
+   {
+      tokens.push_back(str);
+   }
+   
+   return tokens;
+}
+
+/*******************************************************************************
+* FUNCTION: prompt 
+* Prints out the shell prompt
+*******************************************************************************/
+void prompt()
+{
+   char wd[80] = {};
+   getwd(wd); //get the current working directory
+  
+   //print out the prompt with the time and wd
+   cout << endl << "["<< now() << "] " 
+        << BLUE << wd << CLEAR 
+        << GREEN << " $ " << CLEAR;
+}
+
+string getR(vector<string> & tokens)
+{
+  if (tokens.size() > 1) {
+    for (int i = history.size(); i > 0; i--)
+      {
+	if (tokens[0][0] == history[i][0])
+	  {
+	    history.push_back(history[i]);
+	    return history[i];
+	  }
+      }
+  }
+  else {
+    history.push_back(history.back());
+    return history.back();
+  }
+
+  return "";
+}
+
+/*******************************************************************************
+* FUNCTION: getCommand 
+* Gets a command from the command line and returns a list of tokens.
+* This also adds the command to the history
+*******************************************************************************/
+vector<string> getCommand()
+{
+   string input = "";
+   prompt(); 
+   getline(cin, input);
+
+   if ( input.size() > 0 && 
+       (input.size() == 1 && input[0] != 'r')
+     ||(input.size() > 1 && input.substr(0, 2) != "r "))
+      history.push_back(input);
+   else if (cin.eof())
+      exit(0); //^d means exit!
+   
+   vector<string> tokens = tokenize(input);
+   
+   if (tokens[0] == "r"){
+     string rcmd = getR(tokens);
+     if (rcmd != "")
+       tokens = tokenize(getR(tokens));
+   }
+   return tokens;
+}
+
+
+/*******************************************************************************
+* FUNCTION: isBackground
+* Checks for an '&' at the end of a command, signifying that it runs
+* in the background
+*******************************************************************************/
+bool isBackground(vector<string> & tokens)
+{
+   string finalToken = tokens[tokens.size() - 1];
+   char finalChar = finalToken[finalToken.size() - 1];
+   bool bg = finalChar == '&';
+
+   if (bg)
+   {
+      tokens[tokens.size() - 1] = finalToken.substr(0,finalToken.length() - 1);
+   }
+   return finalChar == '&';
+}
+
+/*******************************************************************************
+* FUNCTION: getArgs
+* Takes a vector of tokens and turns it into an array of arguments
+* CLIENT IS REQUIRED TO DELETE WHEN FINISHED!
+*******************************************************************************/
+char** getArgs(const vector<string> & tokens)
+{
+   char ** args = new char*[tokens.size() + 1];
+   for(int i = 0; i < tokens.size(); i++)
+   {
+      args[i] = new char[tokens[i].size() + 1];
+      char * p2 = args[i];
+      for (const char * p = tokens[i].c_str(); *p; p++, p2++)
+      {
+         *p2 = *p;
+      }
+      *p2 = '\0';
+   } 
+
+   args[tokens.size()] = NULL;
+   return args;
+}
+
+/*******************************************************************************
+* FUNCTION: runCommand
+* Turns a vector of tokens into a command and runs it.
+*******************************************************************************/
+int runCommand(vector<string> & tokens)
+{
+   int status = 0; 
+   bool background = false;
+   if (tokens.size() == 0)
+   {
+      return 0;
+   }
+
+   background = isBackground(tokens);
+   pid_t pid = fork();
+   if (pid == 0)
+   {
+      int execStatus = 0;
+      char** args; 
+         args = getArgs(tokens);
+      
+      execStatus = execvp(args[0], args);
+      cout << endl;
+      //cleanup
+      for (int i = 0; i < tokens.size(); i++)
+         delete [] args[i];
+      delete [] args;
+
+      exit(execStatus);
+   } else 
+   {
+      if (!background)
+      {
+         waitpid(pid, &status, 0);
+         if (status != 0 && status != 126)
+            cout << "Exit status: " << status << ". Command not found" << endl;
+      }
+
+   }
+}
+
+/*******************************************************************************
+* FUNCTION: handle_SIGQUIT 
+* Intercepts ^d and prints the history
+*******************************************************************************/
+void handle_SIGQUIT(int junk)
+{
+   cout << endl;
+   int i = history.size() - 10;
+   if (i < 0)
+      i = 0;
+   for (; i < history.size(); i++)
+   {
+      cout << i << "  " << history[i] << endl; 
+   }
+   prompt();   
+   fflush(stdout);
+   return; 
+}
+
+/*******************************************************************************
+* FUNCTION: Main
+* Our Driver
+*******************************************************************************/
+int main ()
+{
+   signal(SIGQUIT, handle_SIGQUIT);
+   while(1) 
+   {
+      string input = "";
+      vector<string> tokens = getCommand();
+      runCommand(tokens);   
+   }
+}

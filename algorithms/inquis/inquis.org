@@ -1,35 +1,57 @@
-
 #+AUTHOR: Joshua Jolley
 #+TITLE: Inquisitiveness
 
 * Introduction
-I've noticed in my studies that for most topics, I don't understand a particular concept until I have implemented it. 
-There is something special about moving from an idea to a result that changes the way I think about
-a topic.  Throughout my studies here at BYU-I I've implemented many n^2 (and worse!) algorithms,
-and while I've briefly explored orders of growth before, I've never done it as rigorously as this.
-I hope my grasp of this grows as fast or faster than the algorithms I'm about to study.
+I've noticed in my studies that for most topics, I don't understand a
+particular concept until I have implemented it.  There is something
+special about moving from an idea to a result that changes the way I
+think about a topic.  Throughout my studies here at BYU-I I've
+implemented many n^2 (and worse!) algorithms, and while I've briefly
+explored orders of growth before, I've never done it as rigorously as
+this.  I hope my grasp of this grows as fast or faster than the
+algorithms I'm about to study.
 
 * Specs
-/Consider these to be the same for all tests/
-Hardware: Intel i5-4670 @ 3.40 GHZ, 8GB Ram
-Compiler: GCC 4.9.0 (via Windows 10 BASH) with -03
-Timers: BASH BUILTIN time (via Windows 10 BASH)
-Assumptions: I'm the only user logged in, and I'm running no other processes that are demanding on the CPU.
-* Part 1
-** Some Background
-   I implemented a bubble sort and a selection sort.  Each program needs an input size (n) and the number of
-times you want the algorithm to run.  Each program then returns the number of times the critical operation
-occured.  I then wrote a bash script to exercise these programs, running with an input size that grows by a
-power of 10 each iteration, and with the number of runs being decreased by a factor of 10 each time. 
+/Consider these to be the same for all tests./
+| Hardware    | Intel i5-4670 @ 3.40 GHZ, 8GB Ram                                                                |
+| Compiler    | GCC 4.9.0 (via Windows 10 BASH) with -03                                                         |
+| Timers      | BASH BUILT IN time (via Windows 10 BASH)                                                          |
+| Assumptions | I'm the only user logged in, and I'm running no other processes that are demanding on the CPU. |
 
-The output and running time of the programs are collected into a table and displayed at the end. I will attempt
-to tangle the script and the source code for both programs for your perusal.
+* Part 1
+** Background
+I implemented a bubble sort and a selection sort.  Each program needs
+an input size (n) and the number of times you want the algorithm to run.
+Each program then returns the number of times the critical operation
+occurred.  I then wrote a bash script to exercise these programs, running
+with an input size that grows by a power of 10 each iteration, and with
+the number of runs being decreased by a factor of 10 each time, to a
+minimum of 1.
+
+The output and running time of the programs are collected into a table
+and displayed at the end. I will attempt to tangle the script and the
+source code for both programs for your perusal.
+
+** Makefile
+#+BEGIN_SRC makefile :tangle Makefile
+all: bubble.cpp selection.cpp merge.cpp
+        g++ -O3 -o bubble bubble.cpp
+        g++ -O3 -o selection selection.cpp -w
+        g++ -O3 -o merge merge.cpp
+        g++ -O3 -o quick quick.cpp
+
+#+END_SRC
+
 ** Bash Script
-#+BEGIN_SRC sh :tangle 
+#+BEGIN_SRC sh :tangle time.sh
 #!/bin/bash
+
+make
 
 BUBBLE_TABLE="Bubble Sort: |"
 SELECT_TABLE="Select Sort: |"
+MERGE_TABLE="Merge Sort:  |"
+QUICK_TABLE="Quick Sort:  |"
 
 #Run it more times on the smaller inputs to get a better average
 POW=$(bc <<< "$1 - 1")
@@ -37,37 +59,47 @@ RUNS=$(bc <<< "10^$POW")
 
 for i in `seq 1 $1`;
 do
-    #Input ranges from 10 - 1,000,000 
+    #Input ranges from 10 - 1,000,000
     N=$(bc <<< "10^$i")
 
     #Time the bubble run and add the results to the bubble table
-    TEMP=$(/usr/bin/time ./bubble $N $RUNS 2>&1) 
-    TIME=$(echo "$TEMP" | awk -v RS="" {'print $2'})
+    TEMP=$(/usr/bin/time ./bubble $N $RUNS 2>&1)
+    TIME=$(echo "$TEMP" | awk -v RS="" {'print $2'} | head -c 4)
     CRIT_OPS=$(echo "$TEMP" | awk -v RS="" {'print $1'})
-    BUBBLE_TABLE="$BUBBLE_TABLE OPS:$CRIT_OPS TIME:$TIME RUNS:$RUNS | "
+    BUBBLE_TABLE="$BUBBLE_TABLE N:$N OPS:$CRIT_OPS TIME:$TIME RUNS:$RUNS | "
 
     #Time the select run and add the results to the select table
     TEMP=$(/usr/bin/time ./selection $N $RUNS 2>&1)
-    TIME=$(echo "$TEMP" | awk -v RS="" {'print $2'})
+    TIME=$(echo "$TEMP" | awk -v RS="" {'print $2'} | head -c 4)
     CRIT_OPS=$(echo "$TEMP" | awk -v RS="" {'print $1'})
-    SELECT_TABLE="$SELECT_TABLE OPS:$CRIT_OPS TIME:$TIME RUNS:$RUNS | "
+    SELECT_TABLE="$SELECT_TABLE N:$N OPS:$CRIT_OPS TIME:$TIME RUNS:$RUNS | "
+
+    #Time the merge run and add the results to the merge table
+    TEMP=$(/usr/bin/time ./merge $N $RUNS 2>&1)
+    TIME=$(echo "$TEMP" | awk -v RS="" {'print $2'} | head -c 4)
+    CRIT_OPS=$(echo "$TEMP" | awk -v RS="" {'print $1'})
+    MERGE_TABLE="$MERGE_TABLE N:$N OPS:$CRIT_OPS TIME:$TIME RUNS:$RUNS | "
+
+    #Time the quick run and add the results to the quick table
+    TEMP=$(/usr/bin/time ./quick $N $RUNS 2>&1)
+    TIME=$(echo "$TEMP" | awk -v RS="" {'print $2'} | head -c 4)
+    CRIT_OPS=$(echo "$TEMP" | awk -v RS="" {'print $1'})
+    QUICK_TABLE="$QUICK_TABLE N:$N OPS:$CRIT_OPS TIME:$TIME RUNS:$RUNS | "
 
     #This prevents us from running less than once for the big ones.
-    echo "Runs: $RUNS"
     if [ $RUNS -gt 1 ]
     then
 	RUNS=$(bc <<< "$RUNS/10")
     fi
-done 
+done
 
-printf "%s\n%s" "$BUBBLE_TABLE" "$SELECT_TABLE"
-
+printf "%s\n%s\n%s\n%s\n" "$BUBBLE_TABLE" "$SELECT_TABLE" "$MERGE_TABLE" "$QUICK_TABLE"
 #+END_SRC
 
 ** Bubble Sort - n^2
 *** Algorithm
-   
-#+BEGIN_SRC: c++
+
+#+BEGIN_SRC: c++ :tangle bubble.cpp
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
@@ -84,62 +116,65 @@ int main(int argc, char** argv)
    srand(time(NULL));
    long long count = 0;
    int n = atoi(argv[1]);
-	const int RUNS = atoi(argv[2]);
+   const int RUNS = atoi(argv[2]);
    int ** arr = new int*[RUNS];
 
-   //create 100 random arrays of length n
+   //create RUNS random arrays of length n
    for (int i = 0; i < RUNS; i++)
    {
       arr[i] = new int[n];
       for (int j = 0; j < n; j++)
       {
-         arr[i][j] = rand() % 100;
+        arr[i][j] = rand() % 100;
       }
    }
 
-       //start RUNS bubble sorts
-       for (int run = 0; run < RUNS; run++)
-       {	
-	  bool swapped = true; 
-	  while (swapped)
-	  {
-	     swapped = false;
-	     for(int i = 0; i < n - 1; i++)
-	     {
-		count++; //this comparison is the critical op
-		if (arr[run][i] > arr[run][i + 1])
-		{
-		   int temp = arr[run][i];
-		   arr[run][i] = arr[run][i + 1];
-		   arr[run][i + 1] = temp; 
-		   swapped = true;
-		}
-	     }
-	  }
-       }
+   //start RUNS bubble sorts
+   for (int run = 0; run < RUNS; run++)
+   {
+      bool swapped = true;
+      while (swapped)
+      {
+         swapped = false;
+         for(int i = 0; i < n - 1; i++)
+         {
+            count++; //this comparison is the critical op
+            if (arr[run][i] > arr[run][i + 1])
+            {
+               int temp = arr[run][i];
+               arr[run][i] = arr[run][i + 1];
+               arr[run][i + 1] = temp;
+               swapped = true;
+            }
+         }
+      }
+   }
 
    //clean up the mess we made of the heap
    for (int i = 0; i < RUNS; i++)
    {
-      delete [] arr[i];
+    delete [] arr[i];
    }
    delete [] arr;
 
    //print out the average number of critical operations.
    cout << count / RUNS << endl;
-}
-#+END_SRC
+}#+END_SRC
 
 *** Data
-*Timing Table*          
-Bubble Sort | OPS:67 TIME:0.00user RUNS:10000 |  OPS:8767 TIME:0.04user RUNS:1000 |  OPS:954534 TIME:0.32user RUNS:100 |  OPS:98165182 TIME:3.95user RUNS:10 |  OPS:9885001149 TIME:43.89user RUNS:1 |                                                                                                                                                                                         
+*Timing Table*
+
+| n       |     10 |   100 |   1,000 |     10,000 |       100,000 |
+| time(s) |   0.00 |  0.04 |    0.32 |       3.95 |         43.89 |
+| ops     |     67 | 8,767 | 954,534 | 98,165,182 | 9,885,001,149 |
+| runs    | 10,000 | 1,000 |     100 |         10 |             1 |
 
 Best case: When the list is presorted. n
 Average case: Just under n^2
 Worst case: When the list is reverse sorted.  n^2
-** Algorithm 2 - n^2
+** Selection Sort - n^2
 *** Algorithm
-#+BEGIN_SRC c++ :tangle
+#+BEGIN_SRC c++ :tangle selection.cpp
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
@@ -149,7 +184,7 @@ int main(int argc, char** argv)
 {
    if (argc != 3)
    {
-      cout << "USAGE: bubble [n] [numRuns]" << endl;
+      cout << "USAGE: selection [n] [numRuns]" << endl;
       exit(1);
    }
 
@@ -186,7 +221,7 @@ int main(int argc, char** argv)
       arr[run][min] = temp;
   }
 }
-     
+
    //clean up the mess we made of the heap
    for (int i = 0; i < RUNS; i++)
    {
@@ -199,42 +234,232 @@ int main(int argc, char** argv)
 }
 #+END_SRC
 *** Data
-*Timing Table*          
-Select Sort: | OPS:55 TIME:0.00user RUNS:10000 |  OPS:5050 TIME:0.01user RUNS:1000 |  OPS:500500 TIME:0.10user RUNS:100 |  OPS:50005000 TIME:1.10user RUNS:10 |  OPS:5000050000 TIME:11.09user RUNS:1 | 
+*Timing Table*
+| n       |     10 |   100 |   1,000 |     10,000 |       100,000 |
+| time(s) |   0.00 |  0.01 |    0.10 |       1.10 |         11.09 |
+| ops     |     55 |  5050 | 50,0500 | 50,005,000 | 5,000,050,000 |
+| runs    | 10,000 | 1,000 |     100 |         10 |             1 |
 
-The best case, worst caste, and average case of this sort are all the same. For small runs, its n^1.75ish, but as n grows, it gets closer and closer to n^2
 
-The selection sort is faster on average than the bubble sort.  You would only ever
-want to use the bubble sort on lists that you think may already be sorted.
+The best case, worst caste, and average case of this sort are all the
+same. For small runs, its n^1.75ish, but as n grows, it gets closer and
+closer to n^2
+
+** Comparison
+The selection sort is faster on average than the bubble sort.  You would
+only ever want to use the bubble sort on lists that you think are
+already be sorted, or very close to it.
 
 * Part 2
-** Algorithm 3 - n log n
+** Merge Sort - n log n
 *** Algorithm
+#+BEGIN_SRC c++ :tangle merge.cpp
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+
+using namespace std;
+
+void merge (int * arr, int size, int middle, long long & count)
+{
+   int j = 0;
+   int k = 0;
+   int * sorted = new int[size];
+   for (int i = 0, j = middle, k = 0; k < size; k++)
+   {
+      count++; //This is the critical operation
+      if (j == size)
+         sorted[k] = arr[i++];
+      else if (i == middle || arr[j] < arr[i])
+         sorted[k] = arr[j++];
+      else
+         sorted[k] = arr[i++];
+   }
+
+   for (int i = 0; i < size; i++)
+      arr[i] = sorted[i];
+
+   delete [] sorted;
+}
+
+void merge_sort (int * arr, int size, long long & count)
+{
+   if (size < 2)
+      return;
+   int middle = size / 2;
+   merge_sort(arr, middle, count);
+   merge_sort(arr + middle, size - middle, count);
+   merge(arr, size, middle, count);
+}
+
+
+int main(int argc, char** argv)
+{
+   if (argc != 3)
+   {
+      cout << "USAGE: merge [n] [numRuns]" << endl;
+      exit(1);
+   }
+
+   srand(time(NULL));
+   long long count = 0;
+   int n = atoi(argv[1]);
+	const int RUNS = atoi(argv[2]);
+   int ** arr = new int*[RUNS];
+
+   //create RUNS random arrays of length n
+   for (int i = 0; i < RUNS; i++)
+   {
+      arr[i] = new int[n];
+      for (int j = 0; j < n; j++)
+      {
+        arr[i][j] = rand() % 100;
+      }
+   }
+
+   //start RUNS bubble sorts
+   for (int run = 0; run < RUNS; run++)
+   {
+	merge_sort(arr[run], n, count);
+   }
+
+   //clean up the mess we made of the heap
+   for (int i = 0; i < RUNS; i++)
+   {
+   	delete [] arr[i];
+   }
+   delete [] arr;
+
+   //print out the average number of critical operations.
+   cout << count / RUNS << endl;
+}
+#+END_SRC
 *** Data
-*Timing Table*          
-| n       |  1  | 10 | 100 | 1,000 | 10,000 | 100,000 | 1,000,000 |
-| time(s) |     |    |     |       |        |         |           |
+*Timing Table*
+| n       |      10 |    100 | 1,000 |  10,000 |   100,000 |  1,000,000 |
+| time(s) |    0.04 |   0.07 | 0.07  |    0.09 |      0.09 |       0.09 |
+| ops     |      34 |    672 | 9,976 | 133,616 | 1,668,928 | 19,951,424 |
+| runs    | 100,000 | 10,000 | 1,000 |     100 |        10 |          1 |
 
-Best case:
-Average case:
-Worst case:
+Best case: n log n
+Average case: n log n
+Worst case: n log n
 
-
-** Algorithm 4 - n log n
+Recurrence Relation:
+T(n) = 2T(n/2) + n
+** Quick Sort - n log n
 *** Algorithm
+#+BEGIN_SRC c++ :tangle quick.cpp
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+
+using namespace std;
+
+/* Adapted from http://rosettacode.org/wiki/Sorting_algorithms/Quicksort#C */
+void quick_sort (int *arr, int size, long long & count)
+{
+   int left = 0;
+   int right = size - 1;
+   int pivot;
+
+   if (size < 2)
+     return;
+
+   pivot = arr[ size / 2 ];
+   while (true)
+   {
+      while (arr[left] < pivot)
+      {
+         count++;
+         left++;
+      }
+      while (arr[right] > pivot)
+      {
+         count++;
+         right --;
+      }
+      if (left >= right)
+         break;
+
+      count++;
+      int temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+
+      left++;
+      right--;
+   }
+
+   quick_sort(arr, left, count);
+   quick_sort(arr + left, size - left, count);
+}
+
+int main(int argc, char** argv)
+{
+   if (argc != 3)
+   {
+      cout << "USAGE: quick [n] [numRuns]" << endl;
+      exit(1);
+   }
+
+   srand(time(NULL));
+   long long count = 0;
+   int n = atoi(argv[1]);
+   const int RUNS = atoi(argv[2]);
+   int ** arr = new int*[RUNS];
+
+   //create RUNS random arrays of length n
+   for (int i = 0; i < RUNS; i++)
+   {
+      arr[i] = new int[n];
+      for (int j = 0; j < n; j++)
+      {
+        arr[i][j] = rand() % 100;
+      }
+   }
+
+   //start RUNS bubble sorts
+   for (int run = 0; run < RUNS; run++)
+   {
+      quick_sort(arr[run], n, count);
+   }
+
+   //clean up the mess we made of the heap
+   for (int i = 0; i < RUNS; i++)
+   {
+      delete [] arr[i];
+   }
+   delete [] arr;
+
+   //print out the average number of critical operations.
+   cout << count / RUNS << endl;
+}
+
+#+END_SRC
 *** Data
-*Timing Table*          
-| n       |  1  | 10 | 100 | 1,000 | 10,000 | 100,000 | 1,000,000 |
-| time(s) |     |    |     |       |        |         |           |
+*Timing Table*
+| n       |      10 |    100 | 1,000 |  10,000 |   100,000 |  1,000,000 |
+| time(s) |    0.01 |   0.04 | 0.04  |    0.04 |      0.04 |       0.04 |
+| ops     |      25 |    605 | 8,650 | 104,461 | 1,214,257 | 13,839,895 |
+| runs    | 100,000 | 10,000 | 1,000 |     100 |        10 |          1 |
 
-Best case:
-Average case:
-Worst case:
+Best case: n log n
+Average case: n log n
+Worst case: n^2
 
+Recurrence Relation:
+T(n) = 2T(n/2) + n
 
 ** Comparisons
-* Conclusion
-I didn't realize before doing this assignment that the selection sort had a fixed number of runs.
-This is kind of neat.  I had a lot of fun getting my bash script and c++ programs setup just so in order to make
-automating the runs easier.  The framework I setup should prove useful for part two of this exploration.
+On the average case, the quick sort is faster than the merge sort.  When
+a poor pivot is chosen, the merge sort will likely be faster than the
+quick sort, as the quick sort degrades to n^2 in the worst case.
 
+* Conclusion
+I didn't realize before doing this assignment that the selection sort
+had a fixed number of runs.  This is kind of neat.  I had a lot of fun
+getting my bash script and c++ programs setup just so in order to make
+automating the runs easier.  I've tangled the makefile, each c++ file,
+and the bash script so that you can use it if you want. I hope you like
+it!

@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 {
    if (argc != 3)
    {
-      cout << "USAGE: bubble [n] [numRuns]" << endl;
+      cout << "USAGE: selection [n] [numRuns]" << endl;
       exit(1);
    }
 

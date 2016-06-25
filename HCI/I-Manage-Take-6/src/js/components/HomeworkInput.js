@@ -9,7 +9,8 @@ export default class HomeworkInput extends React.Component {
     }
 
     const inputStyle = {
-      width: "78%"
+      width: "78%",
+      fontSize: "120%"
     }
 
     const submitStyle = {
@@ -61,7 +62,7 @@ export default class HomeworkInput extends React.Component {
             <input ref = {node => {this.input = node}}
                    type="text" class="form-control" 
                    id="newHomework" 
-                   placeholder="Big essay for English101"
+                   placeholder="Enter your homework here"
                    style={inputStyle} />
             <input type="text" class="form-control"
                    id="datepicker" style={dpStyle} />

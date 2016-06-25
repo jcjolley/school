@@ -15,13 +15,20 @@ export default class Layout extends React.Component {
         <Homework key={hw.id} hwid={hw.id} date={hw.date} title={hw.text} />
       );
 
+    const hiStyle = {
+      marginBottom: "5px"
+    }
     return (
       <div class="container">
         <Header />
         <div class="row">
           <div class="col-sm-12">
+            <ul class="card list-group" style={hiStyle}>
+               <HomeworkInput />
+            </ul>
             <ul class="card list-group">
-              <HomeworkInput />
+              
+
               <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
                 {Homeworks}
               </ReactCSSTransitionGroup>

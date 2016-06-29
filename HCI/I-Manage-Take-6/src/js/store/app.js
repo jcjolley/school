@@ -1,8 +1,37 @@
 import { createStore } from 'redux'
-import { ADD_HOMEWORK, COMPLETE_HOMEWORK, addHomework, completeHomework} from './actions'
 
-const initialState = { homework_items: [] }
+export const ADD_HOMEWORK = 'ADD_HOMEWORK'
+export const COMPLETE_HOMEWORK = 'COMPLETE_HOMEWORK'
 
+//actions!
+let nextHomeworkId = 0;
+export function addHomework(text, date)
+{
+   return {type: ADD_HOMEWORK, 
+           id: nextHomeworkId++,
+           text, date};
+}
+
+export function completeHomework(id)
+{
+   return {type: COMPLETE_HOMEWORK, id}
+}
+
+let initialState;
+
+//Load items from previous sessions and prime nextHomeworkId
+if (localStorage['hw_store'] != null)
+{
+   initialState = JSON.parse(localStorage['hw_store'])
+   nextHomeworkId = initialState.homework_items
+      .map(hw => hw.id)
+      .reduce((i1, i2) => Math.max(i1, i2)) + 1;
+
+} else {
+   initialState = {homework_items: []};
+}
+
+//modify our store based on our actions and the current state of the store
 function homeworkReducer(state = initialState, action) {
    switch(action.type){
       case ADD_HOMEWORK:
@@ -37,10 +66,12 @@ function homeworkReducer(state = initialState, action) {
    } 
 }
 
-let store = createStore(homeworkReducer);
+//actually create our backing store
+let store = createStore(homeworkReducer, initialState);
 
-store.dispatch(addHomework("Get the prototype finished", new Date(Date.now())))
-store.dispatch(addHomework("Get the spec finished", new Date(Date.now())))
-store.dispatch(addHomework("Don't fail this class!", new Date(Date.now())))
+//store items as they're added
+store.subscribe(() => {
+    localStorage.setItem('hw_store', JSON.stringify(store.getState()));
+})
 
 export default store;

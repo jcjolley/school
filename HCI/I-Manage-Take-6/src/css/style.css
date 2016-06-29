@@ -22,10 +22,18 @@ button:focus {outline:none;} ::-moz-focus-inner {border:0;}
    background-color: #09297E;   
 }
 
-.btn-info {
+.btn-info, .alert-info {
    background-color: #627CC4;
+   border-color:  #627CC4;
 }
 
+.alert-info {
+  cursor: default;
+}
+
+.alert, .alert-info{
+  margin: 0;
+}
 div.bg-primary {
    background-color: #627CC4 !important;
 }
@@ -37,4 +45,21 @@ div.bg-primary {
 .btn-info:hover, .btn-info:focus, .btn-info:active {
    background-color: #B7CAFF !important;
 }
+
+td.xdsoft_current{
+  background-color: #627CC4 !important;
+}
+
+.xdsoft_date div:hover, td.xdsoft_day_of_week1:hover{
+  background-color: #09297E !important;
+}
+
+.jumbotron h1{
+  font-weight: bold !important;
+}
+
+::-webkit-input-placeholder { font-style: italic; }
+::-moz-placeholder { font-style: italic; } /* firefox 19+ */
+:-ms-input-placeholder { font-style: italic; } /* ie */
+input:-moz-placeholder { font-style: italic; }
 

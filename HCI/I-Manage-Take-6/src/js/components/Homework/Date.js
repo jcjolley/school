@@ -13,11 +13,10 @@ export default class Date extends React.Component {
       padding: "1px 20px",
       marginRight: "15px",
       position: "relative",
-      bottom: "6px",
       borderRadius: "8px"
    }
     return (
-      <button class="btn btn-raised btn-info" style={dateStyle}>
+      <button class="alert alert-info" style={dateStyle}>
         <span>{hours}<br/>{day}</span>
       </button>
     );

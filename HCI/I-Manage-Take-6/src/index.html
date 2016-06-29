@@ -22,11 +22,18 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <script type="text/javascript" src="js/jquery.datetimepicker.full.min.js"></script>
         <script>
-            $('#datetimepicker').datetimepicker({
-                dayOfWeekStart : 1,
-                lang:'en',
-                disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
-                startDate:  '1986/01/05'
+            var date = new Date(Date.now());
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var year = date.getFullYear() % 100;
+            var dateString = month + "/" + day + "/" + year;
+            $('#datepicker').datetimepicker({
+                startDate: dateString,
+                defaultTime: '23:59',
+                formatTime:'g:i a',
+                format: 'g:i a, F jS',
+                validateOnBlur: false,
+
             });
         </script>
     </body>

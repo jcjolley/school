@@ -5,12 +5,15 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Homework from "./Homework/Homework";
 import HomeworkInput from "./HomeworkInput";
+import moment from "moment";
+
 
 export default class Layout extends React.Component {
   render() {
 
     let Homeworks = store.getState().homework_items
           .filter( hw => hw.completed === false)
+          .sort((left, right) => {return moment(left.date).unix() - moment(right.date).unix()})
           .map( hw =>
         <Homework key={hw.id} hwid={hw.id} date={hw.date} title={hw.text} />
       );
@@ -27,8 +30,6 @@ export default class Layout extends React.Component {
                <HomeworkInput />
             </ul>
             <ul class="card list-group">
-              
-
               <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
                 {Homeworks}
               </ReactCSSTransitionGroup>

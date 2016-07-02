@@ -8,7 +8,53 @@
                 "numbers" "or" "pattern" "pieces" "first" "and" "five" "reason" "appear"
                 "on" "inside" "short" "long" "third" "look" "it" "ten" "half" "that" "for"
                 "alone" "of" "in" "chunks" "random" "the"])
-(def known-words ["look" "digit" "just"])
+(count word-list)
+
+(def possible-known-words ["look" "digit" "just"])
+
+(defn letter-to-index [character]
+  (- (int character) 97))
+
+(def correct-counts [8 2 0 2 7 2 1 2 4 1 1 1 2 8 8 3 0 8 4 10 2 0 0 0 1 0])
+
+(defn dec-vec [vect indexes]
+  (loop [v vect is indexes] 
+    (if (empty? is)
+      v
+      (let [i (first is)
+            new-val (dec  (v i))
+            new-vec (assoc v i new-val)]
+        (recur new-vec (rest is))
+        ))))
+
+(defn reduce-to-valid-words [words letter-counts]
+  (loop [ws words lc letter-counts removed []] 
+    (let [word (first ws)
+          indexes (map letter-to-index word)
+          new-lc (dec-vec lc indexes)
+          new-removed (if (not-any? neg? new-lc) removed (conj removed word))
+          ]
+      (if (empty? ws)
+        (remove (set removed) words)
+        (recur (rest ws) lc new-removed))
+      )))
+
+(reduce-to-valid-words word-list correct-counts)
+
+(defn get-index-of-ones [letter-counts]
+  (keep-indexed #(if (= 1 %2) %1) letter-counts)
+  )
+
+(get-index-of-ones correct-counts)
+
+(defn get-new-words [words] [letter-counts]
+  (loop [ws words lc letter-counts known-words []]
+    (let [indexes (get-index-of-ones lc) ]
+      
+      )
+    )
+  )
+
 
 (defn word-size-frequencies-match  
   [words]
@@ -25,6 +71,10 @@
                               "55555" "55555"
                               "666666" "666666" "666666"
                               "7777777" "7777777"]) ; =>true
+(defn is-77-letters [words]
+  (= 77 (count (reduce str words))))
+
+(is-77-letters ["sevenls" "sevenls" "sevenls" "sevenls" "sevenls" "sevenls" "sevenls" "sevenls" "sevenls" "sevenls" "sevenls"])
 
 (defn letter-frequencies-match [words] 
   (let [alphabet (char-array "abcdefghijklmnopqrstuvwxyz") 
@@ -34,10 +84,7 @@
         freqs-vec (map #(letter-freq % 0) alphabet)]
     (= target freqs-vec)))
 
-"This returns true!  It's working!"
-(letter-frequencies-match ["aaaaaaaa" "bb" "dd" "eeeeeee" "ff" "g" "hh" "iiii" "j" "k"
-                           "l" "mm" "nnnnnnnn" "oooooooo" "ppp" "rrrrrrrr" "ssss"
-                           "tttttttttt" "uu" "y"]) ;=>true
+(letter-frequencies-match ["aaaaaaaa" "bb" "dd" "eeeeeee" "ff" "g" "hh" "iiii" "j" "k" "l" "mm" "nnnnnnnn" "oooooooo" "ppp" "rrrrrrrr" "ssss" "tttttttttt" "uu" "y"]) ;=>true
 
 (defn parse-int [s]
   (Integer/parseInt (re-find #"\d+" s)))
@@ -49,9 +96,7 @@
   "Return a vector representing the alphabet with a count of each letter"
   [letter-count]
   (loop [lc letter-count r 77 i 0]
-    (let [old-str (reduce str lc)
-          old-letter-value (lc i)
-          new-letter-value (inc old-letter-value)
+    (let [new-letter-value (inc (lc i))
           new-lc (assoc lc i new-letter-value)
           new-str (reduce str (map #(format "%x" %) new-lc)) ;Defeated by hex
           response (query-neff new-str)
@@ -63,6 +108,26 @@
         lc
         (recur new-l new-r new-i)))))
 
-(get-counts [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
 
+(defn get-as-counts
+  "Return a vector representing the alphabet with a count of each letter"
+  [letter-count]
+  (loop [lc letter-count
+         r 77
+         i 0]
+    (let [new-letter-value (inc (lc i))
+          test-lc (assoc lc i new-letter-value)
+          response (->> test-lc
+                        (map #(format "%x" %))
+                        (reduce str)
+                        (query-neff))
+          new-i  (if (< response r) i        (inc i))
+          new-r  (if (< response r) response r)
+          new-lc (if (< response r) test-lc  lc)]
+      (prn new-lc response)
+      (if (= r 0)
+        lc
+        (recur new-lc new-r new-i)))))
+
+(get-as-counts [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
 

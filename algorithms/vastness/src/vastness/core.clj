@@ -59,6 +59,35 @@
         char-count (letter-freq char)]
     (= char-count num)))
 
+{:words :letter-freqs :word-sizes :known-words :indices-of-freqs-at-val :val}
+
+
+(defn find-words-by-frequency [words-map]
+  (let [letter (->> (words-map :indices-of-freqs-at-val)
+                    first
+                    (+ 97)
+                    char)
+        potential-words (filter #(word-letter-freq-match % letter (words-map :val)) (words-map :words))
+        potential-word (first potential-words)
+        zero-based-letter-indices (map letter->index potential-word)
+        temp-lfq (dec-vec (words-map :letter-freqs) zero-based-letter-indices)
+        found-valid-one (and (= 1 (count potential-words)) (not-any? neg? temp-lfq))
+        new-val (if (empty? (rest (:indices-of-freqs-at-val words-map))) (inc val) val)]
+    
+    (if found-valid-one
+      {:known-words (conj (:known-words words-map) potential-words)
+       :letter-freqs temp-lfq
+       :words-map (words->valid-words (remove #{potential-word} (:words words-map)) temp-lfq)
+       :val new-val 
+       :indices-of-freqs-at-val (get-index-of-val :temp-lfq new-val)}
+      (assoc :val new-val :indices-of-freqs-at-val (rest (:indices-of-freqs-at-val))))))
+
+(defn find-correct-20-words 
+  "Find a list of 20 words by process of elimination"
+  [words letter-freqs]
+  (loop [words-map {:words words :letter-freqs letter-freqs :val 1 :known-words [] :indices-of-freqs-at-val (get-index-of-val letter-freqs 1)}])
+  )
+
 (defn get-new-words
   "Find a list of 20 words by process of elimination"
   [words letter-counts]
@@ -161,7 +190,9 @@
   (is (= [1 3 5] 
          (get-index-of-val [0 1 2 1 3 1] 1))))
 
+(def real-world-list  ["a" "be" "or" "to" "on" "in" "any" "for" "ten" "the" "that" "just" "look" "digit" "first" "rappear" "reason" "random" "numbers" "pattern"])
 
+(prn (clojure.string/split real-word-list #" "))
 
 
 

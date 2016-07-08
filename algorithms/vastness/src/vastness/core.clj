@@ -1,28 +1,49 @@
-                                        ;###################################################################################
-                                        ; Project: Vastness
-                                        ; Author: Joshua Jolley
-                                        ; Summary: Finds the question from a list of words by whittling down the words
-                                        ;          to the right 20 words and then determing the correct order for the words
-                                        ; ##################################################################################
+;;###################################################################################
+;; Project: Vastness
+;; Author: Joshua Jolley
+;; Summary: Finds the question from a list of words by whittling down the words
+;;          to the right 20 words and then determing the correct order for the words
+;;          This is a general solution, given that you update default-wm with new
+;;          words, a new target and a letter-freq supplied from get-count
+;;          Added a change with highlight changes enabled.  Here's hoping it works!
+;;          Auto revert file is on now.  This should update?
+;;##################################################################################
 
+
+;;Most interesting
 (ns vastness.core
-  (:require [clj-http.client :as client])
-  (:require [clojure.test])
+  (:require [clj-http.client :as client] [clojure.test :refer :all])
   (:gen-class))
 
+;;The final output as determined by this program
+(def final-word-list  ["a" "be" "or" "to" "on" "in" "any" "for" "ten" "the" "that" "just" "look" "digit" "first" "appear" "reason" "random" "numbers" "pattern"])
 
-;;Globals
-(def word-list ["digit" "is" "be" "perhaps" "to" "just" "a" "product" "two" "any"
-                "numbers" "or" "pattern" "pieces" "first" "and" "five" "reason" "appear"
-                "on" "inside" "short" "long" "third" "look" "it" "ten" "half" "that" "for"
-                "alone" "of" "in" "chunks" "random" "the"])
+;;GLOBAL
+(def default-wm {:words ["digit" "is" "be" "perhaps" "to" "just" "a" "product" "two"
+                         "any" "numbers" "or" "pattern" "pieces" "first" "and" "five"
+                         "reason" "appear" "on" "inside" "short" "long" "third" "look"
+                         "it" "ten" "half" "that" "for" "alone" "of" "in" "chunks"
+                         "random" "the"] 
+                 :letter-freqs [8 2 0 2 7 2 1 2 4 1 1 1 2 8 8 3 0 8 4 10 2 0 0 0 1 0]
+                 :known-words []
+                 :freq-index 0
+                 :target [0 1 5 4 3 2 3 2]
+                 :word-size 1})
 
-(def correct-counts [8 2 0 2 7 2 1 2 4 1 1 1 2 8 8 3 0 8 4 10 2 0 0 0 1 0])
+(defn in? 
+  "true if coll contains elm"
+  [coll elm]  
+  (some #(= elm %) coll))
 
 (defn letter->index
   "Maps a character to its 0 based integer, e.g., a is 0"
   [character]
   (- (int character) 97))
+
+(defn index->letter
+  "Maps a 0 based index to a letter"
+  [index]
+  (char (+ index 97)))
 
 (defn dec-vec
   "Given a vector of numbers and a collection of indices, 
@@ -54,69 +75,76 @@
   [letter-counts val]
   (keep-indexed #(if (= val %2) %1) letter-counts))
 
-(defn word-letter-freq-match [word char num]
-  (let [letter-freq (frequencies word)
-        char-count (letter-freq char)]
-    (= char-count num)))
+;;Testing, testing 1 2 3
+;;Note how the highlighting works, but no text
+;;appears.
+(defn add-found-words
+  "Adds words to the known-words list and decrements target and 
+   letter-freq appropriately"
+  [wm new-words]
+  (let [new-target (dec-vec (:target wm) (map count new-words))
+        letter-indices (map letter->index (reduce str new-words)) 
+        new-lfq (dec-vec (:letter-freqs wm) letter-indices)
+        new-word-list (remove (set new-words) (:words wm))
+        new-known-words (into (:known-words wm) new-words)
+        new-wm (if (and (not-any? nil? new-target) (not-any? nil? new-lfq))
+                 (assoc wm
+                        :target new-target
+                        :letter-freqs new-lfq
+                        :words (words->valid-words new-word-list new-lfq) 
+                        :known-words new-known-words)
+                 wm)]
+    (if (not= (:known-words wm) (:known-words new-wm))
+      (println new-known-words))
+    new-wm))
 
-{:words :letter-freqs :word-sizes :known-words :indices-of-freqs-at-val :val}
+(defn find-words-by-word-size
+  "Finds words by using the supplied word-size targets"
+  [words-map]
+  (loop [wm words-map]
+    (let [num-words ((:target wm) (:word-size wm))
+          words-at-word-size ((group-by count (:words wm)) (:word-size wm))
+          new-wm (if (= num-words (count words-at-word-size))
+                   (add-found-words wm words-at-word-size)
+                   wm)] 
+      (if (> (:word-size new-wm) (- (count (:target new-wm)) 2))
+        new-wm
+        (recur (assoc new-wm :word-size (inc (:word-size new-wm))))))))
 
+(defn add-freq-match
+  "Helper function for find-words-frequency that checks a list of words
+  to see if they qualify to be added"
+  [wm letter letter-count words]
+  (let [letters (filter #(= letter %) (reduce str words))
+        new-wm (if (= letter-count (count letters))
+                 (add-found-words wm words)
+                 wm)]
+    new-wm))
 
-(defn find-words-by-frequency [words-map]
-  (let [letter (->> (words-map :indices-of-freqs-at-val)
-                    first
-                    (+ 97)
-                    char)
-        potential-words (filter #(word-letter-freq-match % letter (words-map :val)) (words-map :words))
-        potential-word (first potential-words)
-        zero-based-letter-indices (map letter->index potential-word)
-        temp-lfq (dec-vec (words-map :letter-freqs) zero-based-letter-indices)
-        found-valid-one (and (= 1 (count potential-words)) (not-any? neg? temp-lfq))
-        new-val (if (empty? (rest (:indices-of-freqs-at-val words-map))) (inc val) val)]
-    
-    (if found-valid-one
-      {:known-words (conj (:known-words words-map) potential-words)
-       :letter-freqs temp-lfq
-       :words-map (words->valid-words (remove #{potential-word} (:words words-map)) temp-lfq)
-       :val new-val 
-       :indices-of-freqs-at-val (get-index-of-val :temp-lfq new-val)}
-      (assoc :val new-val :indices-of-freqs-at-val (rest (:indices-of-freqs-at-val))))))
+(defn find-words-by-frequency
+  "Finds words using a frequency vector discovered by get-counts"
+  [word-map]
+  (loop [wm word-map]
+    (let [letter (index->letter (:freq-index wm))
+          freq ((:letter-freqs wm) (:freq-index wm))
+          potential-words (filter #(in? % letter) (:words wm))
+          new-wm (add-freq-match wm letter freq potential-words)]
+      (if (< 24 (:freq-index new-wm))
+        new-wm
+        (recur (assoc new-wm :freq-index (inc (:freq-index new-wm))))))))
 
 (defn find-correct-20-words 
   "Find a list of 20 words by process of elimination"
-  [words letter-freqs]
-  (loop [words-map {:words words :letter-freqs letter-freqs :val 1 :known-words [] :indices-of-freqs-at-val (get-index-of-val letter-freqs 1)}])
-  )
-
-(defn get-new-words
-  "Find a list of 20 words by process of elimination"
-  [words letter-counts]
-  (loop [ws words
-         lc letter-counts
-         known-words []
-         val 1
-         indices (get-index-of-val lc 1)]
-    (if (and (> val 25) (empty? indices)) 
-      known-words
-      (let [i (first indices)                      
-            l (char (+ i 97))                     
-            found-ws (filter #(word-letter-freq-match % l val) ws) ;;TODO:  Update this so that it does index of to find all words with an occurence of the letter, and then accepts the list of words if the frequency of the desired letter occurs val times.
-            new-word (first found-ws)
-            letter-indices (map letter->index new-word)
-            temp-lc (dec-vec lc letter-indices)
-            found-one (and (= 1 (count found-ws)) (not-any? neg? temp-lc))
-            new-known   (if found-one (conj known-words new-word) known-words)
-            new-lc      (if found-one temp-lc lc)
-            new-ws      (if found-one (words->valid-words (remove #{new-word} ws) new-lc) ws)
-            new-val     (if (empty? (rest indices)) (inc val) val)
-            new-indices (if found-one (get-index-of-val new-lc new-val) (rest indices)) 
-            ]
-        (println "Letter: " l "\nFound Words: " found-ws "\nKnown Words: " new-known "\nIndices: " new-indices "\nFound one? " found-one "\nlc: " new-lc "\nVal: "new-val "\nWords left: " new-ws "\n\n" )
-        (recur new-ws new-lc new-known new-val new-indices)))))
-
-(get-new-words (words->valid-words word-list correct-counts) correct-counts)
+  [word-map]
+  (loop [wm word-map] 
+    (let [ws-wm (find-words-by-word-size (assoc wm :word-size 1))
+          new-wm (find-words-by-frequency (assoc ws-wm :freq-index 0))]
+      (if (empty? (:words new-wm))
+        (:known-words new-wm)
+        (recur new-wm)))))
 
 (defn word-size-frequencies-match  
+  "Checks that a list of words has the right word size frequencies"
   [words]
   (let [target [0 1 5 4 3 2 3 2]
         word-sizes (map count words)
@@ -127,7 +155,9 @@
 (defn is-77-letters [words]
   (= 77 (count (reduce str words))))
 
-(defn letter-frequencies-match [words] 
+(defn letter-frequencies-match 
+  "Checks that a list of words has the right letter frequencies"
+  [words] 
   (let [alphabet (char-array "abcdefghijklmnopqrstuvwxyz") 
         target [8 2 0 2 7 2 1 2 4 1 1 1 2 8 8 3 0 8 4 10 2 0 0 0 1 0]
         letters (reduce str words)
@@ -163,16 +193,23 @@
             new-lc (if (< response r) test-lc  lc)]
         (recur new-lc new-r new-i)))))
 
-                                        ; TESTS
+(defn final-test [words]
+  (if (and (word-size-frequencies-match words)
+           (is-77-letters words)
+           (letter-frequencies-match words))
+    words
+    "Sorry, you didn't pass all the tests"))
 
-                                        ; This one takes too long, and it works.
-                                        ; (deftest test-get-counts
-                                        ; (is  (= [8 2 0 2 7 2 1 2 4 1 1 1 2 8 8 3 0 8 4 10 2 0 0 0 1 0]
-                                        ;(get-counts [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]))))
+;; TESTS
 
-(deftest test-reduce-to-valid-words
+;; This one takes too long, and it works.
+;; (deftest test-get-counts
+;; (is  (= [8 2 0 2 7 2 1 2 4 1 1 1 2 8 8 3 0 8 4 10 2 0 0 0 1 0]
+;;(get-counts [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]))))
+
+(deftest test-words->valid-words
   (is (= '("digit" "is" "be" "perhaps" "to" "just" "a" "any" "numbers" "or" "pattern" "first" "and" "reason" "appear" "on" "inside" "short" "long" "third" "look" "it" "ten" "half" "that" "for" "alone" "of" "in" "random" "the")
-         (reduce-to-valid-words word-list correct-counts))))
+         (words->valid-words (:words default-wm) (:letter-freqs default-wm)))))
 
 (deftest test-letter-frequencies-match
   (is (= true
@@ -190,9 +227,19 @@
   (is (= [1 3 5] 
          (get-index-of-val [0 1 2 1 3 1] 1))))
 
-(def real-world-list  ["a" "be" "or" "to" "on" "in" "any" "for" "ten" "the" "that" "just" "look" "digit" "first" "rappear" "reason" "random" "numbers" "pattern"])
+(deftest test-add-found-words
+  (is (= {:words ["digit" "is" "be" "perhaps" "to" "any" "numbers" "or" "pattern" "first" "and" "reason" "appear" "on" "inside" "short" "long" "third" "look" "it" "ten" "half" "that" "for" "alone" "of" "in" "random" "the"], :letter-freqs [7 2 0 2 7 2 1 2 4 0 1 1 2 8 8 3 0 8 3 9 1 0 0 0 1 0], :known-words ["just" "a"], :freq-index 0, :target [0 0 5 4 2 2 3 2], :word-size 1}
+         (add-found-words default-wm ["just" "a"]))))
 
-(prn (clojure.string/split real-word-list #" "))
+(deftest test-find-words-by-word-size
+  (is (= {:words ["digit" "is" "be" "perhaps" "to" "just" "any" "numbers" "or" "pattern" "first" "and" "reason" "appear" "on" "inside" "short" "long" "third" "look" "it" "ten" "half" "that" "for" "alone" "of" "in" "random" "the"], :letter-freqs [7 2 0 2 7 2 1 2 4 1 1 1 2 8 8 3 0 8 4 10 2 0 0 0 1 0], :known-words ["a"], :freq-index 0, :target [0 0 5 4 3 2 3 2], :word-size 7}  
+         (find-words-by-word-size default-wm))))
 
+(deftest test-find-words-by-frequency
+  (is (= {:words ["digit" "is" "perhaps" "to" "a" "or" "pattern" "first" "and" "reason" "appear" "on" "inside" "short" "third" "it" "ten" "that" "for" "of" "in" "the"], :letter-freqs [6 0 0 1 5 2 1 2 4 0 0 0 0 5 5 3 0 6 2 9 0 0 0 0 0 0], :known-words ["be" "numbers" "just" "look" "random" "any"], :freq-index 25, :target [0 1 4 3 1 2 2 1], :word-size 1})  
+      (find-words-by-frequency default-wm)))
 
+(run-tests)
 
+;;This is what does all the work and tests the final result
+(final-test  (find-correct-20-words default-wm))

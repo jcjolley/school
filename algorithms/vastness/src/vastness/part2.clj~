@@ -1,0 +1,33 @@
+(ns vastness.part2
+  (:require [clj-http.client :as client] [clojure.test :refer :all])
+  (:gen-class))
+
+(defn query-server [word-list-as-char-string]
+  (read-string (slurp (str "https://firstthreeodds.org/run/app?permdq+3691+" word-list-as-char-string))))
+
+(query-server "abcdefghijklmnopqrst")
+
+(query-server "cbadefghijklmnopqrst")
+
+(seq "abcdefghijklmnopqrst")
+
+(defn bogo
+
+  ([] (let [chars [\a \b \c \d \e \f \g \h \i \j \k \l \m \n \o \p \q \r \s \t]
+            randomized (shuffle chars)
+            new-str (apply str randomized)
+            energy (query-server new-str)]
+        [new-str energy]))
+  ([x] (bogo)))
+
+
+(defn bogon [x]
+  (take 5 (sort-by second < (repeatedly 1000 bogo))))
+
+(defn pbogon [x]
+  (take 5 (sort-by second < (pmap bogo (range x)))))
+
+
+(time (bogon 100))
+
+(time (pbogon 100))

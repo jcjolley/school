@@ -1,0 +1,6 @@
+["bnhmpicaedgfjkloqtrs" 13786656072]
+["bniacdefghjklmopqsrt" 131559560776390]
+["bnhoacdfegijklmpqrts" 6023300449989]
+["bnhmpiacdefgjklorqst" 7519355594]
+["bnhmpiacdefgjkloqrts" 7519355589]
+["bnhmpiacdefgjklorstq" 7519355597]

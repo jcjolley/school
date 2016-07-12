@@ -4,8 +4,6 @@
   (:gen-class))
 
 
-()
-
 (defn get-energy
   "Fetches the energy for a sequence of chars from Br. Neff's server."
   [[chars energy]]
@@ -90,3 +88,44 @@
 (spit "best_energies.txt" (str  (simulated-annealing ["bnhmpiacdefgjkloqrts"] 1000 0.995) "\n") :append true)
 
 (chars->sentence "bnhmpicaedgfjkloqtrs" )
+
+(defn factorial [n] 
+  (reduce *' (range 1 (inc n))))
+
+(factorial 3)
+
+(defn myperm [xx nn]
+  (loop [x xx n nn result '()]
+    (if (empty? x)
+      (remove nil? result)
+      (let [fac (factorial (dec (count x)))
+            q (quot n fac)
+            r (mod n fac)
+            a (take q x)
+            c (first (drop q x))
+            b (rest (drop q x))]
+        (recur (into a b) r (cons c result))))))
+
+(myperm '(1 2 3 4 5) 0)
+
+(myperm [1 2 3 4 5] 1)
+
+(map inc (range 5))
+
+(defn testidea [n]
+  (let [lst (map inc (range n))
+        perms (map #(myperm lst %) (range (factorial n)))
+        dperms (distinct perms)]
+    (println perms "\n" dperms)
+    (= perms dperms)))
+
+(myperm [1 2 3] 7)
+
+(testidea 3)
+
+(map #(myperm [1 2 3 4] %) (range (dec (factorial 4))))
+
+(take 2 '(1 2 3 4 5))
+(drop 2 '(1 2 3 4 5))
+
+(myperm '(1 2 3) 0)

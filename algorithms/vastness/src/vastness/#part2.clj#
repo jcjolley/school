@@ -5,7 +5,9 @@
   (:gen-class))
 
 (defn get-total-perms
-  "Helper function for rank"
+  "Helper function for rank
+  Returns the product of the number of items < the first item
+          and factorial of the the-rest of the string."
   [coll perms]
   (let [the-rest (rest coll)
         num-gt-item (count (filter #(< (int %) (int (first coll))) the-rest))
@@ -20,6 +22,12 @@
     (if (empty? c)
       (reduce + perms)
       (recur (rest c) (get-total-perms c perms)))))
+
+(defn get-energy-from-server
+  "Fetches the energy for a sequence of chars from Br. Neff's server."
+  [[chars energy]]
+  (let [new-energy (read-string (slurp (str "https://firstthreeodds.org/run/app?permdq+3691+" chars)))]
+    [chars new-energy]))
 
 
 (defn get-energy

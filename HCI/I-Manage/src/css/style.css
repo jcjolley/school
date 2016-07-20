@@ -22,9 +22,9 @@ button:focus {outline:none;} ::-moz-focus-inner {border:0;}
    background-color: #09297E;   
 }
 
-.btn-info, .alert-info {
-   background-color: #627CC4;
-   border-color:  #627CC4;
+.btn-info {
+   background-color: hsl(224.1, 80%, 57.6%);
+   border-color:  hsl(224.1, 80%, 57.6%);
 }
 
 .alert-info {

@@ -5,13 +5,15 @@
   (:gen-class))
 
 (defn get-total-perms
-  "Helper function for rank"
+  "Helper function for rank
+  Returns the product of the number of items < the first item
+          and factorial of the the-rest of the string."
   [coll perms]
   (let [the-rest (rest coll)
         num-gt-item (count (filter #(< (int %) (int (first coll))) the-rest))
         factorial #(reduce * (map inc (range %)))
-        num-xs-perms (factorial (count the-rest))]
-    (conj perms (* num-gt-item num-xs-perms))))
+        num-the-rest-perms (factorial (count the-rest))]
+    (conj perms (* num-gt-item num-the-rest-perms))))
 
 (defn rank
   "Returns the permutation rank of a collection.  Inverse of combo/nth-permutation"
@@ -20,6 +22,13 @@
     (if (empty? c)
       (reduce + perms)
       (recur (rest c) (get-total-perms c perms)))))
+
+(defn get-energy-from-server
+  "DEPRECATED - Use get-energy instead
+  Fetches the energy for a sequence of chars from Br. Neff's server."
+  [[chars energy]]
+  (let [new-energy (read-string (slurp (str "https://firstthreeodds.org/run/app?permdq+3691+" chars)))]
+    [chars new-energy]))
 
 
 (defn get-energy
@@ -53,25 +62,27 @@
     (apply str (assoc v j (v i) i (v j)))))
 
 (defn state->next-state
-  "DEPREICATED: Use smart-state-swap
+  "DEPRECATED: Use smart-state-swap
   Return a new state based on a manipulation "
   [[chars energy]] 
   [(apply str (swap (seq chars) (rand-int (count chars)) (rand-int (count chars)))) energy])
 
-(defn smart-state-swap
-  "Attempt to improve a single letter in the string (wall)
-  by shuffling everything after wall and swapping wall with every
+(defn state-swap
+  "Attempt to improve a single letter in the string (index)
+  by shuffling everything after index and swapping index with every
   char after it in an attempt to find a lower energy."
   [[chars energy]]
-  (let [wall (rand-int (dec (count chars)))
-        substring (apply str (shuffle (vec (subs chars (inc wall))))) ;;a shuffled substring from wall -> end
-        wall-char (.charAt chars wall)
-        prefix (subs chars 0 wall)
-        indices (range (inc wall) (count chars))
-        new-chars (str prefix wall-char substring)
-        get-permutation (fn [c w i] (get-energy [(swap (seq c) w i) 0]))
-        permutations (pmap #(get-permutation new-chars wall %) indices)]
-    (first (sort-by second permutations)))) 
+  (let [index (rand-int (dec (count chars)))
+        substring (apply str (shuffle (vec (subs chars (inc index))))) ;;a shuffled substring from index -> end
+        index-char (.charAt chars index)
+        prefix (subs chars 0 index)
+        indices (range (inc index) (count chars))
+        new-chars (str prefix index-char substring)
+        get-permutation (fn [c w i] [(swap (seq c) w i) 0])
+        permutations (pmap #(get-permutation new-chars index %) indices)]
+    (first (shuffle permutations)))) 
+
+(def move-from state-swap)
 
 (defn simulated-annealing
   "Find the lowest energy state by transitioning between states and
@@ -80,24 +91,29 @@
   [state temp cooling-rate] 
   (loop [v {:state (get-energy state)
             :best-state (get-energy state) 
-            :temp temp}]
+            :temp temp
+            :run-count 0}]
     (if (or (zero? (second (:best-state v)))
             (<= (:temp v) 1))
-      (doto (:best-state v) (println "\nThe question is:" (chars->sentence (first (:best-state v)))))
+      (doto (:best-state v) (println "\nThe question is:" (chars->sentence (first (:best-state v)))
+                                     "\nRun Count: " (:run-count v)))
       (let [temp-state (get-energy (smart-state-swap (:state v)))
             new-state (probability (:state v) temp-state (:temp v))
             get-best-state (fn [[bc be] [nc ne]] (if (< ne be) [nc ne] [bc be])) 
             new-best-state (get-best-state (:best-state v) new-state) 
-            new-temp (* (:temp v) cooling-rate)]
+            new-temp (* (:temp v) cooling-rate)
+            new-run-count (inc (:run-count v))] 
         (when (not= (:best-state v) new-best-state)
           (println  new-best-state " " (:temp v)))
         (recur (assoc v
                       :state new-state
                       :best-state new-best-state
-                      :temp new-temp))))))
+                      :temp new-temp
+                      :run-count new-run-count))))))
 
 ;;Get the answer, the simulated-annealing way
-(simulated-annealing ["abcdefghijklmnopqrst" 0] 1000 0.99) 
+(simulated-annealing ["abcdefghijklmnopqrst" 0] 10000 0.999) 
 
 ;;Get the answer, the cheater's way
 (chars->sentence (first (get-energy [(apply str (combo/nth-permutation "abcdefghijklmnopqrst" 200831837313463612)) 0])))
+

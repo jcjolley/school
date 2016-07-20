@@ -1,4 +1,5 @@
 import { createStore } from 'redux'
+import moment from "moment";
 
 export const ADD_HOMEWORK = 'ADD_HOMEWORK'
 export const COMPLETE_HOMEWORK = 'COMPLETE_HOMEWORK'
@@ -68,6 +69,26 @@ function homeworkReducer(state = initialState, action) {
 
 //actually create our backing store
 let store = createStore(homeworkReducer, initialState);
+
+//populate with fake items if there are no visible items;
+const visible = store.getState().homework_items
+   .filter(hw => !hw.completed);
+
+if (visible.length == 0)
+{
+   const types = ["Prepare", "Ponder and Prove", "Teach One Another", "Test" ]
+   const classes = ["PHYS 101", "MATH 330", "CS 371", "CS 432"];
+   for(let i = 0; i < 14; i++){
+      for (let j = 0; j < 4; j++) {
+         if (Math.random() * 3 < 1) {
+            let title = classes[Math.floor(Math.random() * 4)] + " " + types[Math.floor(Math.random() * 4)] + " " + (i + 1);
+            store.dispatch(addHomework(title, (moment() + (i * 1000 * 60 * 60 * 24))));
+         }
+         console.log("Populating with fake items");
+      }
+   } 
+}
+
 
 //store items as they're added
 store.subscribe(() => {

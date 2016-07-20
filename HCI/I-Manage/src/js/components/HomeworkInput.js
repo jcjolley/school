@@ -90,13 +90,13 @@ export default class HomeworkInput extends React.Component {
                  placeholder="Enter your homework here"
                  style={inputStyle}
                  onKeyUp={handleTextEnter}
-                 tabindex="1" />
+                 tabIndex="1" />
           <input ref = {node => {this.dateInput = node}}
                  type="text" 
                  class="form-control"
                  id="datepicker" 
                  style={dpStyle}
-                 tabindex="2" />
+                 tabIndex="2" />
           <div class="input-group-btn" >
             <button class="btn btn-raised btn-info" 
                     type="button" 
@@ -110,7 +110,7 @@ export default class HomeworkInput extends React.Component {
                     onClick={addHW} 
                     type="button"
                     style={buttonStyle}
-                    tabindex="3">
+                    tabIndex="3">
               <img src="img/submit.png" style={submitStyle} />
             </button>
           </div>
